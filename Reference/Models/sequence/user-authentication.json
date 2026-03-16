@@ -1,0 +1,110 @@
+{
+  "model": {
+    "TITLE": {
+      "value": "User Authentication Sequence"
+    },
+    "AUTHOR": {
+      "value": "Steve White",
+      "readOnly": "true"
+    },
+    "MODELTYPE": {
+      "value": "SEQUENCE_DIAGRAM",
+      "inputType": "select",
+      "refData": "MODELTYPE"
+    },
+    "DESCRIPTION": {
+      "value": "Example sequence diagram showing user authentication flow with login, validation, and response",
+      "inputType": "textarea"
+    },
+    "LAYOUT": {
+      "inputType": "select",
+      "value": "Sequence",
+      "refData": "LAYOUTTYPE"
+    }
+  },
+  "systems": [
+    {
+      "ID": "USER",
+      "TEXT": "User",
+      "TYPE": "SEQ_ACTOR"
+    },
+    {
+      "ID": "LOGIN_UI",
+      "TEXT": "Login UI",
+      "TYPE": "SEQ_BOUNDARY"
+    },
+    {
+      "ID": "AUTH_CTRL",
+      "TEXT": "Auth Controller",
+      "TYPE": "SEQ_CONTROL"
+    },
+    {
+      "ID": "USER_SVC",
+      "TEXT": "User Service",
+      "TYPE": "SEQ_ENTITY"
+    },
+    {
+      "ID": "USER_DB",
+      "TEXT": "User Database",
+      "TYPE": "SEQ_DATABASE"
+    }
+  ],
+  "interactions": [
+    {
+      "ID": "MSG1",
+      "FROMID": "USER",
+      "TOID": "LOGIN_UI",
+      "TEXT": "enterCredentials(username, password)",
+      "TYPE": "SEQ_SYNC_CALL"
+    },
+    {
+      "ID": "MSG2",
+      "FROMID": "LOGIN_UI",
+      "TOID": "AUTH_CTRL",
+      "TEXT": "authenticate(credentials)",
+      "TYPE": "SEQ_SYNC_CALL"
+    },
+    {
+      "ID": "MSG3",
+      "FROMID": "AUTH_CTRL",
+      "TOID": "USER_SVC",
+      "TEXT": "validateUser(username, password)",
+      "TYPE": "SEQ_SYNC_CALL"
+    },
+    {
+      "ID": "MSG4",
+      "FROMID": "USER_SVC",
+      "TOID": "USER_DB",
+      "TEXT": "findUser(username)",
+      "TYPE": "SEQ_SYNC_CALL"
+    },
+    {
+      "ID": "MSG5",
+      "FROMID": "USER_DB",
+      "TOID": "USER_SVC",
+      "TEXT": "userRecord",
+      "TYPE": "SEQ_RETURN"
+    },
+    {
+      "ID": "MSG6",
+      "FROMID": "USER_SVC",
+      "TOID": "AUTH_CTRL",
+      "TEXT": "validationResult",
+      "TYPE": "SEQ_RETURN"
+    },
+    {
+      "ID": "MSG7",
+      "FROMID": "AUTH_CTRL",
+      "TOID": "LOGIN_UI",
+      "TEXT": "authToken",
+      "TYPE": "SEQ_RETURN"
+    },
+    {
+      "ID": "MSG8",
+      "FROMID": "LOGIN_UI",
+      "TOID": "USER",
+      "TEXT": "loginSuccess",
+      "TYPE": "SEQ_RETURN"
+    }
+  ]
+}

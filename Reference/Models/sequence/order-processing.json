@@ -1,0 +1,129 @@
+{
+  "model": {
+    "TITLE": {
+      "value": "Order Processing Sequence"
+    },
+    "AUTHOR": {
+      "value": "Steve White",
+      "readOnly": "true"
+    },
+    "MODELTYPE": {
+      "value": "SEQUENCE_DIAGRAM",
+      "inputType": "select",
+      "refData": "MODELTYPE"
+    },
+    "DESCRIPTION": {
+      "value": "Example sequence diagram showing order processing with synchronous, asynchronous, create, and destroy message types",
+      "inputType": "textarea"
+    },
+    "LAYOUT": {
+      "inputType": "select",
+      "value": "Sequence",
+      "refData": "LAYOUTTYPE"
+    }
+  },
+  "systems": [
+    {
+      "ID": "CUSTOMER",
+      "TEXT": "Customer",
+      "TYPE": "SEQ_ACTOR"
+    },
+    {
+      "ID": "ORDER_UI",
+      "TEXT": "Order UI",
+      "TYPE": "SEQ_BOUNDARY"
+    },
+    {
+      "ID": "ORDER_CTRL",
+      "TEXT": "Order Controller",
+      "TYPE": "SEQ_CONTROL"
+    },
+    {
+      "ID": "PAYMENT_SVC",
+      "TEXT": "Payment Service",
+      "TYPE": "SEQ_COMPONENT"
+    },
+    {
+      "ID": "ORDER_DB",
+      "TEXT": "Order Database",
+      "TYPE": "SEQ_DATABASE"
+    },
+    {
+      "ID": "NOTIF_SVC",
+      "TEXT": "Notification Service",
+      "TYPE": "SEQ_COMPONENT"
+    }
+  ],
+  "interactions": [
+    {
+      "ID": "MSG1",
+      "FROMID": "CUSTOMER",
+      "TOID": "ORDER_UI",
+      "TEXT": "placeOrder(items, paymentInfo)",
+      "TYPE": "SEQ_SYNC_CALL"
+    },
+    {
+      "ID": "MSG2",
+      "FROMID": "ORDER_UI",
+      "TOID": "ORDER_CTRL",
+      "TEXT": "createOrder(orderData)",
+      "TYPE": "SEQ_SYNC_CALL"
+    },
+    {
+      "ID": "MSG3",
+      "FROMID": "ORDER_CTRL",
+      "TOID": "PAYMENT_SVC",
+      "TEXT": "processPayment(amount, method)",
+      "TYPE": "SEQ_SYNC_CALL"
+    },
+    {
+      "ID": "MSG4",
+      "FROMID": "PAYMENT_SVC",
+      "TOID": "ORDER_CTRL",
+      "TEXT": "paymentConfirmation",
+      "TYPE": "SEQ_RETURN"
+    },
+    {
+      "ID": "MSG5",
+      "FROMID": "ORDER_CTRL",
+      "TOID": "ORDER_DB",
+      "TEXT": "saveOrder(order)",
+      "TYPE": "SEQ_CREATE"
+    },
+    {
+      "ID": "MSG6",
+      "FROMID": "ORDER_DB",
+      "TOID": "ORDER_CTRL",
+      "TEXT": "orderId",
+      "TYPE": "SEQ_RETURN"
+    },
+    {
+      "ID": "MSG7",
+      "FROMID": "ORDER_CTRL",
+      "TOID": "NOTIF_SVC",
+      "TEXT": "sendConfirmation(orderId, email)",
+      "TYPE": "SEQ_ASYNC_CALL"
+    },
+    {
+      "ID": "MSG8",
+      "FROMID": "ORDER_CTRL",
+      "TOID": "ORDER_UI",
+      "TEXT": "orderConfirmed(orderId)",
+      "TYPE": "SEQ_RETURN"
+    },
+    {
+      "ID": "MSG9",
+      "FROMID": "ORDER_UI",
+      "TOID": "CUSTOMER",
+      "TEXT": "displayConfirmation",
+      "TYPE": "SEQ_RETURN"
+    },
+    {
+      "ID": "MSG10",
+      "FROMID": "NOTIF_SVC",
+      "TOID": "CUSTOMER",
+      "TEXT": "emailConfirmation",
+      "TYPE": "SEQ_ASYNC_CALL"
+    }
+  ]
+}

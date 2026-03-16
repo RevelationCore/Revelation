@@ -1,0 +1,157 @@
+{
+  "model": {
+    "TITLE": {
+      "value": "System Monitoring with Special Messages"
+    },
+    "AUTHOR": {
+      "value": "Steve White",
+      "readOnly": "true"
+    },
+    "MODELTYPE": {
+      "value": "SEQUENCE_DIAGRAM",
+      "inputType": "select",
+      "refData": "MODELTYPE"
+    },
+    "DESCRIPTION": {
+      "value": "Example showing self-calls, found messages, and lost messages in sequence diagrams",
+      "inputType": "textarea"
+    },
+    "LAYOUT": {
+      "inputType": "select",
+      "value": "Sequence",
+      "refData": "LAYOUTTYPE"
+    }
+  },
+  "systems": [
+    {
+      "ID": "EXTERNAL_IN",
+      "TEXT": "External",
+      "TYPE": "SEQ_EXTERNAL"
+    },
+    {
+      "ID": "EXTERNAL_OUT_1",
+      "TEXT": "External",
+      "TYPE": "SEQ_EXTERNAL"
+    },
+    {
+      "ID": "EXTERNAL_OUT_2",
+      "TEXT": "External",
+      "TYPE": "SEQ_EXTERNAL"
+    },
+    {
+      "ID": "MONITOR",
+      "TEXT": "Monitor Service",
+      "TYPE": "SEQ_COMPONENT"
+    },
+    {
+      "ID": "VALIDATOR",
+      "TEXT": "Validator",
+      "TYPE": "SEQ_CONTROL"
+    },
+    {
+      "ID": "LOGGER",
+      "TEXT": "Logger",
+      "TYPE": "SEQ_COMPONENT"
+    },
+    {
+      "ID": "ALERT_MGR",
+      "TEXT": "Alert Manager",
+      "TYPE": "SEQ_CONTROL"
+    }
+  ],
+  "interactions": [
+    {
+      "ID": "MSG1",
+      "FROMID": "EXTERNAL_IN",
+      "TOID": "MONITOR",
+      "TEXT": "externalEvent(data)",
+      "TYPE": "SEQ_FOUND"
+    },
+    {
+      "ID": "MSG2",
+      "FROMID": "MONITOR",
+      "TOID": "MONITOR",
+      "TEXT": "validateFormat()",
+      "TYPE": "SEQ_SYNC_CALL"
+    },
+    {
+      "ID": "MSG3",
+      "FROMID": "MONITOR",
+      "TOID": "MONITOR",
+      "TEXT": "formatValid",
+      "TYPE": "SEQ_RETURN"
+    },
+    {
+      "ID": "FRG1",
+      "TEXT": "retry on failure",
+      "TYPE": "SEQ_FRG_LOOP"
+    },
+    {
+      "ID": "MSG4",
+      "FROMID": "MONITOR",
+      "TOID": "VALIDATOR",
+      "TEXT": "checkThresholds(data)",
+      "TYPE": "SEQ_SYNC_CALL"
+    },
+    {
+      "ID": "MSG5",
+      "FROMID": "VALIDATOR",
+      "TOID": "VALIDATOR",
+      "TEXT": "calculateMetrics()",
+      "TYPE": "SEQ_SYNC_CALL"
+    },
+    {
+      "ID": "MSG6",
+      "FROMID": "VALIDATOR",
+      "TOID": "VALIDATOR",
+      "TEXT": "metrics",
+      "TYPE": "SEQ_RETURN"
+    },
+    {
+      "ID": "MSG7",
+      "FROMID": "VALIDATOR",
+      "TOID": "MONITOR",
+      "TEXT": "thresholdExceeded",
+      "TYPE": "SEQ_RETURN"
+    },
+    {
+      "ID": "FRG1_END",
+      "TYPE": "SEQ_FRG_END"
+    },
+    {
+      "ID": "MSG8",
+      "FROMID": "MONITOR",
+      "TOID": "LOGGER",
+      "TEXT": "logEvent(severity, msg)",
+      "TYPE": "SEQ_ASYNC_CALL"
+    },
+    {
+      "ID": "MSG9",
+      "FROMID": "LOGGER",
+      "TOID": "EXTERNAL_OUT_1",
+      "TEXT": "writeToFile()",
+      "TYPE": "SEQ_LOST"
+    },
+    {
+      "ID": "MSG10",
+      "FROMID": "MONITOR",
+      "TOID": "ALERT_MGR",
+      "TEXT": "raiseAlert(details)",
+      "TYPE": "SEQ_SYNC_CALL"
+    },
+    {
+      "ID": "MSG11",
+      "FROMID": "ALERT_MGR",
+      "TOID": "EXTERNAL_OUT_2",
+      "TEXT": "sendNotification()",
+      "TYPE": "SEQ_LOST"
+    },
+    {
+      "ID": "MSG12",
+      "FROMID": "ALERT_MGR",
+      "TOID": "MONITOR",
+      "TEXT": "alertId",
+      "TYPE": "SEQ_RETURN"
+    }
+  ]
+}

@@ -91,6 +91,11 @@ reference/
 - Purchase Approval: [Open in Revelation](https://revelationcore.com/beta/index.html?model=https://revelationcore.github.io/Revelation/Reference/Models/bpmn-lite/bpmn-lite-purchase-approval.json) (`Reference/Models/bpmn-lite/bpmn-lite-purchase-approval.json`)
 - Supplier Onboarding (Swimlanes): [Open in Revelation](https://revelationcore.com/beta/index.html?model=https://revelationcore.github.io/Revelation/Reference/Models/bpmn-lite/bpmn-lite-supplier-onboarding-swimlanes.json) (`Reference/Models/bpmn-lite/bpmn-lite-supplier-onboarding-swimlanes.json`)
 
+### Sequence
+- Order Processing Sequence: [Open in Revelation](https://revelationcore.com/beta/index.html?model=https://revelationcore.github.io/Revelation/Reference/Models/sequence/order-processing.json) (`Reference/Models/sequence/order-processing.json`)
+- System Monitoring with Special Messages: [Open in Revelation](https://revelationcore.com/beta/index.html?model=https://revelationcore.github.io/Revelation/Reference/Models/sequence/system-monitoring.json) (`Reference/Models/sequence/system-monitoring.json`)
+- User Authentication Sequence: [Open in Revelation](https://revelationcore.com/beta/index.html?model=https://revelationcore.github.io/Revelation/Reference/Models/sequence/user-authentication.json) (`Reference/Models/sequence/user-authentication.json`)
+
 ### ArchiMate
 - Business Layer: [Open in Revelation](https://revelationcore.com/beta/index.html?model=https://revelationcore.github.io/Revelation/Reference/Models/archimate/archimate-business-layer.json) (`Reference/Models/archimate/archimate-business-layer.json`)
 - Application Layer: [Open in Revelation](https://revelationcore.com/beta/index.html?model=https://revelationcore.github.io/Revelation/Reference/Models/archimate/archimate-application-layer.json) (`Reference/Models/archimate/archimate-application-layer.json`)
