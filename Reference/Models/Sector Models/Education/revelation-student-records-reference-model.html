@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A Higher Education Enterprise Reference Model for Student Records covering UK statutory compliance, admissions, wellbeing, research, and integration across 29 systems and 60 data flows.">
+<title>An Enterprise Reference Model for Student Records</title>
+<link rel="icon" type="image/png" href="https://revelationcore.com/assets/logo/revelation-logo-512x512.png">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 16px; line-height: 1.7; color: #1a1a2e; background: #fff; }
+  a { color: #2563eb; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* NAV */
+  nav { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
+  .nav-logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.1rem; color: #1a1a2e; text-decoration: none; }
+  .nav-logo img { height: 36px; }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; font-size: 0.9rem; }
+  .nav-links a { color: #4b5563; font-weight: 500; }
+  .nav-links a:hover { color: #2563eb; text-decoration: none; }
+  .nav-hamburger { display: none; font-size: 1.5rem; cursor: pointer; }
+  @media (max-width: 768px) { .nav-links { display: none; } .nav-hamburger { display: block; } }
+
+  /* LAYOUT */
+  .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  h1 { font-size: 2rem; font-weight: 700; line-height: 1.25; margin-bottom: 1.5rem; color: #111827; }
+  h2 { font-size: 1.4rem; font-weight: 700; margin: 2.5rem 0 0.75rem; color: #111827; }
+  h2:first-of-type { margin-top: 1.5rem; }
+  h3 { font-size: 1.1rem; font-weight: 700; margin: 2rem 0 0.5rem; color: #1e40af; }
+  p { margin-bottom: 1rem; }
+  ul, ol { margin: 0.5rem 0 1rem 1.5rem; }
+  li { margin-bottom: 0.3rem; }
+
+  /* CALLOUT */
+  .callout { background: #eff6ff; border-left: 4px solid #2563eb; border-radius: 0 6px 6px 0; padding: 1rem 1.25rem; margin: 1.5rem 0; }
+  .callout p { margin: 0; font-size: 0.95rem; }
+  .callout strong { color: #1e40af; }
+  .callout-uk { background: #f0fdf4; border-left-color: #16a34a; }
+  .callout-uk strong { color: #15803d; }
+
+  /* TABLES */
+  .table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; border-radius: 8px; border: 1px solid #e5e7eb; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+  thead th { background: #f9fafb; font-weight: 600; color: #374151; padding: 10px 14px; text-align: left; border-bottom: 1px solid #e5e7eb; white-space: nowrap; }
+  tbody td { padding: 9px 14px; border-bottom: 1px solid #f3f4f6; vertical-align: top; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: #f9fafb; }
+  td ul { margin: 0; padding-left: 1.1rem; }
+  td ul li { margin-bottom: 0; font-size: 0.85rem; }
+
+  /* FLOW SECTIONS */
+  .flow-section { margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; }
+  .flow-section h3 { margin-top: 0; }
+  .back-link { font-size: 0.8rem; color: #6b7280; }
+  .back-link a { color: #6b7280; }
+  .back-link a:hover { color: #2563eb; }
+
+  /* TOC */
+  .toc { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 1.25rem 1.5rem; margin: 1.5rem 0 2rem; }
+  .toc h2 { margin-top: 0; font-size: 1rem; color: #374151; margin-bottom: 0.75rem; }
+  .toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.15rem; }
+  .toc-grid a { font-size: 0.8rem; color: #4b5563; display: block; padding: 2px 0; }
+  .toc-grid a:hover { color: #2563eb; text-decoration: none; }
+  .toc-section { margin-top: 0.75rem; }
+  .toc-section-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #9ca3af; margin-bottom: 0.35rem; }
+
+  /* DOMAIN BADGES */
+  .domain { display: inline-block; font-size: 0.7rem; font-weight: 600; padding: 2px 7px; border-radius: 999px; white-space: nowrap; }
+  .d-student   { background: #dbeafe; color: #1e40af; }
+  .d-teaching  { background: #d1fae5; color: #065f46; }
+  .d-academic  { background: #ede9fe; color: #5b21b6; }
+  .d-analytics { background: #fef3c7; color: #92400e; }
+  .d-admin     { background: #fee2e2; color: #991b1b; }
+  .d-it        { background: #f3f4f6; color: #374151; }
+  .d-campus    { background: #fce7f3; color: #9d174d; }
+  .d-research  { background: #ecfdf5; color: #064e3b; }
+  .d-compliance { background: #fef9c3; color: #854d0e; }
+
+  /* FOOTER */
+  footer { background: #f9fafb; border-top: 1px solid #e5e7eb; padding: 1.5rem; text-align: center; font-size: 0.8rem; color: #6b7280; }
+  footer a { color: #6b7280; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>A Higher Education Enterprise Reference Model for Student Records</h1>
+
+<p>In today's complex academic landscape, higher education institutions often grapple with large, interconnected systems and data flows that support student records. This article provides an enterprise-level perspective — a reference model — to guide the management and integration of these systems. By clarifying the interactions between key applications and the Student Records system, institutions can better align technology initiatives with academic and administrative goals.</p>
+
+<p>This model is designed specifically for UK higher education, incorporating the statutory and regulatory relationships — UCAS, HESA, the Student Loans Company, and UK Visas &amp; Immigration — that are central to any UK institution's digital estate.</p>
+
+<h2>Why a Reference Model?</h2>
+<p>A reference model offers a high-level blueprint of the key systems involved and how they communicate, ensuring a consistent vocabulary and structure for planning, analysis, and improvement efforts. By adopting a standardised perspective, institutions can more easily identify gaps, overlaps, and integration needs.</p>
+
+<p>We've developed a Higher Education Enterprise Reference Model for Student Records that you can explore interactively here:</p>
+
+<p><a href="https://revelationcore.com/beta/index.html?model=/beta/reference/models/StudentRecordsAccelerator.json"><strong>View the Model in the Revelation EA Tool</strong></a></p>
+
+<img src="https://revelationcore.com/assets/svg/he-enterprise-reference-model-for-student-records.svg" alt="Higher Education Enterprise Reference Model for Student Records" style="width:100%;border-radius:8px;margin:1rem 0 1.5rem;border:1px solid #e5e7eb;">
+
+<h2>Model Overview: Systems and Key Flows</h2>
+<p>The model is composed of 29 applications and external bodies — from Curriculum Management and Virtual Learning Environments to the statutory agencies that UK institutions are legally required to engage with. It defines 60 data flows that capture everything from enrolment updates and financial transactions to HESA statutory returns and UKVI Tier 4 compliance reporting.</p>
+
+<p>Below you will find an appendix detailing these <a href="#systems">systems</a> (in a concise application portfolio) and the specific <a href="#flows">flows</a> (F001–F060) that link Student Records to each application or external body. This structure helps you see exactly where data is exchanged, what entities are involved, and how each system contributes to a holistic student lifecycle.</p>
+
+<p>If certain systems aren't relevant to your institution, or if you use different product names, consider these as placeholders for equivalent capabilities. The key is to map each real-life system to the model's references and flows, ensuring a like-for-like representation of data movement.</p>
+
+<div class="callout callout-uk">
+  <p><strong>UK Compliance Note:</strong> This model includes four external regulatory bodies — UCAS, HESA, the Student Loans Company, and UK Visas &amp; Immigration — whose data flows carry statutory obligations. The HESA Student return is a legal requirement; SLC enrolment confirmation directly affects institutional cash flow and student financial welfare; UKVI reporting obligations are tied to the institution's Tier 4 sponsor licence. These flows should be treated as mandatory scope in any Student Records implementation or migration project.</p>
+</div>
+
+<h2>Applying the Reference Model</h2>
+<p>This reference model can serve as a starting template for you to document and analyse your own environment. By outlining which systems and data flows are active at your institution — and then matching them to this model's structure — you create a clear inventory of your digital estate. From there, you can pinpoint inefficiencies, overlap, or gaps that need addressing.</p>
+<p>For detailed guidance on documenting and mapping your IT environment, read our article: <a href="https://revelationcore.com/blogs/documenting-your-digital-estate.html">Documenting Your Digital Estate</a>.</p>
+<p>Using the reference model as a template simplifies collaborative discussions among academic leaders, IT stakeholders, and external partners. It also aids in risk assessments, strategic planning, and future-proofing your technology roadmap.</p>
+
+<div class="callout">
+  <p><strong>Practical Example:</strong> Ready to see how this reference model works in a real-world scenario? Explore our detailed guide: <a href="https://revelationcore.com/blogs/the-revelation-workbook-for-higher-education.html"><strong>The Revelation Workbook for Higher Education</strong></a>. This walkthrough shows how to map your institutional systems using Revelation — based directly on the model you just explored.</p>
+</div>
+
+<h2>Summary and Conclusion</h2>
+<p>A Higher Education Enterprise Reference Model for Student Records provides a vital macro-level perspective on how core applications — ranging from CRM to Timetabling — integrate with the SIS, alongside the statutory external relationships that are unique to UK higher education. By adopting this reference point, institutions can streamline project planning, enhance data consistency, and respond more readily to evolving demands in teaching, research, and administration.</p>
+<p>We hope this model offers practical insights for your team — whether you're undertaking a major system modernisation, preparing for a Banner or SITS migration, or simply refining existing processes. In the appendix below, you'll find the detailed breakdown of each system and data flow, complete with the entities involved and their attributes.</p>
+
+
+<div class="toc">
+  <h2>Appendix Contents</h2>
+  <p style="font-size:0.8rem;color:#6b7280;margin-bottom:0.75rem">Jump to any system or flow directly.</p>
+  <div style="margin-bottom:0.5rem">
+    <div class="toc-section-label">Sections</div>
+    <div style="display:flex;gap:1.5rem;flex-wrap:wrap;font-size:0.85rem;">
+      <a href="#systems">Systems Portfolio</a>
+      <a href="#flows">All Flows (F001–F060)</a>
+    </div>
+  </div>
+
+  <div class="toc-section">
+    <div class="toc-section-label">Core SIS Integrations (F001–F026)</div>
+    <div class="toc-grid">
+      <a href="#F001">F001 CM → SIS</a>
+      <a href="#F002">F002 SIS → CM</a>
+      <a href="#F003">F003 SIS → TTB</a>
+      <a href="#F004">F004 TTB → SIS</a>
+      <a href="#F005">F005 CRM → SIS</a>
+      <a href="#F006">F006 SIS → CRM</a>
+      <a href="#F007">F007 LIB → SIS</a>
+      <a href="#F008">F008 SIS → LIB</a>
+      <a href="#F009">F009 SIS → FIN</a>
+      <a href="#F010">F010 FIN → SIS</a>
+      <a href="#F011">F011 EWP → SIS</a>
+      <a href="#F012">F012 SIS → EWP</a>
+      <a href="#F013">F013 AM → SIS</a>
+      <a href="#F014">F014 SIS → AM</a>
+      <a href="#F015">F015 SIS → VLE</a>
+      <a href="#F016">F016 VLE → SIS</a>
+      <a href="#F017">F017 SIS → ACC</a>
+      <a href="#F018">F018 ACC → SIS</a>
+      <a href="#F019">F019 SIS → EST</a>
+      <a href="#F020">F020 EST → SIS</a>
+      <a href="#F021">F021 SIS → IAM</a>
+      <a href="#F022">F022 IAM → SIS</a>
+      <a href="#F023">F023 SIS → EDRMS</a>
+      <a href="#F024">F024 EDRMS → SIS</a>
+      <a href="#F025">F025 SIS → OIV</a>
+      <a href="#F026">F026 OIV → SIS</a>
+    </div>
+  </div>
+
+  <div class="toc-section">
+    <div class="toc-section-label">Analytics, Administration &amp; Operational Systems (F027–F044)</div>
+    <div class="toc-grid">
+      <a href="#F027">F027 SIS → BI</a>
+      <a href="#F028">F028 BI → SIS</a>
+      <a href="#F029">F029 SIS → DW</a>
+      <a href="#F030">F030 DW → SIS</a>
+      <a href="#F031">F031 SIS → SETS</a>
+      <a href="#F032">F032 SETS → SIS</a>
+      <a href="#F033">F033 SIS → HR</a>
+      <a href="#F034">F034 HR → SIS</a>
+      <a href="#F035">F035 SIS → PAY</a>
+      <a href="#F036">F036 PAY → SIS</a>
+      <a href="#F037">F037 SIS → CRIS</a>
+      <a href="#F038">F038 CRIS → SIS</a>
+      <a href="#F039">F039 SIS → RP</a>
+      <a href="#F040">F040 RP → SIS</a>
+      <a href="#F041">F041 SIS → CMS</a>
+      <a href="#F042">F042 CMS → SIS</a>
+      <a href="#F043">F043 SIS → ITSM</a>
+      <a href="#F044">F044 ITSM → SIS</a>
+    </div>
+  </div>
+
+  <div class="toc-section">
+    <div class="toc-section-label">UK Statutory &amp; Regulatory Bodies (F045–F052)</div>
+    <div class="toc-grid">
+      <a href="#F045">F045 UCAS → SIS</a>
+      <a href="#F046">F046 SIS → UCAS</a>
+      <a href="#F047">F047 SIS → HESA</a>
+      <a href="#F048">F048 HESA → SIS</a>
+      <a href="#F049">F049 SIS → SLC</a>
+      <a href="#F050">F050 SLC → SIS</a>
+      <a href="#F051">F051 SIS → UKVI</a>
+      <a href="#F052">F052 UKVI → SIS</a>
+    </div>
+  </div>
+
+  <div class="toc-section">
+    <div class="toc-section-label">Student Wellbeing &amp; Lateral Flows (F053–F060)</div>
+    <div class="toc-grid">
+      <a href="#F053">F053 SIS → WELL</a>
+      <a href="#F054">F054 WELL → SIS</a>
+      <a href="#F055">F055 VLE → BI</a>
+      <a href="#F056">F056 AM → BI</a>
+      <a href="#F057">F057 DW → BI</a>
+      <a href="#F058">F058 CRM → EWP</a>
+      <a href="#F059">F059 WELL → VLE</a>
+      <a href="#F060">F060 WELL → AM</a>
+    </div>
+  </div>
+</div>
+
+<h2 id="systems">Appendix: Systems</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>System</th><th>Description</th><th>Domain</th><th>Key Capabilities</th></tr></thead><tbody>
+<tr><td><strong>ACC</strong></td><td>Accomm &amp; Conf Sys</td><td>Manage on-campus accommodation and external event bookings</td><td><span class="domain d-campus">Campus & Facilities</span></td><td>Room allocation; Conference/venue scheduling; Booking/payment processing; Resource allocation</td></tr>
+<tr><td><strong>AM</strong></td><td>Attendance Monitoring</td><td>Track student attendance and engagement indicators; analyse learning activities</td><td><span class="domain d-student">Student Lifecycle</span></td><td>Attendance tracking; Engagement analytics; Early-warning alerts; Reporting/dashboards</td></tr>
+<tr><td><strong>BI</strong></td><td>Business Intelligence</td><td>Provide data analysis, dashboards, and reporting across institution-wide data sets</td><td><span class="domain d-analytics">Analytics & Reporting</span></td><td>Data aggregation; Analytics &amp; dashboards; Predictive insights; Performance reporting</td></tr>
+<tr><td><strong>CMS</strong></td><td>Content Mgmt Systems</td><td>Manage and publish digital content for websites, intranets, and portals</td><td><span class="domain d-it">IT & Digital Infra</span></td><td>Web content creation; Content workflow; Version control; Publishing &amp; archiving</td></tr>
+<tr><td><strong>CRIS</strong></td><td>CRIS</td><td>Centralise and track research outputs, publications, and researcher profiles</td><td><span class="domain d-research">Research & Innovation</span></td><td>Publications management; Researcher profiles; Compliance reporting; Collaboration tracking</td></tr>
+<tr><td><strong>CRM</strong></td><td>CRM</td><td>Manage interactions and relationships with prospects, students, alumni, and partners</td><td><span class="domain d-student">Student Lifecycle</span></td><td>Lead management; Communication tracking; Recruitment &amp; marketing automation; Stakeholder engagement</td></tr>
+<tr><td><strong>CM</strong></td><td>Curriculum Mgmt</td><td>Define and maintain programmes, modules, and learning outcomes</td><td><span class="domain d-academic">Academic & Programme Mgmt</span></td><td>Programme/module design; Curriculum change tracking; Learning outcome mapping; Approval workflows</td></tr>
+<tr><td><strong>DW</strong></td><td>Data Warehouse</td><td>Consolidate institutional data from multiple sources for analysis and reporting</td><td><span class="domain d-analytics">Analytics & Reporting</span></td><td>Data extraction/ETL; Historical data storage; Centralised reporting; Integration with BI tools</td></tr>
+<tr><td><strong>EDRMS</strong></td><td>EDRMS</td><td>Store, manage, and track electronic documents and records throughout their lifecycle</td><td><span class="domain d-admin">Enterprise Administration</span></td><td>Document version control; Record retention policies; Secure access; Compliance &amp; auditing</td></tr>
+<tr><td><strong>ESB</strong></td><td>Enterprise Service Bus</td><td>Facilitate system-to-system integration and message brokering between applications</td><td><span class="domain d-it">IT & Digital Infra</span></td><td>Message routing; Data transformation; Enterprise integration patterns; Event-driven architecture</td></tr>
+<tr><td><strong>EWP</strong></td><td>Enterprise Web Portal</td><td>Provide unified, role-based web access to institutional services and information</td><td><span class="domain d-it">IT & Digital Infra</span></td><td>Single sign-on; Personalised dashboards; Self-service functionality; Communication tools</td></tr>
+<tr><td><strong>EST</strong></td><td>Estates</td><td>Manage property portfolios, maintenance, space allocation, and campus infrastructure</td><td><span class="domain d-campus">Campus & Facilities</span></td><td>Facilities management; Room allocation; Maintenance scheduling; Capital project management</td></tr>
+<tr><td><strong>FIN</strong></td><td>Finance</td><td>Handle financial transactions, budgeting, accounting, and procurement</td><td><span class="domain d-admin">Enterprise Administration</span></td><td>Accounts payable/receivable; Budgeting &amp; forecasting; Procurement; Financial reporting</td></tr>
+<tr><td><strong>HR</strong></td><td>HR</td><td>Support human resource processes including recruitment, performance, and payroll setup</td><td><span class="domain d-admin">Enterprise Administration</span></td><td>Staff recruitment &amp; onboarding; Performance reviews; Training &amp; development; Leave management</td></tr>
+<tr><td><strong>HESA</strong></td><td>HESA</td><td>Higher Education Statistics Agency — statutory body responsible for collecting and publishing data about UK higher education</td><td><span class="domain d-compliance">Compliance & Regulatory</span></td><td>Statutory student data collection; HESA ID assignment; Data quality validation; Sector benchmarking</td></tr>
+<tr><td><strong>IAM</strong></td><td>Identity &amp; Access Mgmt</td><td>Provision and manage user identities and access rights across enterprise systems</td><td><span class="domain d-it">IT & Digital Infra</span></td><td>User provisioning; Authentication; Role-based access; Single sign-on</td></tr>
+<tr><td><strong>ITSM</strong></td><td>IT Service Mgmt</td><td>Coordinate and track IT support, incidents, requests, and assets</td><td><span class="domain d-it">IT & Digital Infra</span></td><td>Incident management; Service request tracking; Configuration &amp; asset management; Knowledge base</td></tr>
+<tr><td><strong>LIB</strong></td><td>Library</td><td>Manage library resources, loans, and digital/electronic materials</td><td><span class="domain d-teaching">Teaching & Learning</span></td><td>Cataloguing; Circulation/loans; E-resource management; Discovery &amp; search services</td></tr>
+<tr><td><strong>OIV</strong></td><td>Online ID Verification</td><td>Electronic identity verification service for student personal data and documents</td><td><span class="domain d-student">Student Lifecycle</span></td><td>Document scanning; ID matching; Fraud detection; Verification status updates</td></tr>
+<tr><td><strong>PAY</strong></td><td>Payroll</td><td>Execute payroll runs, deductions, tax, pension, and bursary management</td><td><span class="domain d-admin">Enterprise Administration</span></td><td>Payroll calculation; Tax &amp; pension contributions; Bursary &amp; stipend processing; Compliance reporting</td></tr>
+<tr><td><strong>RP</strong></td><td>Research Proposals</td><td>Support the submission, management, and tracking of research funding and contracts</td><td><span class="domain d-research">Research & Innovation</span></td><td>Grant application workflow; Compliance checks; Award management; Contract tracking</td></tr>
+<tr><td><strong>SETS</strong></td><td>Stud Eval Teach Soft</td><td>Collect and analyse student feedback on modules, lecturers, and teaching effectiveness</td><td><span class="domain d-teaching">Teaching & Learning</span></td><td>Feedback surveys; Data analysis &amp; reporting; Action tracking; Quality enhancement</td></tr>
+<tr><td><strong>SIS</strong></td><td>Student Records</td><td>Core SIS functionality to manage student data, enrolment, progression, and awards</td><td><span class="domain d-student">Student Lifecycle</span></td><td>Enrolment &amp; registration; Academic records; Grades &amp; progression; Graduation &amp; award management</td></tr>
+<tr><td><strong>SLC</strong></td><td>Student Loans Company</td><td>Government-owned company administering student loans and grants on behalf of the UK government</td><td><span class="domain d-compliance">Compliance & Regulatory</span></td><td>Tuition fee loan processing; Maintenance loan administration; Enrolment confirmation; Overpayment recovery</td></tr>
+<tr><td><strong>TTB</strong></td><td>Timetabling</td><td>Create and manage academic timetables for classes, rooms, and other resources</td><td><span class="domain d-teaching">Teaching & Learning</span></td><td>Schedule generation; Room allocation; Conflict resolution; Calendar integration</td></tr>
+<tr><td><strong>UCAS</strong></td><td>UCAS</td><td>Universities and Colleges Admissions Service — the national admissions processing body for UK higher education</td><td><span class="domain d-compliance">Compliance & Regulatory</span></td><td>Application processing; Offer and acceptance management; Clearing coordination; Qualification verification</td></tr>
+<tr><td><strong>UKVI</strong></td><td>UK Visas &amp; Immigration</td><td>Home Office agency responsible for student visa compliance; institutions hold a Tier 4 sponsor licence</td><td><span class="domain d-compliance">Compliance & Regulatory</span></td><td>CAS management; Tier 4 attendance monitoring; Visa status tracking; Sponsor compliance reporting</td></tr>
+<tr><td><strong>VLE</strong></td><td>Virtual Learning Env</td><td>Deliver and manage online learning content, assessments, and collaboration tools</td><td><span class="domain d-teaching">Teaching & Learning</span></td><td>Course content hosting; Online assessments; Discussion forums; Gradebook</td></tr>
+<tr><td><strong>WELL</strong></td><td>Student Wellbeing &amp; Disability</td><td>Manage student wellbeing, disability declarations, mental health support, and reasonable adjustments</td><td><span class="domain d-student">Student Lifecycle</span></td><td>Disability assessment &amp; DSA; Reasonable adjustments management; Mental health case management; Early intervention alerts</td></tr>
+</tbody></table></div>
+<h2 id="flows">Appendix: Flows</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Flow ID</th><th>Description</th></tr></thead><tbody>
+<tr><td><a href="#F001"><strong>F001</strong></a></td><td><a href="#F001">Curriculum Management (CM) to Student Records (SIS)</a></td></tr>
+<tr><td><a href="#F002"><strong>F002</strong></a></td><td><a href="#F002">Student Records (SIS) to Curriculum Management (CM)</a></td></tr>
+<tr><td><a href="#F003"><strong>F003</strong></a></td><td><a href="#F003">Student Records (SIS) to Timetabling (TTB)</a></td></tr>
+<tr><td><a href="#F004"><strong>F004</strong></a></td><td><a href="#F004">Timetabling (TTB) to Student Records (SIS)</a></td></tr>
+<tr><td><a href="#F005"><strong>F005</strong></a></td><td><a href="#F005">CRM to Student Records (SIS)</a></td></tr>
+<tr><td><a href="#F006"><strong>F006</strong></a></td><td><a href="#F006">Student Records (SIS) to CRM</a></td></tr>
+<tr><td><a href="#F007"><strong>F007</strong></a></td><td><a href="#F007">Library (LIB) to Student Records (SIS)</a></td></tr>
+<tr><td><a href="#F008"><strong>F008</strong></a></td><td><a href="#F008">Student Records (SIS) to Library (LIB)</a></td></tr>
+<tr><td><a href="#F009"><strong>F009</strong></a></td><td><a href="#F009">Student Records (SIS) to Finance (FIN)</a></td></tr>
+<tr><td><a href="#F010"><strong>F010</strong></a></td><td><a href="#F010">Finance (FIN) to Student Records (SIS)</a></td></tr>
+<tr><td><a href="#F011"><strong>F011</strong></a></td><td><a href="#F011">Enterprise Web Portal (EWP) to Student Records (SIS)</a></td></tr>
+<tr><td><a href="#F012"><strong>F012</strong></a></td><td><a href="#F012">Student Records (SIS) to Enterprise Web Portal (EWP)</a></td></tr>
+<tr><td><a href="#F013"><strong>F013</strong></a></td><td><a href="#F013">Attendance Monitoring (AM) to Student Records (SIS)</a></td></tr>
+<tr><td><a href="#F014"><strong>F014</strong></a></td><td><a href="#F014">Student Records (SIS) to Attendance Monitoring (AM)</a></td></tr>
+<tr><td><a href="#F015"><strong>F015</strong></a></td><td><a href="#F015">Student Records (SIS) to Virtual Learning Environment (VLE)</a></td></tr>
+<tr><td><a href="#F016"><strong>F016</strong></a></td><td><a href="#F016">Virtual Learning Environment (VLE) to Student Records (SIS)</a></td></tr>
+<tr><td><a href="#F017"><strong>F017</strong></a></td><td><a href="#F017">Student Records (SIS) to Accommodation (ACC)</a></td></tr>
+<tr><td><a href="#F018"><strong>F018</strong></a></td><td><a href="#F018">Accommodation (ACC) to Student Records (SIS)</a></td></tr>
+<tr><td><a href="#F019"><strong>F019</strong></a></td><td><a href="#F019">Student Records (SIS) to Estates (EST)</a></td></tr>
+<tr><td><a href="#F020"><strong>F020</strong></a></td><td><a href="#F020">Estates (EST) to Student Records (SIS)</a></td></tr>
+<tr><td><a href="#F021"><strong>F021</strong></a></td><td><a href="#F021">Student Records (SIS) to Identity and Access Management (IAM)</a></td></tr>
+<tr><td><a href="#F022"><strong>F022</strong></a></td><td><a href="#F022">Identity and Access Management (IAM) to Student Records (SIS)</a></td></tr>
+<tr><td><a href="#F023"><strong>F023</strong></a></td><td><a href="#F023">Student Records (SIS) to EDRMS</a></td></tr>
+<tr><td><a href="#F024"><strong>F024</strong></a></td><td><a href="#F024">EDRMS to Student Records (SIS)</a></td></tr>
+<tr><td><a href="#F025"><strong>F025</strong></a></td><td><a href="#F025">Student Records (SIS) to Online ID Verification (OIV)</a></td></tr>
+<tr><td><a href="#F026"><strong>F026</strong></a></td><td><a href="#F026">Online ID Verification (OIV) to Student Records (SIS)</a></td></tr>
+<tr><td><a href="#F027"><strong>F027</strong></a></td><td><a href="#F027">Student Records (SIS) to Business Intelligence (BI)</a></td></tr>
+<tr><td><a href="#F028"><strong>F028</strong></a></td><td><a href="#F028">Business Intelligence (BI) to Student Records (SIS)</a></td></tr>
+<tr><td><a href="#F029"><strong>F029</strong></a></td><td><a href="#F029">Student Records (SIS) to Data Warehouse (DW)</a></td></tr>
+<tr><td><a href="#F030"><strong>F030</strong></a></td><td><a href="#F030">Data Warehouse (DW) to Student Records (SIS)</a></td></tr>
+<tr><td><a href="#F031"><strong>F031</strong></a></td><td><a href="#F031">Student Records (SIS) to Student Evaluation of Teaching (SETS)</a></td></tr>
+<tr><td><a href="#F032"><strong>F032</strong></a></td><td><a href="#F032">Student Evaluation of Teaching (SETS) to Student Records (SIS)</a></td></tr>
+<tr><td><a href="#F033"><strong>F033</strong></a></td><td><a href="#F033">Student Records (SIS) to HR</a></td></tr>
+<tr><td><a href="#F034"><strong>F034</strong></a></td><td><a href="#F034">HR to Student Records (SIS)</a></td></tr>
+<tr><td><a href="#F035"><strong>F035</strong></a></td><td><a href="#F035">Student Records (SIS) to Payroll (PAY)</a></td></tr>
+<tr><td><a href="#F036"><strong>F036</strong></a></td><td><a href="#F036">Payroll (PAY) to Student Records (SIS)</a></td></tr>
+<tr><td><a href="#F037"><strong>F037</strong></a></td><td><a href="#F037">Student Records (SIS) to CRIS</a></td></tr>
+<tr><td><a href="#F038"><strong>F038</strong></a></td><td><a href="#F038">CRIS to Student Records (SIS)</a></td></tr>
+<tr><td><a href="#F039"><strong>F039</strong></a></td><td><a href="#F039">Student Records (SIS) to Research Proposals (RP)</a></td></tr>
+<tr><td><a href="#F040"><strong>F040</strong></a></td><td><a href="#F040">Research Proposals (RP) to Student Records (SIS)</a></td></tr>
+<tr><td><a href="#F041"><strong>F041</strong></a></td><td><a href="#F041">Student Records (SIS) to Content Management Systems (CMS)</a></td></tr>
+<tr><td><a href="#F042"><strong>F042</strong></a></td><td><a href="#F042">Content Management Systems (CMS) to Student Records (SIS)</a></td></tr>
+<tr><td><a href="#F043"><strong>F043</strong></a></td><td><a href="#F043">Student Records (SIS) to IT Service Management (ITSM)</a></td></tr>
+<tr><td><a href="#F044"><strong>F044</strong></a></td><td><a href="#F044">IT Service Management (ITSM) to Student Records (SIS)</a></td></tr>
+<tr><td><a href="#F045"><strong>F045</strong></a></td><td><a href="#F045">UCAS to Student Records (SIS)</a></td></tr>
+<tr><td><a href="#F046"><strong>F046</strong></a></td><td><a href="#F046">Student Records (SIS) to UCAS</a></td></tr>
+<tr><td><a href="#F047"><strong>F047</strong></a></td><td><a href="#F047">Student Records (SIS) to HESA</a></td></tr>
+<tr><td><a href="#F048"><strong>F048</strong></a></td><td><a href="#F048">HESA to Student Records (SIS)</a></td></tr>
+<tr><td><a href="#F049"><strong>F049</strong></a></td><td><a href="#F049">Student Records (SIS) to Student Loans Company (SLC)</a></td></tr>
+<tr><td><a href="#F050"><strong>F050</strong></a></td><td><a href="#F050">Student Loans Company (SLC) to Student Records (SIS)</a></td></tr>
+<tr><td><a href="#F051"><strong>F051</strong></a></td><td><a href="#F051">Student Records (SIS) to UK Visas &amp; Immigration (UKVI)</a></td></tr>
+<tr><td><a href="#F052"><strong>F052</strong></a></td><td><a href="#F052">UK Visas &amp; Immigration (UKVI) to Student Records (SIS)</a></td></tr>
+<tr><td><a href="#F053"><strong>F053</strong></a></td><td><a href="#F053">Student Records (SIS) to Student Wellbeing &amp; Disability (WELL)</a></td></tr>
+<tr><td><a href="#F054"><strong>F054</strong></a></td><td><a href="#F054">Student Wellbeing &amp; Disability (WELL) to Student Records (SIS)</a></td></tr>
+<tr><td><a href="#F055"><strong>F055</strong></a></td><td><a href="#F055">Virtual Learning Environment (VLE) to Business Intelligence (BI)</a></td></tr>
+<tr><td><a href="#F056"><strong>F056</strong></a></td><td><a href="#F056">Attendance Monitoring (AM) to Business Intelligence (BI)</a></td></tr>
+<tr><td><a href="#F057"><strong>F057</strong></a></td><td><a href="#F057">Data Warehouse (DW) to Business Intelligence (BI)</a></td></tr>
+<tr><td><a href="#F058"><strong>F058</strong></a></td><td><a href="#F058">CRM to Enterprise Web Portal (EWP)</a></td></tr>
+<tr><td><a href="#F059"><strong>F059</strong></a></td><td><a href="#F059">Student Wellbeing &amp; Disability (WELL) to Virtual Learning Environment (VLE)</a></td></tr>
+<tr><td><a href="#F060"><strong>F060</strong></a></td><td><a href="#F060">Student Wellbeing &amp; Disability (WELL) to Attendance Monitoring (AM)</a></td></tr>
+</tbody></table></div>
+
+<div class="flow-section" id="F001">
+<h3>F001: Curriculum Management (CM) to Student Records (SIS)</h3>
+<p><strong>Description:</strong></p>
+<p>Curriculum Management is the official source of programmes, modules, and prerequisites. This flow updates the Student Records catalogue with current academic structures, ensuring consistent enrolment, registration, and progression records.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>Programme Details</strong></td><td><ul><li>Programme Code</li><li>Programme Title / Name</li><li>Award Type (Bachelor's, Master's, etc.)</li><li>Credit Requirements</li><li>Department / Faculty Owner</li><li>Effective Start/End Dates</li><li>Accreditation Details (if applicable)</li></ul></td></tr><tr><td><strong>Module / Course Details</strong></td><td><ul><li>Module Code</li><li>Module Title / Description</li><li>Credit Value</li><li>Prerequisites / Co-requisites</li><li>Learning Outcomes</li><li>Assessment Methods</li><li>Effective Start/End Dates</li></ul></td></tr><tr><td><strong>Prerequisite / Co-requisite Rules</strong></td><td><ul><li>Rules linking modules (e.g. must pass Module X before Module Y)</li><li>Required grade or achievement level</li><li>Special conditions or overrides</li></ul></td></tr><tr><td><strong>Retired (Deactivated) Programmes or Modules</strong></td><td><ul><li>Decommissioned Programme/Module Codes</li><li>Phase-Out Dates</li><li>Replacement or Alternative Pathways (if any)</li></ul></td></tr><tr><td><strong>Degree Progression Structures</strong></td><td><ul><li>Core module groupings</li><li>Elective choices / restrictions</li><li>Year-by-year breakdown of credit requirements</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Student Records uses this data to create or update the official catalogue for student enrolment, registration, and progression tracking.</li><li>Maintains consistency so that what students can register for in the SIS exactly matches the curriculum as governed by academic committees.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F002">
+<h3>F002: Student Records (SIS) to Curriculum Management (CM)</h3>
+<p><strong>Description:</strong></p>
+<p>SIS delivers enrolment, completion, and performance metrics to Curriculum Management. These analytics inform data-driven updates to programmes, modules, and prerequisites, ensuring academic offerings remain rigorous and aligned with student outcomes.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>Enrolment / Registration Data</strong></td><td><ul><li>Number of students enrolled in each programme or module</li><li>Demographic or cohort-level data (subject to privacy rules)</li><li>Withdrawals or dropouts</li></ul></td></tr><tr><td><strong>Completion and Outcome Data</strong></td><td><ul><li>Final grades or marks</li><li>Pass/fail rates per module</li><li>Progression statistics</li><li>Graduation rates per programme</li></ul></td></tr><tr><td><strong>Grade Distributions</strong></td><td><ul><li>Distribution of grades across a module (mean, median, standard deviation)</li><li>Trends over multiple terms or years</li></ul></td></tr><tr><td><strong>Retention and Attrition Insights</strong></td><td><ul><li>Data on student retention or attrition in specific programmes or modules</li><li>Specific flags for modules with high fail rates</li></ul></td></tr><tr><td><strong>Feedback for Curriculum Review</strong></td><td><ul><li>Real-time or scheduled data extracts that help academic committees assess whether designed modules are meeting desired learning outcomes</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Curriculum Management uses these insights to evaluate and improve the design of programmes and modules.</li><li>Informs academic decision-making regarding prerequisites, credit weighting, module content revisions, and potential programme re-structures.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F003">
+<h3>F003: Student Records (SIS) to Timetabling (TTB)</h3>
+<p><strong>Description:</strong></p>
+<p>Student Records provides key enrolment information needed by the Timetabling system to create accurate class schedules.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>Student</strong></td><td><ul><li>Unique Student Identifier</li><li>Current Academic Status (active, on leave, etc.)</li></ul></td></tr><tr><td><strong>Programme</strong></td><td><ul><li>Programme Code</li><li>Programme Title</li><li>Level (Undergraduate, Postgraduate, etc.)</li></ul></td></tr><tr><td><strong>Module</strong></td><td><ul><li>Module Code</li><li>Module Title</li><li>Credits / Contact Hours</li></ul></td></tr><tr><td><strong>Enrolment</strong></td><td><ul><li>Student Registrations by Module</li><li>Enrolment Limits (max/min)</li><li>Current Enrolment Counts</li></ul></td></tr><tr><td><strong>Constraints</strong></td><td><ul><li>Special Requirements (e.g. labs, equipment needs)</li><li>Scheduling Restrictions (e.g. no Friday classes)</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>The Timetabling system uses this data to build schedules that match real enrolment numbers and respect module constraints.</li><li>Ensures class rosters, room allocations, and time slot arrangements accurately reflect the students and modules currently registered in the SIS.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F004">
+<h3>F004: Timetabling (TTB) to Student Records (SIS)</h3>
+<p><strong>Description:</strong></p>
+<p>The Timetabling system sends finalised scheduling information and related updates back to Student Records, so students and administrative staff have consistent data.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>ClassSchedules</strong></td><td><ul><li>Day/Time Assignments</li><li>Semester/Term Dates</li><li>Weekly or Custom Patterns</li></ul></td></tr><tr><td><strong>RoomAllocations</strong></td><td><ul><li>Assigned Locations (building/room)</li><li>Capacity Limits</li><li>Equipment or Accessibility Notes</li></ul></td></tr><tr><td><strong>TimeSlots</strong></td><td><ul><li>Defined Periods (e.g. 9–10 AM)</li><li>Overlap Warnings or Conflicts</li><li>Reserved/Blocked Times</li></ul></td></tr><tr><td><strong>InstructorAvailability</strong></td><td><ul><li>Faculty or Instructor Assigned</li><li>Office Hours</li><li>Conflicts with Other Commitments</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Student Records needs up-to-date schedule details to show students their official timetables, room locations, and any changes to class meeting times.</li><li>Ensures overall data consistency, so SIS can reflect actual class times, instructors, and rooms for enrolment confirmations and academic records.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F005">
+<h3>F005: CRM to Student Records (SIS)</h3>
+<p><strong>Description:</strong></p>
+<p>The CRM system manages prospective student enquiries, applications, and admissions decisions before they become fully enrolled students. This data flows to Student Records so that the institution can officially register admitted individuals and manage them through their academic lifecycle.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>Prospect</strong></td><td><ul><li>Contact Information (name, email, phone)</li><li>Source of Enquiry (website form, recruitment fair, etc.)</li><li>Lead/Prospect Status</li></ul></td></tr><tr><td><strong>Application</strong></td><td><ul><li>Application ID</li><li>Programme Applied For</li><li>Supporting Documentation (transcripts, personal statements, etc.)</li></ul></td></tr><tr><td><strong>Offer</strong></td><td><ul><li>Conditional or Unconditional Offer Details</li><li>Offer Expiry Date</li><li>Scholarship or Bursary Information (if applicable)</li></ul></td></tr><tr><td><strong>Decision</strong></td><td><ul><li>Acceptance or Rejection of Offer</li><li>Corresponding Reasons (if not accepted)</li><li>Confirmation of Place</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Student Records uses these details to create a formal student record once the applicant accepts an offer.</li><li>Synchronising data ensures that offers and decisions in the CRM are properly reflected in the SIS for enrolment and next-step processes.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F006">
+<h3>F006: Student Records (SIS) to CRM</h3>
+<p><strong>Description:</strong></p>
+<p>Once a prospect becomes an enrolled student, the Student Records system manages their academic progress, enrolment status, and qualifications earned. Relevant updates flow back to the CRM so the institution can maintain accurate engagement information and manage ongoing communications or alumni relations.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>StudentRecord</strong></td><td><ul><li>Official Student ID</li><li>Personal Details (contact info, status)</li><li>Programme of Study</li></ul></td></tr><tr><td><strong>Enrolment</strong></td><td><ul><li>Current Course Registrations</li><li>Full-time or Part-time Status</li><li>Enrolment History by Term or Semester</li></ul></td></tr><tr><td><strong>Progression</strong></td><td><ul><li>Module Outcomes or Grades</li><li>Year-to-Year Advancement</li><li>Probation or Dismissal Status (if applicable)</li></ul></td></tr><tr><td><strong>Qualification</strong></td><td><ul><li>Final Award (Bachelor's, Master's, etc.)</li><li>Date of Graduation</li><li>Honours or Distinctions</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>CRM benefits from up-to-date academic data to tailor communications and track student journeys beyond admission (e.g. retention efforts, alumni engagement).</li><li>Keeping CRM informed ensures a holistic view of each student's lifecycle for marketing, support interventions, and post-graduation outreach.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F007">
+<h3>F007: Library (LIB) to Student Records (SIS)</h3>
+<p><strong>Description:</strong></p>
+<p>The Library system sends circulation updates and overdue notifications to the Student Records system, ensuring that a student's record accurately reflects any outstanding obligations or statuses.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>Loans</strong></td><td><ul><li>Active loan records for books, media, or other materials</li><li>Due dates and extensions</li></ul></td></tr><tr><td><strong>Overdues</strong></td><td><ul><li>List of items not returned by the due date</li><li>Overdue duration</li><li>Automated reminders or notifications</li></ul></td></tr><tr><td><strong>Fines</strong></td><td><ul><li>Accrued penalty fees for late returns</li><li>Payment status (unpaid, partially paid, waived)</li></ul></td></tr><tr><td><strong>Resource Holds</strong></td><td><ul><li>Holds placed by students on specific items</li><li>Availability and pickup details</li></ul></td></tr><tr><td><strong>Return Status</strong></td><td><ul><li>Confirmation of returned items</li><li>Condition upon return (e.g. damaged, lost)</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Student Records may place academic holds or warnings on a student's profile if library fines or overdue items remain unresolved.</li><li>Ensures real-time visibility of a student's library obligations, preventing potential progression or graduation issues if outstanding items or fines exist.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F008">
+<h3>F008: Student Records (SIS) to Library (LIB)</h3>
+<p><strong>Description:</strong></p>
+<p>Student Records provides the Library with up-to-date student status and registration data, so the Library system can grant or restrict library privileges accordingly.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>StudentID</strong></td><td><ul><li>Unique identifier assigned to each student</li><li>Used for checking out materials and library account creation</li></ul></td></tr><tr><td><strong>Registration</strong></td><td><ul><li>Student's current enrolment status (active, on leave, withdrawn)</li><li>Term start and end dates</li></ul></td></tr><tr><td><strong>Programme</strong></td><td><ul><li>Degree programme or course of study</li><li>Department or faculty affiliation</li></ul></td></tr><tr><td><strong>AccessRights</strong></td><td><ul><li>Eligibility for library services (borrowing privileges, interlibrary loan, e-resources)</li><li>Special permissions (faculty, staff, research assistants)</li></ul></td></tr><tr><td><strong>Holds</strong></td><td><ul><li>Non-library-related holds (e.g. financial, disciplinary) that may limit borrowing</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>The Library relies on accurate enrolment and status information to automatically manage borrowing limits and resource access.</li><li>Ensures that only currently registered students with good standing can borrow materials, reducing administrative overhead for manual checks.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F009">
+<h3>F009: Student Records (SIS) to Finance (FIN)</h3>
+<p><strong>Description:</strong></p>
+<p>Student Records provides the Finance system with key enrolment and fee-related data so the institution can accurately bill students and set up payment plans.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>Enrolment</strong></td><td><ul><li>Student Registration Details (which programme/module a student is enrolled in)</li><li>Enrolment Status (active, deferred, withdrawn)</li></ul></td></tr><tr><td><strong>TuitionCharges</strong></td><td><ul><li>Tuition Amount Based on Programme or Credit Load</li><li>Additional Fees (e.g. lab fees, technology fees)</li></ul></td></tr><tr><td><strong>PaymentPlans</strong></td><td><ul><li>Instalment Schedules</li><li>Down Payments Required</li><li>Deferred Payment Agreements (if applicable)</li></ul></td></tr><tr><td><strong>Scholarships</strong></td><td><ul><li>Scholarship Amount or Percentage</li><li>Eligibility Criteria (merit, need, etc.)</li><li>Funding Source or Sponsor</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>The Finance system needs up-to-date enrolment and fee details to generate invoices and manage payment plans.</li><li>Ensures accurate billing so students are charged the correct tuition and fees according to their registration records.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F010">
+<h3>F010: Finance (FIN) to Student Records (SIS)</h3>
+<p><strong>Description:</strong></p>
+<p>Once payments are made or financial statuses change, Finance sends updates back to Student Records to keep a single source of truth about each student's financial standing.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>Payments</strong></td><td><ul><li>Payment Amount and Method</li><li>Payment Date and Confirmation Number</li><li>Partial vs. Full Payment Indicator</li></ul></td></tr><tr><td><strong>Refunds</strong></td><td><ul><li>Reason for Refund</li><li>Refund Amount and Date</li></ul></td></tr><tr><td><strong>OutstandingBalances</strong></td><td><ul><li>Remaining Amount Owed</li><li>Late Payment Fees or Penalties</li><li>Due Dates for Each Balance</li></ul></td></tr><tr><td><strong>FinancialHolds</strong></td><td><ul><li>Reason for Hold (unpaid tuition, library fines, etc.)</li><li>Effective Dates and Conditions for Release</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Student Records needs real-time financial updates to reflect which students are in good standing and which have outstanding balances or holds.</li><li>This data can restrict or allow course registration, release of transcripts, or progression to the next academic term.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F011">
+<h3>F011: Enterprise Web Portal (EWP) to Student Records (SIS)</h3>
+<p><strong>Description:</strong></p>
+<p>The Enterprise Web Portal serves as a central access point for students to submit or update personal information, application details, and module selections.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>ProfileInfo</strong></td><td><ul><li>Basic Personal Data (name, contact info)</li><li>Password / Authentication Updates</li><li>Communication Preferences</li></ul></td></tr><tr><td><strong>ApplicationData</strong></td><td><ul><li>Online Application Forms</li><li>Supporting Documentation (if uploaded via the portal)</li><li>Status Tracking (submitted, incomplete, etc.)</li></ul></td></tr><tr><td><strong>ModuleSelections</strong></td><td><ul><li>Student-selected modules or courses</li><li>Elective Choices</li><li>Preferred Class Times (if scheduling preferences apply)</li></ul></td></tr><tr><td><strong>Requests</strong></td><td><ul><li>Requests for Personal Data Changes</li><li>Transcript Requests</li><li>Other Self-Service Forms (leave of absence, withdrawal)</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Student Records needs these data inputs to process enrolments, manage official student information, and keep the records up to date.</li><li>Eliminates manual re-entry of data, ensuring fast and accurate updates to the institution's core student record system.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F012">
+<h3>F012: Student Records (SIS) to Enterprise Web Portal (EWP)</h3>
+<p><strong>Description:</strong></p>
+<p>Student Records holds the authoritative information on each student's enrolment, schedule, and academic progress, which is then surfaced in the Enterprise Web Portal for easy access.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>EnrolmentStatus</strong></td><td><ul><li>Confirmed vs. Pending Enrolment</li><li>Academic Standing (good, probation, etc.)</li><li>Programme/Major Details</li></ul></td></tr><tr><td><strong>Timetables</strong></td><td><ul><li>Class Schedules (days/times)</li><li>Changes to Room Assignments or Class Times</li><li>Upcoming Exam Schedules (if applicable)</li></ul></td></tr><tr><td><strong>Grades</strong></td><td><ul><li>Midterm or Final Results</li><li>GPA or Other Performance Indicators</li><li>Historical Grade Records (previous terms)</li></ul></td></tr><tr><td><strong>Notifications</strong></td><td><ul><li>Holds or Warnings (financial, academic, etc.)</li><li>Announcements (class cancellations, special events)</li><li>Reminders (registration deadlines, fee due dates)</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>The Web Portal displays key academic and scheduling information in a user-friendly interface so students, faculty, and staff can access timely updates.</li><li>Ensures that all constituents have immediate visibility into their academic status, schedules, and any important notifications from the SIS.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F013">
+<h3>F013: Attendance Monitoring (AM) to Student Records (SIS)</h3>
+<p><strong>Description:</strong></p>
+<p>Attendance Monitoring captures real-time or scheduled data about student presence in lectures, seminars, labs, or other learning activities. This data is forwarded to Student Records to keep a consolidated record of each student's engagement.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>AttendanceRecords</strong></td><td><ul><li>Timestamped Check-Ins (electronic swipe, manual input)</li><li>Course Session or Activity Title</li><li>Attendance Status (present, absent, late)</li></ul></td></tr><tr><td><strong>EngagementIndicators</strong></td><td><ul><li>Frequency of Attendance Across Modules</li><li>Trend Analysis (improving, declining)</li><li>Engagement Score or Index</li></ul></td></tr><tr><td><strong>AbsenceAlerts</strong></td><td><ul><li>Automatic Flags for Consecutive Absences</li><li>Reason Codes (medical, personal, unknown)</li><li>Follow-Up Notes (student contacted, advisor alerted)</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Student Records uses this data to maintain an official attendance profile for each student and to identify at-risk individuals who may need intervention or support.</li><li>Ensures that faculty and administrators can access comprehensive records when reviewing student progression, retention, or disciplinary procedures.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F014">
+<h3>F014: Student Records (SIS) to Attendance Monitoring (AM)</h3>
+<p><strong>Description:</strong></p>
+<p>Student Records is the main repository of enrolment and course information. This data flows back to Attendance Monitoring so the attendance system knows which students are associated with each class or activity.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>StudentRoster</strong></td><td><ul><li>Official List of Enrolled Students per Module</li><li>Enrolment Status (active, withdrawn, suspended)</li><li>Unique Student Identifiers</li></ul></td></tr><tr><td><strong>ModuleDetails</strong></td><td><ul><li>Module Codes and Titles</li><li>Scheduled Class Sessions (lecture, tutorial, lab)</li><li>Credit or Contact Hour Information</li></ul></td></tr><tr><td><strong>AcademicCalendar</strong></td><td><ul><li>Key Dates (term start/end, mid-semester breaks)</li><li>Exam Periods</li><li>Holidays and Institutional Closures</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Attendance Monitoring relies on current module registrations and class schedules to track attendance accurately.</li><li>Ensures that students not formally enrolled in a module are not incorrectly recorded, and that new or changed enrolments are reflected in real time.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F015">
+<h3>F015: Student Records (SIS) to Virtual Learning Environment (VLE)</h3>
+<p><strong>Description:</strong></p>
+<p>Student Records is the authoritative source of enrolment and course information. This data is pushed to the VLE so that the correct students and instructors have access to the right course materials at the right times.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>StudentRecords</strong></td><td><ul><li>Student Identifiers (name, ID number)</li><li>Registration Status (active, dropped, withdrawn)</li><li>Programme/Level of Study</li></ul></td></tr><tr><td><strong>CourseAssignments</strong></td><td><ul><li>List of Courses/Modules in Which the Student is Enrolled</li><li>Cohort Groups or Sections</li><li>Elective vs. Core Course Indicators</li></ul></td></tr><tr><td><strong>InstructorDetails</strong></td><td><ul><li>Assigned Faculty or Instructor(s) for Each Course</li><li>Contact Info (institutional email, office)</li><li>Role (primary instructor, teaching assistant)</li></ul></td></tr><tr><td><strong>TermDates</strong></td><td><ul><li>Academic Calendar Key Dates (start/end of term)</li><li>Midterm/Final Exam Periods</li><li>Breaks or Holidays</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>The VLE needs accurate enrolment data to grant or restrict access to courses and learning materials.</li><li>Ensures that instructors and students are correctly associated with their respective courses, enabling automated course shell creation, roster management, and communication within the VLE.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F016">
+<h3>F016: Virtual Learning Environment (VLE) to Student Records (SIS)</h3>
+<p><strong>Description:</strong></p>
+<p>Once assessments are completed within the VLE, key results flow back into Student Records to maintain an official record of student performance.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>Grades</strong></td><td><ul><li>Assignment Scores, Quiz Results, Project Marks</li><li>Weighted Averages and Final Calculated Grades</li><li>Submissions or Attempt Counts</li></ul></td></tr><tr><td><strong>Feedback</strong></td><td><ul><li>Instructor Comments on Assignments or Exams</li><li>Rubric-Based Evaluations</li><li>Automated System Feedback (for quizzes or online exams)</li></ul></td></tr><tr><td><strong>CompletionStatus</strong></td><td><ul><li>Indicators That a Student Has Finished a Module or Requirement</li><li>Date/Time Stamps of Final Submission</li><li>Certification of Completion (if applicable)</li></ul></td></tr><tr><td><strong>AcademicAlerts</strong></td><td><ul><li>Flags for Students at Risk (poor performance, missed deadlines)</li><li>Notifications of Non-Participation (no logins, missing assignments)</li><li>Recommended Interventions (tutoring, advising sessions)</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Student Records is the system of record for all academic outcomes; grades and related data from the VLE must be synchronised.</li><li>Helps advisors, registrars, and other stakeholders track student progress accurately, trigger support mechanisms, and finalise official transcripts or certificates.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F017">
+<h3>F017: Student Records (SIS) to Accommodation (ACC)</h3>
+<p><strong>Description:</strong></p>
+<p>Student Records is the authoritative source of official student information. It sends necessary details to the Accommodation system to facilitate housing allocations and ensure eligibility.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>StudentProfiles</strong></td><td><ul><li>Unique Student Identifier</li><li>Name, Date of Birth</li><li>Contact Preferences</li></ul></td></tr><tr><td><strong>ContactDetails</strong></td><td><ul><li>Primary Address</li><li>Phone Number(s)</li><li>Institutional Email Address</li></ul></td></tr><tr><td><strong>EnrolmentStatus</strong></td><td><ul><li>Current Academic Standing (active, deferred, withdrawn)</li><li>Course Load (full-time, part-time)</li><li>Expected Graduation Date</li></ul></td></tr><tr><td><strong>ProgrammeDetails</strong></td><td><ul><li>Programme/Major</li><li>Year of Study (1st year, 2nd year, etc.)</li><li>Faculty or Department</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>The Accommodation system needs up-to-date student data to confirm housing eligibility and manage communication.</li><li>Prevents errors in room allocation by ensuring only current and valid students are assigned accommodation.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F018">
+<h3>F018: Accommodation (ACC) to Student Records (SIS)</h3>
+<p><strong>Description:</strong></p>
+<p>The Accommodation system tracks booking and occupancy details. These updates flow back into Student Records for record-keeping, financial planning, and student support tracking.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>RoomAllocations</strong></td><td><ul><li>Assigned Room or Building</li><li>Room Type (single, double, suite)</li><li>Allocation Date</li></ul></td></tr><tr><td><strong>BookingStatus</strong></td><td><ul><li>Status (confirmed, pending, cancelled)</li><li>Deposit or Booking Fee Paid</li><li>Reservation Expiration Date</li></ul></td></tr><tr><td><strong>CheckInDates</strong></td><td><ul><li>Check-In Date and Time</li><li>Early Check-In Approvals (if applicable)</li><li>Notes on Late Arrivals</li></ul></td></tr><tr><td><strong>CheckOutDates</strong></td><td><ul><li>Scheduled or Actual Check-Out Date</li><li>Extensions Requested (if any)</li><li>Final Inspection Notes</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Student Records can maintain a comprehensive overview of a student's campus life, including housing.</li><li>Facilitates financial reconciliation, compliance reporting, and support interventions (e.g. if a student withdraws mid-term and needs to vacate accommodation).</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F019">
+<h3>F019: Student Records (SIS) to Estates (EST)</h3>
+<p><strong>Description:</strong></p>
+<p>Student Records holds the authoritative enrolment information and academic timetables. The Estates system relies on this data to plan and manage campus facilities effectively.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>StudentEnrolments</strong></td><td><ul><li>Number of Students Per Course or Programme</li><li>Enrolment Status (active, withdrawn, suspended)</li><li>Expected Graduation Dates</li></ul></td></tr><tr><td><strong>Programmes</strong></td><td><ul><li>Programme Names and Codes</li><li>Department or Faculty Ownership</li><li>Year-by-Year Student Distribution</li></ul></td></tr><tr><td><strong>Timetable</strong></td><td><ul><li>Scheduled Class Times (lecture, lab, tutorial)</li><li>Room Bookings for Each Session</li><li>Upcoming Exams or Special Events</li></ul></td></tr><tr><td><strong>OccupancyForecasts</strong></td><td><ul><li>Predicted Student Footfall by Date/Time</li><li>Peak Usage Periods (e.g. midday, exam weeks)</li><li>Seasonal Variations (summer session, holiday breaks)</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Estates uses enrolment and timetable data to allocate rooms, plan maintenance schedules, and optimise building usage.</li><li>Ensures that campus facilities can accommodate current and projected student volumes throughout the academic year.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F020">
+<h3>F020: Estates (EST) to Student Records (SIS)</h3>
+<p><strong>Description:</strong></p>
+<p>Estates captures building usage, room allocations, and event schedules in real time. This information is sent back to Student Records for accurate record-keeping and to inform academic scheduling.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>RoomAllocations</strong></td><td><ul><li>Confirmed Room Assignments for Classes or Events</li><li>Changes to Room Capacities</li><li>Temporary Room Reassignments (due to emergencies or construction)</li></ul></td></tr><tr><td><strong>EventBookings</strong></td><td><ul><li>Extracurricular or Special Events (conferences, guest lectures)</li><li>Booking Dates and Durations</li><li>Organiser Details</li></ul></td></tr><tr><td><strong>AvailabilityUpdates</strong></td><td><ul><li>Newly Available Rooms or Spaces</li><li>Changes to Building Operating Hours</li><li>Restrictions or Closures (health/safety reasons, refurbishment)</li></ul></td></tr><tr><td><strong>MaintenanceNotices</strong></td><td><ul><li>Scheduled Maintenance Windows</li><li>Urgent Repairs or Incidents</li><li>Completion Status of Ongoing Projects</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Student Records needs up-to-date facility and room availability data to finalise course timetables, handle last-minute changes, and communicate accurate schedule updates.</li><li>Minimises scheduling conflicts and ensures that all stakeholders have a clear view of building or room status at any given time.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F021">
+<h3>F021: Student Records (SIS) to Identity and Access Management (IAM)</h3>
+<p><strong>Description:</strong></p>
+<p>Student Records is the authoritative source of student data. This system sends key information to IAM so users can be provisioned with appropriate access rights.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>StudentProfiles</strong></td><td><ul><li>Unique Student Identifiers (student ID, username)</li><li>Personal Information (name, date of birth)</li><li>Contact Info (email address, phone number)</li></ul></td></tr><tr><td><strong>EnrolmentStatus</strong></td><td><ul><li>Current Academic Standing (active, deferred, graduated)</li><li>Programme or Course of Study</li><li>Expected Graduation Date</li></ul></td></tr><tr><td><strong>ContactDetails</strong></td><td><ul><li>Primary Email Address (often used as the login ID)</li><li>Mailing Address</li><li>Alternate Contact Methods</li></ul></td></tr><tr><td><strong>AccessEligibility</strong></td><td><ul><li>Confirmation That Student Is Officially Registered</li><li>Status for Access to Digital Services</li><li>Relevant Start/End Dates for Systems Access</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>IAM uses this data to create or update student accounts, ensuring that only current, valid students have access to institutional systems.</li><li>Reduces manual provisioning and keeps user identities synchronised as students change status or contact information in SIS.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F022">
+<h3>F022: Identity and Access Management (IAM) to Student Records (SIS)</h3>
+<p><strong>Description:</strong></p>
+<p>IAM manages the authentication and authorisation layers for institutional applications. This data flows back to SIS to keep records consistent with login activity and any security flags.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>Credentials</strong></td><td><ul><li>Username and Login Timestamps</li><li>Password Updates or Resets</li><li>Multi-Factor Authentication (MFA) Status</li></ul></td></tr><tr><td><strong>AccountLocks</strong></td><td><ul><li>Suspended or Locked Accounts</li><li>Reason for Lock</li><li>Unlock Date or Conditions</li></ul></td></tr><tr><td><strong>RoleAssignments</strong></td><td><ul><li>User Roles (student, teaching assistant, lab coordinator)</li><li>Permission Levels</li><li>Role Expiration Dates (if applicable)</li></ul></td></tr><tr><td><strong>SecurityLogs</strong></td><td><ul><li>Notable Security Events (suspicious login attempts, location-based alerts)</li><li>Session Timeouts</li><li>Device/Browser Fingerprint (for advanced threat detection)</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Student Records benefits from up-to-date account status, enabling it to track if a student's access was revoked or locked due to non-payment, security concerns, or graduation.</li><li>Helps administrative staff coordinate follow-up actions (e.g. reactivating accounts for returning students, investigating suspected account compromises).</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F023">
+<h3>F023: Student Records (SIS) to EDRMS</h3>
+<p><strong>Description:</strong></p>
+<p>Student Records is the main source of official student data. Relevant documents are transmitted to the EDRMS for secure storage, version control, and compliance with archival policies.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>EnrolmentForms</strong></td><td><ul><li>Completed Admission or Registration Forms</li><li>Electronic Signatures (if applicable)</li><li>Supporting Documentation (ID copies, proof of residency)</li></ul></td></tr><tr><td><strong>Transcripts</strong></td><td><ul><li>Official Record of Courses and Grades</li><li>Cumulative GPA Details</li><li>Verified and Sealed Document Format</li></ul></td></tr><tr><td><strong>GraduationCertificates</strong></td><td><ul><li>Degree or Diploma Certificates</li><li>Conferral Dates and Honours</li><li>Digital Signature of Institution Officials</li></ul></td></tr><tr><td><strong>StudentProfiles</strong></td><td><ul><li>Personal Information</li><li>Programme/Major Information</li><li>Historical Data (past registrations, awards, leaves of absence)</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>The EDRMS becomes the secure, authoritative repository for critical student documents, ensuring long-term accessibility and compliance with record retention laws.</li><li>Reduces the risk of data loss by backing up official documents outside the SIS while providing an audit trail for any updates or retrievals.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F024">
+<h3>F024: EDRMS to Student Records (SIS)</h3>
+<p><strong>Description:</strong></p>
+<p>After documents are archived or updated in the EDRMS, it sends relevant status information or version links back to Student Records so that administrative staff and students can view the most recent files.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>ArchivedRecords</strong></td><td><ul><li>Confirmation of Successfully Archived Documents</li><li>File Paths or Storage Locations</li><li>Archive Timestamp and Version Numbers</li></ul></td></tr><tr><td><strong>RetentionPolicies</strong></td><td><ul><li>Retention Schedules (e.g. 5 years, 10 years)</li><li>Legal or Compliance Requirements (e.g. GDPR, FOI)</li><li>Deletion/Destruction Dates for Temporary Documents</li></ul></td></tr><tr><td><strong>DocumentLinks</strong></td><td><ul><li>Direct URLs or References to Archived Files</li><li>Secure Authentication Tokens (if needed)</li><li>Metadata Updates</li></ul></td></tr><tr><td><strong>AccessLogs</strong></td><td><ul><li>Audit Records for Who Viewed or Modified a File</li><li>Time Stamps and IP Addresses</li><li>Attempted Access Violations or Errors</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Student Records can update its own references to point to the current version of each document in the EDRMS, ensuring staff and students have real-time access to the latest files.</li><li>Maintains a full audit trail for compliance and security, so SIS users know if a document has been superseded, archived, or flagged for review.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F025">
+<h3>F025: Student Records (SIS) to Online ID Verification (OIV)</h3>
+<p><strong>Description:</strong></p>
+<p>The Student Records system initiates ID verification checks by sending essential student data and relevant documentation to the Online ID Verification service.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>StudentProfiles</strong></td><td><ul><li>Basic Student Data (name, date of birth, contact details)</li><li>Unique Student Identifier (student ID or username)</li></ul></td></tr><tr><td><strong>EnrolmentRecords</strong></td><td><ul><li>Current or Historical Enrolment Status</li><li>Programme of Study</li><li>Expected Graduation or Completion Dates</li></ul></td></tr><tr><td><strong>IdentityDocs</strong></td><td><ul><li>Scanned Copies or Photos of Official ID (passport, driver's licence)</li><li>Supporting Documents (e.g. proof of address)</li><li>Document Expiration Dates</li></ul></td></tr><tr><td><strong>RequestMetadata</strong></td><td><ul><li>Timestamp of Verification Request</li><li>Verification Type (basic, enhanced, biometric)</li><li>Priority or Urgency Level</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>OIV needs this data to authenticate each student's identity using official documents and relevant personal info.</li><li>Reduces fraudulent activity by ensuring only legitimate, properly identified students gain access to critical processes (e.g. enrolment, official forms).</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F026">
+<h3>F026: Online ID Verification (OIV) to Student Records (SIS)</h3>
+<p><strong>Description:</strong></p>
+<p>Once the verification process is completed, the Online ID Verification service sends the outcome, along with supporting details, back to the Student Records system.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>VerifiedStatus</strong></td><td><ul><li>Result of the ID Check (verified, rejected, pending)</li><li>Reason for Rejection (mismatched data, expired ID)</li><li>Date/Time of Verification</li></ul></td></tr><tr><td><strong>ConfidenceScores</strong></td><td><ul><li>Numeric or Categorical Indication of Verification Certainty</li><li>Fraud Risk Assessment (e.g. low, medium, high)</li><li>Facial Match Scores (if biometric checks performed)</li></ul></td></tr><tr><td><strong>DocumentLinks</strong></td><td><ul><li>Secure Links to Verified or Processed ID Documents</li><li>Metadata on Last Accessed / Downloaded</li><li>Revision History (if re-check was required)</li></ul></td></tr><tr><td><strong>PendingFlags</strong></td><td><ul><li>Items Requiring Further Action (missing info, incomplete documentation)</li><li>Escalation Protocols (e.g. manual review needed)</li><li>Expiration Dates for Temporary or Provisional Verifications</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>SIS updates its records to reflect each student's verification status, which can gate certain registration or financial aid steps.</li><li>Ensures staff have a single authoritative view of who is successfully verified, who needs follow-up, and any potential fraud concerns.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F027">
+<h3>F027: Student Records (SIS) to Business Intelligence (BI)</h3>
+<p><strong>Description:</strong></p>
+<p>Student Records provides the Business Intelligence platform with structured extracts of student performance, enrolment volumes, module outcomes, and retention data. This enables institution-wide reporting, benchmarking, and strategic planning.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>EnrolmentData</strong></td><td><ul><li>Student Count by Programme, Level, and Faculty</li><li>Full-time / Part-time Split</li><li>New, Continuing, and Returning Student Counts</li><li>Headcount vs. FTE figures</li></ul></td></tr><tr><td><strong>AcademicOutcomes</strong></td><td><ul><li>Module Pass/Fail Rates</li><li>Award Classifications (First, 2:1, 2:2, Third, Pass)</li><li>Degree Completion Rates</li><li>Average Grades and Grade Distributions</li></ul></td></tr><tr><td><strong>ProgressionIndicators</strong></td><td><ul><li>Year-on-Year Progression Rates</li><li>Withdrawal and Suspension Rates</li><li>Continuation Rates by Entry Qualification</li></ul></td></tr><tr><td><strong>RetentionIndicators</strong></td><td><ul><li>At-Risk Student Flags</li><li>Absence Frequency Data</li><li>Engagement Scores by Cohort</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>The BI platform relies on SIS as the primary source of student outcome data for strategic dashboards, management information reports, and regulatory benchmarking.</li><li>Enables senior leadership to monitor institutional KPIs, track widening participation targets, and respond to trends in real time.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F028">
+<h3>F028: Business Intelligence (BI) to Student Records (SIS)</h3>
+<p><strong>Description:</strong></p>
+<p>The BI platform generates predictive analytics and at-risk flags based on cross-system analysis. These alerts are written back to Student Records to enable timely pastoral and academic interventions.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>AtRiskFlags</strong></td><td><ul><li>Student Identifier</li><li>Risk Category (academic, attendance, financial, wellbeing)</li><li>Risk Score or Tier (e.g. low, medium, high)</li><li>Date Flag Generated</li></ul></td></tr><tr><td><strong>PredictiveAlerts</strong></td><td><ul><li>Predicted Outcome (e.g. likely to withdraw, likely to fail module)</li><li>Confidence Level</li><li>Contributing Factors (e.g. missed 3 consecutive sessions, no VLE logins)</li></ul></td></tr><tr><td><strong>InterventionRecommendations</strong></td><td><ul><li>Suggested Action (personal tutor contact, wellbeing referral, academic support)</li><li>Urgency Level</li><li>Responsible Staff or Team</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Student Records surfaces these flags to relevant staff — personal tutors, academic advisors, and student support teams — so that proactive interventions can be made before students disengage or withdraw.</li><li>Closes the analytics loop: SIS provides the raw data, BI processes it into insight, and the insight is actioned back through the SIS.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F029">
+<h3>F029: Student Records (SIS) to Data Warehouse (DW)</h3>
+<p><strong>Description:</strong></p>
+<p>Student Records provides the Data Warehouse with full and incremental extracts of student data, including enrolment history, academic outcomes, module registrations, and demographic records, supporting longitudinal analysis and statutory reporting.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>StudentDemographics</strong></td><td><ul><li>Age, Gender, Ethnicity, Disability Status</li><li>Domicile (Home, EU, International)</li><li>Entry Qualifications (A-levels, BTECs, Access courses, etc.)</li><li>Widening Participation Indicators (POLAR, IMD)</li></ul></td></tr><tr><td><strong>EnrolmentHistory</strong></td><td><ul><li>All Enrolment Events (start, change, interruption, withdrawal, completion)</li><li>Programme Changes and Transfers</li><li>Mode of Attendance Changes (FT to PT)</li></ul></td></tr><tr><td><strong>AcademicRecords</strong></td><td><ul><li>Module Registration History</li><li>Grades and Progression Decisions</li><li>Award Records</li></ul></td></tr><tr><td><strong>FinancialAidRecords</strong></td><td><ul><li>Bursary and Scholarship Eligibility</li><li>Hardship Fund Awards</li><li>SLC Loan Entitlement (where held by SIS)</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>The Data Warehouse provides the historical and cross-system data foundation required for HESA statutory returns, OFS regulatory reporting, and longitudinal student outcome analysis.</li><li>Separation from the live SIS ensures that complex analytical queries do not degrade transactional system performance.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F030">
+<h3>F030: Data Warehouse (DW) to Student Records (SIS)</h3>
+<p><strong>Description:</strong></p>
+<p>The Data Warehouse performs cross-system reconciliation and data quality checks. Discrepancy reports and data quality alerts are returned to Student Records to support record accuracy and audit readiness.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>DataQualityReport</strong></td><td><ul><li>Field-Level Completeness Statistics</li><li>Records Failing Validation Rules (e.g. missing HESA-required fields)</li><li>Duplicate Record Flags</li><li>Date of Report Generation</li></ul></td></tr><tr><td><strong>ReconciliationAlerts</strong></td><td><ul><li>Discrepancies Between SIS and Finance records</li><li>Mismatches Between SIS and VLE Enrolment Counts</li><li>Inconsistencies in Programme/Module Data vs. Curriculum Management</li></ul></td></tr><tr><td><strong>DiscrepancyLog</strong></td><td><ul><li>Source System</li><li>Field Name</li><li>SIS Value vs. Warehouse Value</li><li>Resolution Status and Owner</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Student Records uses these reports to identify and correct data quality issues before statutory submissions to HESA, SLC, or UKVI, where inaccurate data can have serious regulatory consequences.</li><li>Supports the institution's audit readiness and data governance obligations under the OfS registration conditions.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F031">
+<h3>F031: Student Records (SIS) to Student Evaluation of Teaching (SETS)</h3>
+<p><strong>Description:</strong></p>
+<p>Student Records provides the Student Evaluation of Teaching system with the authoritative list of students registered on each module, enabling targeted and timely survey distribution at the appropriate point in the academic calendar.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>ModuleRoster</strong></td><td><ul><li>Student Identifiers per Module</li><li>Enrolment Status (active / completed)</li><li>Mode of Study (on-campus, distance, blended)</li></ul></td></tr><tr><td><strong>ModuleDetails</strong></td><td><ul><li>Module Code and Title</li><li>Teaching Period (Semester 1, Semester 2, Year-long)</li><li>Responsible Academic Department</li></ul></td></tr><tr><td><strong>AcademicCalendar</strong></td><td><ul><li>Survey Window Dates (typically end of teaching period)</li><li>Exam Blackout Periods</li><li>Module End Dates</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>SETS uses this roster data to generate survey cohorts, distribute evaluation forms to the correct students at the right time, and avoid surveying students on modules they did not complete.</li><li>Accurate rosters ensure that response rates and feedback data are correctly attributed to modules and teaching staff for quality assurance purposes.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F032">
+<h3>F032: Student Evaluation of Teaching (SETS) to Student Records (SIS)</h3>
+<p><strong>Description:</strong></p>
+<p>Once surveys close, the Student Evaluation system returns completion statistics and aggregated module-level feedback scores to Student Records, supporting quality assurance processes and academic committee reporting.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>CompletionStatistics</strong></td><td><ul><li>Survey Response Rate per Module</li><li>Number of Students Invited vs. Responded</li><li>Non-Response Analysis (by cohort or demographic if available)</li></ul></td></tr><tr><td><strong>AggregatedFeedback</strong></td><td><ul><li>Overall Satisfaction Score per Module</li><li>Scores Against Specific Criteria (e.g. clarity of assessment, quality of feedback)</li><li>Trend Data vs. Previous Iterations</li></ul></td></tr><tr><td><strong>ActionTracking</strong></td><td><ul><li>Modules Flagged for Low Satisfaction</li><li>Assigned Action Owner (Module Leader, HoD)</li><li>Date of Planned Review</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Student Records provides the central repository for module quality data, making SETS outcomes accessible alongside academic performance data for programme review and re-validation processes.</li><li>Enables the institution to demonstrate a closed feedback loop for quality assurance purposes, including OfS Access and Participation Plan reporting.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F033">
+<h3>F033: Student Records (SIS) to HR</h3>
+<p><strong>Description:</strong></p>
+<p>Student Records provides HR with the details of students holding dual roles, such as Graduate Teaching Assistants, research assistants, or student ambassadors. This enables HR to manage employment contracts, right-to-work checks, and payroll setup for student-staff.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>StudentStaffProfile</strong></td><td><ul><li>Student Identifier and Legal Name</li><li>Programme of Study and Expected End Date</li><li>National Insurance Number (for payroll setup)</li><li>Right-to-Work Status (linked to visa type for international students)</li></ul></td></tr><tr><td><strong>RoleDetails</strong></td><td><ul><li>Assigned Role (GTA, Research Assistant, Student Ambassador)</li><li>Employing Department</li><li>Contracted Hours per Week</li><li>Start and End Date of Employment</li></ul></td></tr><tr><td><strong>VisaConstraints</strong></td><td><ul><li>Student Visa Work Hour Limits (typically 20 hours/week during term)</li><li>Term-Time vs. Vacation Dates (affecting permitted hours)</li><li>CAS Number (for international students)</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>HR uses this data to ensure that student employment contracts are compliant with visa conditions, avoid breaching UKVI work hour restrictions, and correctly categorise individuals for payroll and tax purposes.</li><li>Provides the foundation for right-to-work compliance, which is a legal obligation under the Immigration, Asylum and Nationality Act 2006.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F034">
+<h3>F034: HR to Student Records (SIS)</h3>
+<p><strong>Description:</strong></p>
+<p>HR maintains the authoritative record of staff roles and departmental assignments. This information flows to Student Records to populate supervisor, personal tutor, and academic advisor relationships against each student record.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>SupervisorAssignment</strong></td><td><ul><li>Supervisor Name and Staff ID</li><li>Supervisory Role (Primary, Secondary)</li><li>Effective Date of Assignment</li><li>Research Student Assigned</li></ul></td></tr><tr><td><strong>PersonalTutorRecord</strong></td><td><ul><li>Personal Tutor Name and Staff ID</li><li>Assigned Student Cohort or Individuals</li><li>Department and Faculty</li></ul></td></tr><tr><td><strong>StaffLeave</strong></td><td><ul><li>Planned Leave Periods (sabbatical, parental leave, long-term sick)</li><li>Cover Arrangements</li><li>Impact on Supervision or Tutorial Responsibilities</li></ul></td></tr><tr><td><strong>DepartmentMapping</strong></td><td><ul><li>Staff Member's Home Department</li><li>Cross-Departmental Teaching Responsibilities</li><li>Role Changes or Promotions</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Student Records requires accurate staff assignment data to ensure that students can identify their personal tutor, supervisor, or academic advisor through the student portal.</li><li>Supervisor records are essential for postgraduate research students and must be kept current to satisfy Quality Assurance Agency (QAA) Code of Practice requirements.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F035">
+<h3>F035: Student Records (SIS) to Payroll (PAY)</h3>
+<p><strong>Description:</strong></p>
+<p>Student Records provides Payroll with authorised lists of students eligible for bursaries, hardship funds, or stipend payments, along with GTA hours approved for payment. Enrolment status is included to confirm ongoing eligibility.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>BursaryEligibility</strong></td><td><ul><li>Student Identifier and Legal Name</li><li>Bursary Type and Award Amount</li><li>Eligibility Criteria Met (e.g. household income threshold, care-leaver status)</li><li>Payment Schedule (single lump sum, termly, monthly)</li></ul></td></tr><tr><td><strong>GTAPaymentAuthorisation</strong></td><td><ul><li>Student Identifier</li><li>Approved Hours for Payment Period</li><li>Employing Department and Cost Centre</li><li>Authorising Academic</li></ul></td></tr><tr><td><strong>EnrolmentConfirmation</strong></td><td><ul><li>Current Enrolment Status (active, on leave)</li><li>Programme and Year of Study</li><li>Confirmation That Student Remains Eligible</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Payroll requires enrolment confirmation to ensure that bursary and stipend payments are only made to currently enrolled and eligible students, preventing overpayment.</li><li>GTA authorisations provide the formal approval trail required for payroll audit purposes and HMRC compliance.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F036">
+<h3>F036: Payroll (PAY) to Student Records (SIS)</h3>
+<p><strong>Description:</strong></p>
+<p>Payroll confirms to Student Records when bursary, stipend, or hardship payments have been processed, allowing the student record to be updated with payment history and supporting financial aid audit trails.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>PaymentConfirmation</strong></td><td><ul><li>Student Identifier</li><li>Payment Type (bursary, stipend, hardship fund)</li><li>Amount Paid</li><li>Payment Date</li><li>Payroll Reference Number</li></ul></td></tr><tr><td><strong>BursaryRecord</strong></td><td><ul><li>Total Paid to Date in Academic Year</li><li>Remaining Entitlement</li><li>Any Clawback or Adjustment Applied</li></ul></td></tr><tr><td><strong>AuditEntry</strong></td><td><ul><li>Authorised By (Payroll Manager)</li><li>Date Processed</li><li>HMRC Reference (where applicable)</li><li>Evidence of Eligibility Check Performed</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Student Records maintains a complete financial aid history against each student record, which is required for institutional audit, OfS Access and Participation reporting, and student queries.</li><li>Payment confirmations allow the student portal to display up-to-date financial aid status, reducing student enquiries to the finance and student services teams.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F037">
+<h3>F037: Student Records (SIS) to CRIS</h3>
+<p><strong>Description:</strong></p>
+<p>Student Records provides the Current Research Information System with enrolment data for postgraduate research students, enabling CRIS to create and maintain researcher profiles, link students to departments and supervisors, and support REF and open access compliance.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>ResearchStudentProfile</strong></td><td><ul><li>Student Identifier and Legal Name</li><li>Programme of Study (MRes, MPhil, PhD, Professional Doctorate)</li><li>Mode of Study (Full-time, Part-time, Distance Learning)</li><li>Start Date and Expected End Date</li></ul></td></tr><tr><td><strong>SupervisorDetails</strong></td><td><ul><li>Primary and Secondary Supervisor Names and Staff IDs</li><li>Supervisory Committee Members (if applicable)</li><li>Department and Faculty</li></ul></td></tr><tr><td><strong>ProgrammeData</strong></td><td><ul><li>Research Discipline / Subject Area (aligned to HESA JACS or HECoS coding)</li><li>Funding Source (self-funded, UKRI, industry-sponsored)</li><li>Studentship Reference Number</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>CRIS uses research student enrolment data to assign ORCID identifiers, create researcher profiles, and ensure that student publications and research outputs are correctly attributed to the institution.</li><li>Supports the institution's REF submission preparation and open access compliance obligations under UKRI policy.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F038">
+<h3>F038: CRIS to Student Records (SIS)</h3>
+<p><strong>Description:</strong></p>
+<p>CRIS returns research progression milestones — such as confirmation of registration, thesis submission, and viva outcomes — along with publication records to Student Records, ensuring that the student's academic record reflects research activity and outputs.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>DegreeMilestones</strong></td><td><ul><li>Milestone Type (confirmation of registration, upgrade, thesis submission, viva)</li><li>Milestone Date</li><li>Outcome (passed, referred, failed)</li><li>Examiner Names and External Examiner Institution</li></ul></td></tr><tr><td><strong>ThesisRecord</strong></td><td><ul><li>Thesis Title</li><li>Submission Date</li><li>Embargo Details (if applicable)</li><li>Repository Reference (EThOS or institutional repository)</li></ul></td></tr><tr><td><strong>PublicationRecord</strong></td><td><ul><li>Publication Title and Type (journal article, conference paper, book chapter)</li><li>DOI or Repository Link</li><li>Publication Date</li><li>Open Access Status</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Research degree milestones are a mandatory component of the student's academic record and are required for QAA audit, Doctoral Training Partnership reporting, and graduation processing.</li><li>Publication records associated with the student support REF impact case studies and demonstrate the research contribution of the institution's postgraduate community.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F039">
+<h3>F039: Student Records (SIS) to Research Proposals (RP)</h3>
+<p><strong>Description:</strong></p>
+<p>Student Records provides Research Proposals with verified details of students named on grant applications, their enrolment status, programme of study, and assigned supervisors, supporting due diligence and funder eligibility checks.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>StudentResearcherProfile</strong></td><td><ul><li>Student Identifier and Legal Name</li><li>Programme of Study and Level (e.g. PhD Year 2)</li><li>Enrolment Status at Time of Application</li><li>Right-to-Work Status</li></ul></td></tr><tr><td><strong>EnrolmentStatus</strong></td><td><ul><li>Confirmation of Active Enrolment</li><li>Expected Thesis Submission Date</li><li>Any Interruptions or Part-time Status</li></ul></td></tr><tr><td><strong>SupervisorData</strong></td><td><ul><li>Named Supervisor(s) and Their Staff IDs</li><li>Supervisor's Active Research Grants (for conflict of interest checks)</li><li>Co-Investigator Roles Held</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Research Proposals uses enrolment verification to confirm that students named as researchers on grant applications meet funder eligibility criteria — for example, UKRI typically requires named students to be enrolled at the time of award.</li><li>Supervisor data supports due diligence checks and ensures that grant applications correctly reflect the supervisory team.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F040">
+<h3>F040: Research Proposals (RP) to Student Records (SIS)</h3>
+<p><strong>Description:</strong></p>
+<p>Research Proposals confirms to Student Records when a studentship has been awarded, including funder, award value, duration, and any conditions attached. This allows the SIS to associate funding records with the student and supports fee liability management.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>StudentshipAward</strong></td><td><ul><li>Award Reference Number</li><li>Funder Name (e.g. UKRI, Wellcome Trust, NIHR, Industry Sponsor)</li><li>Award Value (fees component and stipend component separately)</li><li>Award Start and End Date</li></ul></td></tr><tr><td><strong>FunderDetails</strong></td><td><ul><li>Funder Category (public body, charity, industry)</li><li>Overhead Rate Applied</li><li>Reporting Obligations (annual progress reports, etc.)</li></ul></td></tr><tr><td><strong>AwardConditions</strong></td><td><ul><li>Fee Liability (who pays tuition fees — funder or student)</li><li>Stipend Amount and Payment Schedule</li><li>Conditions for Continuation of Funding</li><li>Any Intellectual Property Clauses Affecting the Student</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Studentship award records must be held in the SIS to correctly calculate the student's fee liability — a fully funded student should not be invoiced for tuition fees.</li><li>Award records support the institution's research income reporting and provide evidence for OfS financial sustainability assessments.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F041">
+<h3>F041: Student Records (SIS) to Content Management Systems (CMS)</h3>
+<p><strong>Description:</strong></p>
+<p>Student Records provides the Content Management System with cohort, programme, and faculty data to enable targeted and personalised content delivery across institutional websites and intranets.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>CohortData</strong></td><td><ul><li>Programme Code and Title</li><li>Year of Entry</li><li>Faculty and Department</li><li>Mode of Study</li></ul></td></tr><tr><td><strong>ProgrammeDetails</strong></td><td><ul><li>Undergraduate / Postgraduate Taught / Postgraduate Research</li><li>Subject Area</li><li>Campus or Delivery Location</li></ul></td></tr><tr><td><strong>FacultyMapping</strong></td><td><ul><li>Faculty Name</li><li>Associated Schools or Departments</li><li>Relevant Staff Contacts</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>The CMS uses cohort and programme data to surface programme-specific news, departmental announcements, and relevant regulatory updates to the right student audiences — for example, displaying module selection deadlines only to students in the relevant year of study.</li><li>Targeted content reduces information overload and improves the student digital experience.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F042">
+<h3>F042: Content Management Systems (CMS) to Student Records (SIS)</h3>
+<p><strong>Description:</strong></p>
+<p>The CMS notifies Student Records when significant regulatory, policy, or procedural documents are published that require annotation against student records or formal acknowledgement by students.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>PolicyPublication</strong></td><td><ul><li>Document Title and Type (academic regulations, code of practice, etc.)</li><li>Publication Date</li><li>Version Number</li><li>Affected Student Cohorts</li></ul></td></tr><tr><td><strong>RegulatoryNotice</strong></td><td><ul><li>Notice Type (fee policy change, academic appeals process update, UKVI compliance notice)</li><li>Effective Date</li><li>Action Required (read and acknowledge, or for information only)</li></ul></td></tr><tr><td><strong>AcknowledgementRecord</strong></td><td><ul><li>Student Identifier</li><li>Document Reference</li><li>Date of Acknowledgement</li><li>Method (portal confirmation, email read receipt)</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Student Records must hold evidence that students have been made aware of key academic regulations and policy changes — this forms part of the institution's contractual obligations to students under consumer protection law.</li><li>Acknowledgement records support the institution in the event of academic appeals, complaints, or Office of the Independent Adjudicator (OIA) cases.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F043">
+<h3>F043: Student Records (SIS) to IT Service Management (ITSM)</h3>
+<p><strong>Description:</strong></p>
+<p>Student Records provides the IT Service Management platform with student identity, enrolment status, and system access details, enabling service desk staff to validate student identity, understand their service entitlements, and contextualise incidents or requests related to student accounts.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>StudentIdentity</strong></td><td><ul><li>Student Identifier and Username</li><li>Legal Name and Preferred Name</li><li>Date of Birth (for identity verification)</li></ul></td></tr><tr><td><strong>ServiceEntitlements</strong></td><td><ul><li>Systems the Student Has Access To (VLE, library e-resources, Office 365, etc.)</li><li>Software Licences Assigned</li><li>Email Account and Storage Quota</li></ul></td></tr><tr><td><strong>AccountStatus</strong></td><td><ul><li>Active, Suspended, or Expired Account</li><li>Date Account Created and Scheduled Expiry</li><li>Any Existing Holds or Restrictions</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>ITSM staff use this data to verify student identity without asking for sensitive information over the phone, confirm which systems a student should have access to, and diagnose account-related incidents efficiently.</li><li>Reduces mean time to resolution for student IT incidents by providing service desk agents with relevant context from the SIS.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F044">
+<h3>F044: IT Service Management (ITSM) to Student Records (SIS)</h3>
+<p><strong>Description:</strong></p>
+<p>ITSM notifies Student Records of resolved service requests or incidents that result in changes to a student's account status or data held in the SIS.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>IncidentResolution</strong></td><td><ul><li>Incident or Request Reference Number</li><li>Category (account access, data correction, system access request)</li><li>Resolution Date and Summary</li><li>Assignee and Resolver</li></ul></td></tr><tr><td><strong>AccountStatusChange</strong></td><td><ul><li>Student Identifier</li><li>Change Type (account unlocked, access restored, data corrected)</li><li>Authorised By</li><li>Effective Date of Change</li></ul></td></tr><tr><td><strong>RequestOutcome</strong></td><td><ul><li>Student Identifier</li><li>Original Request Description</li><li>Outcome (fulfilled, partially fulfilled, rejected with reason)</li><li>Any SIS Data Updated as a Result</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Student Records maintains an audit trail of IT-initiated changes to student account data, supporting data governance and GDPR compliance.</li><li>Completed service requests that involve data corrections must be reflected in the SIS to ensure the integrity of the student record.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F045">
+<h3>F045: UCAS to Student Records (SIS)</h3>
+<p><strong>Description:</strong></p>
+<p>UCAS transmits applicant data — including personal details, qualification records, programme preferences, and offer/acceptance decisions — to Student Records. This flow is the primary source of pre-enrolment data for UK undergraduate admissions, including Clearing and Adjustment records.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>UCASApplication</strong></td><td><ul><li>UCAS Personal ID</li><li>Legal Name and Date of Birth</li><li>Contact Details (address, email, phone)</li><li>Domicile Code (Home, EU, International)</li><li>Application Date and Cycle Year</li></ul></td></tr><tr><td><strong>ProgrammePreferences</strong></td><td><ul><li>UCAS Course Code</li><li>Institution Code</li><li>Choice Number (1–5)</li><li>Track Status (offer made, rejected, withdrawn)</li></ul></td></tr><tr><td><strong>QualificationRecord</strong></td><td><ul><li>Qualification Type (A-level, BTEC, IB, Access, etc.)</li><li>Subject Codes and Grades (predicted and achieved)</li><li>Awarding Body</li><li>Centre Number</li></ul></td></tr><tr><td><strong>OfferDecision</strong></td><td><ul><li>Offer Type (Conditional, Unconditional, Unsuccessful, Withdrawn)</li><li>Conditions Attached (e.g. grades required)</li><li>Clearing or Adjustment Flag</li><li>Applicant Response (Firm, Insurance, Declined)</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Student Records uses UCAS data to create provisional student records before confirmation of place, enabling early setup of student accounts, accommodation applications, and fee liability assessments.</li><li>UCAS is the single authoritative source of qualification data for UK undergraduate admissions — institutions must not create parallel records from other sources.</li></ul>
+<div class="callout callout-uk" style="margin-top:1rem"><p><strong>UK Compliance:</strong> UCAS integration is a mandatory flow for all UK HEIs offering UCAS-route undergraduate programmes. Institutions must comply with UCAS data sharing agreements and handle qualification data in accordance with the Joint Council for Qualifications (JCQ) regulations.</p></div>
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F046">
+<h3>F046: Student Records (SIS) to UCAS</h3>
+<p><strong>Description:</strong></p>
+<p>Student Records confirms successful enrolment back to UCAS once an applicant has registered, and notifies UCAS of any withdrawals, deferrals, or no-shows.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>EnrolmentConfirmation</strong></td><td><ul><li>UCAS Personal ID</li><li>Institution Reference Number</li><li>Programme Enrolled On</li><li>Enrolment Date</li><li>Full-time / Part-time Status</li></ul></td></tr><tr><td><strong>WithdrawalNotification</strong></td><td><ul><li>UCAS Personal ID</li><li>Withdrawal Date</li><li>Reason Code (as per UCAS codeset)</li><li>Programme Withdrawn From</li></ul></td></tr><tr><td><strong>DeferralRecord</strong></td><td><ul><li>UCAS Personal ID</li><li>Original Entry Year</li><li>Deferred Entry Year</li><li>Conditions of Deferral</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Enrolment confirmation to UCAS releases any conditional holds on other applications the student may hold and updates the UCAS tracking system.</li><li>Withdrawal and deferral notifications are required by UCAS within agreed timescales and affect the applicant's ability to re-enter through UCAS in a subsequent cycle.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F047">
+<h3>F047: Student Records (SIS) to HESA</h3>
+<p><strong>Description:</strong></p>
+<p>Student Records submits the annual statutory HESA Student record return, covering all enrolled students, their programme details, module registrations, qualifications awarded, and demographic data.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>HESAStudentRecord</strong></td><td><ul><li>HESA Student Identifier (HUSID)</li><li>Legal Name, Date of Birth, Gender</li><li>Domicile Code and Country of Birth</li><li>Ethnicity, Disability, and Socio-Economic Indicators</li><li>Entry Qualifications</li></ul></td></tr><tr><td><strong>ProgrammeReturn</strong></td><td><ul><li>HECoS Subject Coding</li><li>FHEQ Level</li><li>Mode of Study</li><li>Entry Year and Expected End Year</li><li>Funding Source (OfS-funded, self-funded, etc.)</li></ul></td></tr><tr><td><strong>ModuleReturn</strong></td><td><ul><li>Module HECoS Code</li><li>Credit Value</li><li>Module Result</li><li>Module Start/End Dates</li></ul></td></tr><tr><td><strong>QualificationReturn</strong></td><td><ul><li>Award Classification</li><li>Conferral Date</li><li>Qualification Name</li><li>Subject Combination Codes</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>The HESA Student record return is a statutory obligation under the Higher Education Research Act 2017. Failure to submit accurate data on time can result in regulatory action by the OfS.</li><li>HESA data underpins sector benchmarking, funding allocation, league table rankings, and the National Student Survey (NSS) sampling frame.</li></ul>
+<div class="callout callout-uk" style="margin-top:1rem"><p><strong>UK Compliance:</strong> This is one of the most consequential data flows in UK HE. Every field must conform to the HESA Student record specification. Institutions should validate submissions against the published HESA collection validation rules before final submission. The return covers all students, including those on collaborative, franchise, and TNE programmes.</p></div>
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F048">
+<h3>F048: HESA to Student Records (SIS)</h3>
+<p><strong>Description:</strong></p>
+<p>HESA returns data quality validation reports, error notifications, and the authoritative HESA student identifiers assigned to each student.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>ValidationReport</strong></td><td><ul><li>Return Reference Number</li><li>Validation Run Date</li><li>Number of Records Accepted / Rejected</li><li>Error and Warning Codes (by HESA code list)</li><li>Severity Level (fatal, error, warning, note)</li></ul></td></tr><tr><td><strong>HESAStudentIdentifier</strong></td><td><ul><li>HUSID (HESA Unique Student Identifier)</li><li>Assigned at First Registration with HESA</li><li>Persistent Across Institutions and Years</li></ul></td></tr><tr><td><strong>ErrorNotification</strong></td><td><ul><li>Field Reference</li><li>Error Description</li><li>Affected Student Identifiers</li><li>Corrective Action Required</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>HESA student identifiers (HUSIDs) must be written back to the SIS and used in all subsequent HESA submissions and inter-institutional data exchanges — they are the persistent identifiers that enable HESA to track students across the sector.</li><li>Validation error reports must be actioned promptly as unresolved fatal errors prevent submission acceptance. Institutions are typically given a fixed correction window.</li></ul>
+<div class="callout callout-uk" style="margin-top:1rem"><p><strong>UK Compliance:</strong> HUSIDs are assigned permanently and must be retained in the SIS even after a student leaves. They are referenced in Graduate Outcomes surveys, Longitudinal Educational Outcomes (LEO) data, and inter-institutional transfer processes.</p></div>
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F049">
+<h3>F049: Student Records (SIS) to Student Loans Company (SLC)</h3>
+<p><strong>Description:</strong></p>
+<p>Student Records confirms to the Student Loans Company that an eligible student is enrolled and attending, triggering the release of tuition fee loans to the institution and maintenance loan payments to the student.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>EnrolmentConfirmation</strong></td><td><ul><li>Student's SLC Reference Number</li><li>Legal Name and Date of Birth</li><li>Course Start Date and Expected End Date</li><li>Mode of Study (Full-time, Part-time)</li><li>Tuition Fee Amount for the Year</li></ul></td></tr><tr><td><strong>AttendanceConfirmation</strong></td><td><ul><li>Confirmation That Student Is Actively Attending (not withdrawn or suspended)</li><li>Date of Confirmation</li><li>Method of Confirmation (automated or manual)</li></ul></td></tr><tr><td><strong>FeeDetails</strong></td><td><ul><li>Tuition Fee Charged for the Academic Year</li><li>Any Waiver or Bursary Reducing the Chargeable Amount</li><li>Fee Payment Schedule</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Timely enrolment confirmation to SLC is critical to institutional cash flow — tuition fee loan payments to the institution are withheld until confirmation is received.</li><li>Failure to notify SLC promptly of student withdrawals or suspensions can result in overpayments that the institution may be required to repay.</li></ul>
+<div class="callout callout-uk" style="margin-top:1rem"><p><strong>UK Compliance:</strong> Institutions are legally required to confirm enrolment and attendance to SLC under the terms of their agreement with the Secretary of State for Education. The confirmation window typically opens in October for Autumn-start students. Withdrawal notifications must be submitted within 28 days.</p></div>
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F050">
+<h3>F050: Student Loans Company (SLC) to Student Records (SIS)</h3>
+<p><strong>Description:</strong></p>
+<p>The Student Loans Company notifies Student Records of loan entitlement decisions, payment confirmations, changes to loan status, and any queries requiring institutional response.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>LoanEntitlement</strong></td><td><ul><li>Student's SLC Reference Number</li><li>Loan Type (Tuition Fee Loan, Maintenance Loan)</li><li>Entitlement Amount for the Year</li><li>Number of Years of Previous Study (affecting eligibility)</li></ul></td></tr><tr><td><strong>PaymentStatus</strong></td><td><ul><li>Instalment Amount</li><li>Payment Date</li><li>Payment Method (direct to institution or to student)</li><li>Cumulative Amount Paid to Date</li></ul></td></tr><tr><td><strong>StatusChange</strong></td><td><ul><li>New Loan Status (active, suspended, overpayment recovery)</li><li>Reason for Status Change</li><li>Effective Date</li><li>Required Institutional Response (if any)</li></ul></td></tr><tr><td><strong>OverpaymentNotification</strong></td><td><ul><li>Overpaid Amount</li><li>Reason (e.g. late withdrawal notification)</li><li>Recovery Method (deducted from future payments)</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Student Records must reflect SLC loan status to ensure that students with suspended or overpaid loans are referred to appropriate financial guidance.</li><li>Overpayment notifications enable the institution to identify cases where withdrawal was not reported to SLC promptly and to review internal processes.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F051">
+<h3>F051: Student Records (SIS) to UK Visas &amp; Immigration (UKVI)</h3>
+<p><strong>Description:</strong></p>
+<p>Student Records provides UKVI with Confirmation of Acceptance for Studies (CAS) creation requests for international students requiring a Student visa, along with ongoing attendance monitoring data required under the institution's Tier 4 sponsor licence obligations.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>CASRequest</strong></td><td><ul><li>Student Legal Name (as in passport)</li><li>Passport Number and Nationality</li><li>Date of Birth</li><li>Course Title, Level (FHEQ), and Duration</li><li>Course Start and End Dates</li><li>Tuition Fee Amount and Amount Paid</li><li>English Language Qualification (for CAS eligibility)</li></ul></td></tr><tr><td><strong>AttendanceReport</strong></td><td><ul><li>Student Identifier and CAS Number</li><li>Reporting Period</li><li>Attendance Status (satisfactory, unsatisfactory, unable to contact)</li><li>Date of Last Recorded Attendance</li><li>Action Taken (if attendance unsatisfactory)</li></ul></td></tr><tr><td><strong>ContactReport</strong></td><td><ul><li>Student's Last Known UK Address</li><li>Emergency Contact Details</li><li>Any Change of Circumstances Reported by Student</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>CAS creation is the institutional trigger for a student to apply for a Student visa — without a valid CAS, the student cannot enter or remain in the UK to study.</li><li>Attendance reporting is a mandatory condition of the Tier 4 sponsor licence. Failure to report unsatisfactory attendance to UKVI within the required timescale is a licence compliance failure that can result in suspension or revocation of the institution's sponsor licence.</li></ul>
+<div class="callout callout-uk" style="margin-top:1rem"><p><strong>UK Compliance:</strong> Institutions must report students who miss ten or more consecutive expected contact points to UKVI. The CAS must accurately reflect the course details as approved by UKVI — any changes to course duration or level must trigger a new CAS. CAS data must be stored securely and retained for a minimum of one year after the student's course end date.</p></div>
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F052">
+<h3>F052: UK Visas &amp; Immigration (UKVI) to Student Records (SIS)</h3>
+<p><strong>Description:</strong></p>
+<p>UKVI notifies the institution of changes to a student's visa status, including grants, refusals, curtailments, and compliance alerts triggered by attendance or engagement failures.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>VisaStatusUpdate</strong></td><td><ul><li>Student Identifier and CAS Number</li><li>Visa Type (Student, Short-Term Study)</li><li>Visa Grant Date and Expiry Date</li><li>Visa Conditions (e.g. no recourse to public funds, work restrictions)</li></ul></td></tr><tr><td><strong>ComplianceAlert</strong></td><td><ul><li>Alert Type (unsatisfactory attendance reported, student cannot be contacted, overstayer suspected)</li><li>Date of Alert</li><li>Required Institutional Response</li><li>Reporting Deadline</li></ul></td></tr><tr><td><strong>SponsorNotification</strong></td><td><ul><li>Notification Type (licence audit scheduled, information request)</li><li>UKVI Case Reference</li><li>Institutional Compliance Officer Named</li><li>Response Deadline</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Visa status updates must be reflected in the SIS immediately — a student whose visa has been curtailed or refused is no longer entitled to study and continued enrolment would expose the institution to serious regulatory risk.</li><li>Compliance alerts require a documented institutional response within UKVI timescales. Failure to respond constitutes a licence compliance failure.</li></ul>
+<div class="callout callout-uk" style="margin-top:1rem"><p><strong>UK Compliance:</strong> UKVI communications are received through the Sponsor Management System (SMS). Institutions must ensure that the member of staff with Level 1 SMS access is able to update the SIS promptly when visa status changes are received. All UKVI communications and institutional responses must be retained for audit purposes.</p></div>
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F053">
+<h3>F053: Student Records (SIS) to Student Wellbeing &amp; Disability (WELL)</h3>
+<p><strong>Description:</strong></p>
+<p>Student Records provides the Student Wellbeing and Disability system with core student data, including declared disabilities, programme details, academic performance indicators, and any existing flags or holds, enabling the wellbeing team to contextualise support needs and ensure continuity of care.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>StudentProfile</strong></td><td><ul><li>Student Identifier and Legal Name</li><li>Programme of Study and Year</li><li>Mode of Study (Full-time, Part-time)</li><li>Expected End Date</li><li>Personal Tutor and Academic Advisor</li></ul></td></tr><tr><td><strong>DisabilityDeclaration</strong></td><td><ul><li>Declared Disability Category (as per HESA codeset)</li><li>Date of Declaration</li><li>Supporting Evidence Submitted (medical letter, assessment report, etc.)</li><li>DSA Application Status</li></ul></td></tr><tr><td><strong>AcademicPerformanceIndicators</strong></td><td><ul><li>Current Module Registrations and Grades</li><li>Attendance Percentage</li><li>Any Academic Holds or Warnings</li><li>Progression Status (on track, at risk, interrupted)</li></ul></td></tr><tr><td><strong>ExistingFlags</strong></td><td><ul><li>Financial Hold Status</li><li>Disciplinary Flags</li><li>Previous Wellbeing Referrals (anonymised summary)</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>The Wellbeing and Disability team uses this contextual data to prioritise their response, assign appropriate support workers or mental health advisors, and ensure that students transitioning between years or returning from interruption receive continuity of support.</li><li>Disability declarations from SIS are the trigger for DSA assessments and reasonable adjustment planning — without accurate and timely data from the SIS, students may experience delays in receiving the support they are legally entitled to.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F054">
+<h3>F054: Student Wellbeing &amp; Disability (WELL) to Student Records (SIS)</h3>
+<p><strong>Description:</strong></p>
+<p>The Student Wellbeing and Disability system returns approved reasonable adjustment plans, Disabled Students Allowance (DSA) entitlements, mental health support agreements, and case notes to Student Records. These records must be actioned across downstream systems to ensure legal compliance with the Equality Act 2010.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>ReasonableAdjustmentPlan</strong></td><td><ul><li>Student Identifier</li><li>Adjustment Type (extended deadlines, alternative format materials, rest breaks in exams, etc.)</li><li>Approved By (Disability Advisor)</li><li>Effective Date and Review Date</li><li>Systems to Which Adjustment Must Be Propagated (VLE, AM, Exams)</li></ul></td></tr><tr><td><strong>DSARecord</strong></td><td><ul><li>DSA Award Reference</li><li>Entitlement (e.g. specialist mentor, study skills tutor, assistive technology)</li><li>Funding Body</li><li>Review Date</li></ul></td></tr><tr><td><strong>MentalHealthSupportAgreement</strong></td><td><ul><li>Support Plan Type (counselling sessions, mental health advisor)</li><li>Number of Sessions Approved</li><li>Confidentiality Level (determines what is shared with academic staff)</li><li>Emergency Contact Protocol</li></ul></td></tr><tr><td><strong>CaseNotes</strong></td><td><ul><li>Date of Contact</li><li>Nature of Interaction (disclosure, appointment, follow-up)</li><li>Action Taken</li><li>Referral Made (to GP, CAMHS, external charity, etc.)</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Reasonable adjustment plans must be distributed from the SIS to the VLE, Attendance Monitoring, and Exams Management systems to ensure that adjustments are implemented automatically and consistently — manual distribution is error-prone and can result in adjustments not being applied.</li><li>The institution's duty to make reasonable adjustments under the Equality Act 2010 is anticipatory — adjustments should be in place before the student needs them, not applied reactively after a failure has occurred.</li></ul>
+<div class="callout callout-uk" style="margin-top:1rem"><p><strong>UK Compliance:</strong> Case notes within this flow are highly sensitive personal data under GDPR (Article 9 special category data — health information). Access controls must ensure that only staff with a legitimate need can view individual case notes. Aggregated, anonymised data may be shared more broadly for monitoring and reporting purposes.</p></div>
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F055">
+<h3>F055: Virtual Learning Environment (VLE) to Business Intelligence (BI)</h3>
+<p><strong>Description:</strong></p>
+<p>The VLE provides the Business Intelligence platform with detailed learning analytics, including login frequency, content access patterns, assessment submission behaviours, and discussion forum engagement.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>LoginAnalytics</strong></td><td><ul><li>Student Identifier (pseudonymised for BI)</li><li>Login Frequency (daily, weekly)</li><li>Session Duration</li><li>Last Login Date</li><li>Device Type (desktop, mobile, tablet)</li></ul></td></tr><tr><td><strong>ContentAccessData</strong></td><td><ul><li>Module Resources Accessed (lecture recordings, reading lists, slides)</li><li>Number of Times Accessed</li><li>Access Timestamps</li><li>Resources Not Accessed (potential disengagement indicator)</li></ul></td></tr><tr><td><strong>AssessmentBehaviours</strong></td><td><ul><li>Time of Submission Relative to Deadline (early, on time, late)</li><li>Number of Draft Saves Before Final Submission</li><li>Re-submission Attempts</li><li>Assessment Non-Submission Flags</li></ul></td></tr><tr><td><strong>ForumEngagement</strong></td><td><ul><li>Discussion Forum Posts and Replies</li><li>Peer Interaction Score</li><li>Collaborative Activity Participation</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>VLE learning analytics, when combined with attendance and grade data from SIS, create a richer picture of student engagement than any single system can provide.</li><li>Early identification of disengaged students — those not logging into the VLE, not accessing materials, or submitting late — enables proactive outreach before academic performance deteriorates.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F056">
+<h3>F056: Attendance Monitoring (AM) to Business Intelligence (BI)</h3>
+<p><strong>Description:</strong></p>
+<p>Attendance Monitoring provides the BI platform with aggregated and individual attendance trend data, absence patterns, and engagement scores.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>AttendanceTrends</strong></td><td><ul><li>Weekly and Monthly Attendance Percentage by Module</li><li>Cohort-Level Attendance Averages</li><li>Comparison vs. Previous Year</li><li>Attendance by Demographic Group (for widening participation reporting)</li></ul></td></tr><tr><td><strong>AbsencePatterns</strong></td><td><ul><li>Consecutive Absence Counts</li><li>Reason Code Distribution (medical, personal, unexplained)</li><li>Absence Frequency by Day of Week or Time of Day</li><li>Repeat Absence Flags</li></ul></td></tr><tr><td><strong>EngagementScores</strong></td><td><ul><li>Composite Engagement Score (combining attendance, VLE, and academic data)</li><li>Score Trend (improving, stable, declining)</li><li>At-Risk Threshold Breaches</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Attendance data fed into BI enables the institution to meet its UKVI Tier 4 reporting obligations by quickly identifying international students with unsatisfactory attendance.</li><li>Widening participation monitoring requires attendance disaggregated by student characteristic — AM data fed through BI enables this analysis without the SIS needing to perform it directly.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F057">
+<h3>F057: Data Warehouse (DW) to Business Intelligence (BI)</h3>
+<p><strong>Description:</strong></p>
+<p>The Data Warehouse provides the BI platform with consolidated, cleansed, and historicised data drawn from multiple source systems including SIS, Finance, HR, and VLE.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>ConsolidatedStudentData</strong></td><td><ul><li>Integrated Student Record (SIS + VLE + AM + Finance)</li><li>Longitudinal Enrolment and Outcome History</li><li>Cross-Cohort Comparison Data</li><li>Anonymised Benchmarking Datasets</li></ul></td></tr><tr><td><strong>FinancialData</strong></td><td><ul><li>Tuition Fee Income by Programme and Cohort</li><li>Bursary and Scholarship Expenditure</li><li>Bad Debt and Outstanding Balance Data</li></ul></td></tr><tr><td><strong>HRData</strong></td><td><ul><li>Staff-to-Student Ratios by Department</li><li>Teaching Hours by Faculty</li><li>Research Income per Academic</li></ul></td></tr><tr><td><strong>HistoricalRecords</strong></td><td><ul><li>10+ Year Enrolment and Outcome Trends</li><li>HESA Benchmarking Data</li><li>Graduate Outcomes (GO) Survey Results</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>The Data Warehouse is the primary data source for strategic BI dashboards, management information reports, and regulatory submissions — it provides a single version of the truth across all institutional data domains.</li><li>Consolidating data in the warehouse before feeding BI avoids the BI platform being coupled directly to multiple operational systems, reducing integration complexity and improving data consistency.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F058">
+<h3>F058: CRM to Enterprise Web Portal (EWP)</h3>
+<p><strong>Description:</strong></p>
+<p>The CRM system pushes personalised communications, targeted notifications, and campaign content to the Enterprise Web Portal based on student segment, lifecycle stage, or engagement profile.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>PersonalisedCommunication</strong></td><td><ul><li>Message Content and Title</li><li>Target Audience Segment (e.g. Year 1 students, international students, applicants in Clearing)</li><li>Publication Date and Expiry Date</li><li>Communication Channel (portal banner, notification, email prompt)</li></ul></td></tr><tr><td><strong>CampaignContent</strong></td><td><ul><li>Campaign Name and Objective (e.g. open day registration, module selection reminder)</li><li>Call to Action</li><li>Landing Page or Deep Link</li><li>Campaign Performance Metrics Feedback Loop</li></ul></td></tr><tr><td><strong>StudentSegmentData</strong></td><td><ul><li>Segment Identifier</li><li>Segment Criteria (programme, year, engagement tier)</li><li>Exclusion Rules (e.g. exclude students with outstanding holds)</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Integrating CRM-driven personalisation with the portal ensures that students see relevant, timely content without requiring them to navigate separate systems.</li><li>Coordinated CRM-to-portal messaging improves engagement with institutional communications and supports targeted outreach for retention, progression, and alumni relations.</li></ul>
+
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F059">
+<h3>F059: Student Wellbeing &amp; Disability (WELL) to Virtual Learning Environment (VLE)</h3>
+<p><strong>Description:</strong></p>
+<p>The Student Wellbeing and Disability system pushes approved reasonable adjustments directly to the VLE, including extended submission deadlines, alternative assessment formats, accessible content requirements, and examination accommodations.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>ExtendedDeadlines</strong></td><td><ul><li>Student Identifier</li><li>Module Code(s)</li><li>Standard Deadline</li><li>Adjusted Deadline</li><li>Extension Type (percentage extension, fixed days, open-ended pending medical evidence)</li></ul></td></tr><tr><td><strong>AlternativeAssessmentFormats</strong></td><td><ul><li>Assignment Type Affected (essay, exam, presentation, group work)</li><li>Alternative Format Approved (oral examination, written alternative, portfolio)</li><li>Rationale Code</li></ul></td></tr><tr><td><strong>AccessibilityRequirements</strong></td><td><ul><li>Screen Reader Compatibility Required</li><li>Captioning Required for Video Content</li><li>High Contrast or Large Font Materials Needed</li><li>Dyslexia-Friendly Formatting Preferences</li></ul></td></tr><tr><td><strong>ExaminationAccommodations</strong></td><td><ul><li>Extra Time Percentage (e.g. 25%)</li><li>Rest Breaks Entitlement</li><li>Separate Room Requirement</li><li>Scribe or Reader Entitlement</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>The VLE must apply reasonable adjustments automatically and consistently — requiring disabled students to individually request adjustments on each submission is discriminatory and constitutes a failure of the anticipatory duty under the Equality Act 2010.</li><li>Automated propagation from WELL to VLE removes the risk of adjustments being overlooked, reduces administrative burden on academic staff, and creates an auditable record of adjustments applied.</li></ul>
+<div class="callout callout-uk" style="margin-top:1rem"><p><strong>UK Compliance:</strong> Extended deadlines and assessment accommodations are legally required adjustments, not discretionary extensions. Institutions must be able to demonstrate to the OIA and courts that adjustments were in place before they were needed. The VLE must log when adjustments were created and when they were applied, with timestamps, to support this audit trail.</p></div>
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<div class="flow-section" id="F060">
+<h3>F060: Student Wellbeing &amp; Disability (WELL) to Attendance Monitoring (AM)</h3>
+<p><strong>Description:</strong></p>
+<p>The Student Wellbeing and Disability system notifies Attendance Monitoring of approved adjustments to attendance requirements, including reduced attendance thresholds, exemptions for mental health absences, and temporary suspensions of attendance alerts during periods of approved medical leave.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Attributes</th></tr></thead>
+<tbody><tr><td><strong>AdjustedThreshold</strong></td><td><ul><li>Student Identifier</li><li>Standard Attendance Threshold (e.g. 80%)</li><li>Adjusted Threshold (e.g. 60%)</li><li>Effective Date and Review Date</li><li>Reason Category (chronic health condition, disability-related, mental health)</li></ul></td></tr><tr><td><strong>ExemptionRecord</strong></td><td><ul><li>Student Identifier</li><li>Exemption Type (session-level, week-level, term-level)</li><li>Covered Period</li><li>Authorising Advisor</li><li>Evidence Reference Number</li></ul></td></tr><tr><td><strong>MedicalLeaveStatus</strong></td><td><ul><li>Interruption Start Date</li><li>Expected Return Date</li><li>Attendance Monitoring Suspended Flag</li><li>UKVI Notification Required Flag (for international students)</li></ul></td></tr></tbody>
+</table></div>
+<p><strong>Purpose of these flows:</strong></p>
+<ul><li>Attendance monitoring systems must not trigger UKVI reports or internal at-risk flags for students whose absences are covered by an approved adjustment or medical leave — failure to suppress these alerts causes unnecessary distress and may generate erroneous UKVI compliance reports.</li><li>Attendance thresholds adjusted through WELL must be synchronised to AM before the student returns from leave to prevent the system from immediately generating an alert based on missed sessions during the absence period.</li></ul>
+<div class="callout callout-uk" style="margin-top:1rem"><p><strong>UK Compliance:</strong> For international students on a Student visa, any period of interruption or medical leave that extends beyond the permitted absence window must still be reported to UKVI via a change of circumstances notification, even if attendance monitoring is suspended internally. The WELL-to-AM adjustment does not remove the UKVI reporting obligation.</p></div>
+<p class="back-link" style="margin-top:0.75rem"><a href="#flows">↑ Back to flows</a></p>
+</div>
+
+<footer>
+  <p>&copy; 2026 RevelationCore. All rights reserved. &nbsp;|&nbsp; <a href="https://revelationcore.com">revelationcore.com</a></p>
+  <p style="margin-top:0.4rem;font-size:0.75rem;color:#9ca3af;">This model is a reference framework for higher education institutions. It represents a generalised view and should be adapted to reflect the specific systems, integration patterns, and regulatory obligations of each institution. RevelationCore accepts no liability for decisions made on the basis of this model without appropriate institutional validation.</p>
+</footer>
+</body>
+</html>

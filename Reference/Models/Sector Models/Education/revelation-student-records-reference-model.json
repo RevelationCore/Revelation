@@ -26,6 +26,30 @@
     {
       "key": "AUTHOR",
       "value": "RevelationCore"
+    },
+    {
+      "key": "LAST_UPDATED",
+      "value": "2026-03-19"
+    },
+    {
+      "key": "STATUS",
+      "value": "Published"
+    },
+    {
+      "key": "SCOPE",
+      "value": "UK Higher Education — Student Records and associated enterprise systems"
+    },
+    {
+      "key": "DESCRIPTION_URL",
+      "value": "revelation-student-records-reference-model.html"
+    },
+    {
+      "key": "DISCLAIMER",
+      "value": "This model is a reference framework for higher education institutions. It represents a generalised view of a Student Records ecosystem and should be adapted to reflect the specific systems, integration patterns, and regulatory obligations of the implementing institution. RevelationCore accepts no liability for decisions made on the basis of this model without appropriate institutional validation."
+    },
+    {
+      "key": "COPYRIGHT",
+      "value": "© RevelationCore 2026. All rights reserved."
     }
   ],
   "systems": [
