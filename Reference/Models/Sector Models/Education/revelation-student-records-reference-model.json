@@ -24,11 +24,11 @@
       "inputType": "text"
     },
     "Version": {
-      "value": "2.0",
+      "value": "2.1",
       "inputType": "text"
     },
     "LastUpdated": {
-      "value": "2026-03-19",
+      "value": "2026-03-20",
       "inputType": "date"
     },
     "Status": {
@@ -44,7 +44,7 @@
       "inputType": "url"
     },
     "Disclaimer": {
-      "value": "This model is a reference framework for higher education institutions. It represents a generalised view of a Student Records ecosystem and should be adapted to reflect the specific systems, integration patterns, and regulatory obligations of the implementing institution. RevelationCore accepts no liability for decisions made on the basis of this model without appropriate institutional validation.",
+      "value": "This model is a reference framework for higher education institutions. It represents a generalised view of a Student Records ecosystem and should be adapted to reflect the specific systems, integration patterns, governance arrangements, and regulatory obligations of the implementing institution. RevelationCore accepts no liability for decisions made on the basis of this model without appropriate institutional validation.",
       "inputType": "textarea"
     },
     "Copyright": {
@@ -57,15 +57,15 @@
       "ID": "SIS",
       "TEXT": "Student Records",
       "TYPE": "SYSTEM",
-      "Description": "Core SIS functionality to manage student data, enrolment, progression, and awards",
+      "Description": "Core student records and academic administration platform managing student identity, enrolment, module registration, academic record, assessment result aggregation, progression, and awards. Acts as the authoritative system of record for all ratified academic outcomes, for the operational effects of approved reasonable adjustments, and for the recording of approved exceptional circumstances outcomes for board consideration. Responsible for generating and supplying the data that underpins board papers and candidate profiles for Exam Board consideration, recording and locking ratified outcomes, and distributing those outcomes to downstream operational systems.",
       "Higher Education Domain": "Student Lifecycle & Experience",
-      "Key Capabilities": "Enrolment & registration; Academic records; Grades & progression; Graduation & award management"
+      "Key Capabilities": "Enrolment & registration; Academic records & result aggregation; Assessment processing and validation; Moderation workflow support; Grades & progression; Graduation & award management; Board data and candidate profile generation; Approved adjustment outcome management; Approved exceptional circumstances outcome recording; Post-ratification record locking; Downstream outcome distribution"
     },
     {
       "ID": "CM",
       "TEXT": "Curriculum Mgmt",
       "TYPE": "SYSTEM",
-      "Description": "Define and maintain programmes, modules, and learning outcomes",
+      "Description": "Define and maintain programmes, modules, and learning outcomes.",
       "Higher Education Domain": "Academic & Programme Management",
       "Key Capabilities": "Programme/module design; Curriculum change tracking; Learning outcome mapping; Approval workflows"
     },
@@ -73,7 +73,7 @@
       "ID": "TTB",
       "TEXT": "Timetabling",
       "TYPE": "SYSTEM",
-      "Description": "Create and manage academic timetables for classes, rooms, and other resources",
+      "Description": "Create and manage academic timetables for classes, rooms, and other resources.",
       "Higher Education Domain": "Teaching & Learning",
       "Key Capabilities": "Schedule generation; Room allocation; Conflict resolution; Calendar integration"
     },
@@ -81,7 +81,7 @@
       "ID": "CRM",
       "TEXT": "CRM",
       "TYPE": "SYSTEM",
-      "Description": "Manage interactions and relationships with prospects, students, alumni, partners",
+      "Description": "Manage interactions and relationships with prospects, students, alumni, and partners.",
       "Higher Education Domain": "Student Lifecycle & Experience",
       "Key Capabilities": "Lead management; Communication tracking; Recruitment & marketing automation; Stakeholder engagement"
     },
@@ -89,7 +89,7 @@
       "ID": "LIB",
       "TEXT": "Library",
       "TYPE": "SYSTEM",
-      "Description": "Manage library resources, loans, and digital/electronic materials",
+      "Description": "Manage library resources, loans, and digital/electronic materials.",
       "Higher Education Domain": "Teaching & Learning",
       "Key Capabilities": "Cataloguing; Circulation/loans; E-resource management; Discovery & search services"
     },
@@ -97,7 +97,7 @@
       "ID": "FIN",
       "TEXT": "Finance",
       "TYPE": "SYSTEM",
-      "Description": "Handle financial transactions, budgeting, accounting, and procurement",
+      "Description": "Handle financial transactions, budgeting, accounting, and procurement.",
       "Higher Education Domain": "Enterprise Administration",
       "Key Capabilities": "Accounts payable/receivable; Budgeting & forecasting; Procurement; Financial reporting"
     },
@@ -105,7 +105,7 @@
       "ID": "EWP",
       "TEXT": "Enterprise Web Portal",
       "TYPE": "SYSTEM",
-      "Description": "Provide unified, role-based web access to institutional services and information",
+      "Description": "Provide unified, role-based web access to institutional services and information.",
       "Higher Education Domain": "IT & Digital Infrastructure",
       "Key Capabilities": "Single sign-on; Personalised dashboards; Self-service functionality; Communication tools"
     },
@@ -113,7 +113,7 @@
       "ID": "AM",
       "TEXT": "Attendance Monitoring",
       "TYPE": "SYSTEM",
-      "Description": "Track student attendance and engagement indicators; analyse learning activities",
+      "Description": "Track student attendance and engagement indicators and analyse learning activities.",
       "Higher Education Domain": "Student Lifecycle & Experience",
       "Key Capabilities": "Attendance tracking; Engagement analytics; Early-warning alerts; Reporting/dashboards"
     },
@@ -121,7 +121,7 @@
       "ID": "VLE",
       "TEXT": "Virtual Learning Env",
       "TYPE": "SYSTEM",
-      "Description": "Deliver and manage online learning content, assessments, and collaboration tools",
+      "Description": "Deliver and manage online learning content, assessments, and collaboration tools.",
       "Higher Education Domain": "Teaching & Learning",
       "Key Capabilities": "Course content hosting; Online assessments; Discussion forums; Gradebook"
     },
@@ -129,7 +129,7 @@
       "ID": "ACC",
       "TEXT": "Accomm & Conf Sys",
       "TYPE": "SYSTEM",
-      "Description": "Manage on-campus accommodation and external event bookings",
+      "Description": "Manage on-campus accommodation and external event bookings.",
       "Higher Education Domain": "Campus & Facilities",
       "Key Capabilities": "Room allocation; Conference/venue scheduling; Booking/payment processing; Resource allocation"
     },
@@ -137,7 +137,7 @@
       "ID": "EST",
       "TEXT": "Estates",
       "TYPE": "SYSTEM",
-      "Description": "Manage property portfolios, maintenance, space allocation, and campus infrastructure",
+      "Description": "Manage property portfolios, maintenance, space allocation, and campus infrastructure.",
       "Higher Education Domain": "Campus & Facilities",
       "Key Capabilities": "Facilities management; Room allocation; Maintenance scheduling; Capital project management"
     },
@@ -145,7 +145,7 @@
       "ID": "IAM",
       "TEXT": "Identity & Access Mgmt",
       "TYPE": "SYSTEM",
-      "Description": "Provision and manage user identities and access rights across enterprise systems",
+      "Description": "Provision and manage user identities and access rights across enterprise systems.",
       "Higher Education Domain": "IT & Digital Infrastructure",
       "Key Capabilities": "User provisioning; Authentication; Role-based access; Single sign-on"
     },
@@ -153,7 +153,7 @@
       "ID": "EDRMS",
       "TEXT": "EDRMS",
       "TYPE": "SYSTEM",
-      "Description": "Store, manage, and track electronic documents and records throughout their lifecycle",
+      "Description": "Store, manage, and track electronic documents and records throughout their lifecycle.",
       "Higher Education Domain": "Enterprise Administration",
       "Key Capabilities": "Document version control; Record retention policies; Secure access; Compliance & auditing"
     },
@@ -161,7 +161,7 @@
       "ID": "OIV",
       "TEXT": "Online ID Verification",
       "TYPE": "SYSTEM",
-      "Description": "Electronic identity verification service for student personal data and documents",
+      "Description": "Electronic identity verification service for student personal data and documents.",
       "Higher Education Domain": "Student Lifecycle & Experience",
       "Key Capabilities": "Document scanning; ID matching; Fraud detection; Verification status updates"
     },
@@ -169,7 +169,7 @@
       "ID": "BI",
       "TEXT": "Business Intelligence",
       "TYPE": "SYSTEM",
-      "Description": "Provide data analysis, dashboards, and reporting across institution-wide data sets",
+      "Description": "Provide data analysis, dashboards, and reporting across institution-wide data sets.",
       "Higher Education Domain": "Institutional Analytics & Reporting",
       "Key Capabilities": "Data aggregation; Analytics & dashboards; Predictive insights; Performance reporting"
     },
@@ -177,7 +177,7 @@
       "ID": "DW",
       "TEXT": "Data Warehouse",
       "TYPE": "SYSTEM",
-      "Description": "Consolidate institutional data from multiple sources for analysis and reporting",
+      "Description": "Consolidate institutional data from multiple sources for analysis and reporting.",
       "Higher Education Domain": "Institutional Analytics & Reporting",
       "Key Capabilities": "Data extraction/ETL; Historical data storage; Centralised reporting; Integration with BI tools"
     },
@@ -185,7 +185,7 @@
       "ID": "SETS",
       "TEXT": "Stud Eval Teach Soft",
       "TYPE": "SYSTEM",
-      "Description": "Collect and analyse student feedback on modules, lecturers, and teaching effectiveness",
+      "Description": "Collect and analyse student feedback on modules, lecturers, and teaching effectiveness.",
       "Higher Education Domain": "Teaching & Learning",
       "Key Capabilities": "Feedback surveys; Data analysis & reporting; Action tracking; Quality enhancement"
     },
@@ -193,7 +193,7 @@
       "ID": "HR",
       "TEXT": "HR",
       "TYPE": "SYSTEM",
-      "Description": "Support human resource processes including recruitment, performance, and payroll setup",
+      "Description": "Support human resource processes including recruitment, performance, and payroll setup.",
       "Higher Education Domain": "Enterprise Administration",
       "Key Capabilities": "Staff recruitment & onboarding; Performance reviews; Training & development; Leave management"
     },
@@ -201,7 +201,7 @@
       "ID": "PAY",
       "TEXT": "Payroll",
       "TYPE": "SYSTEM",
-      "Description": "Execute payroll runs, deductions, tax, and pension management for institutional employees and student bursaries",
+      "Description": "Execute payroll runs, deductions, tax, and pension management for institutional employees and student bursaries.",
       "Higher Education Domain": "Enterprise Administration",
       "Key Capabilities": "Payroll calculation; Tax & pension contributions; Bursary & stipend processing; Compliance reporting"
     },
@@ -209,7 +209,7 @@
       "ID": "CRIS",
       "TEXT": "CRIS",
       "TYPE": "SYSTEM",
-      "Description": "Centralise and track research outputs, publications, and researcher profiles",
+      "Description": "Centralise and track research outputs, publications, and researcher profiles.",
       "Higher Education Domain": "Research & Innovation",
       "Key Capabilities": "Publications management; Researcher profiles; Compliance reporting; Collaboration tracking"
     },
@@ -217,7 +217,7 @@
       "ID": "RP",
       "TEXT": "Research Proposals",
       "TYPE": "SYSTEM",
-      "Description": "Support the submission, management, and tracking of research funding and contracts",
+      "Description": "Support the submission, management, and tracking of research funding and contracts.",
       "Higher Education Domain": "Research & Innovation",
       "Key Capabilities": "Grant application workflow; Compliance checks; Award management; Contract tracking"
     },
@@ -225,7 +225,7 @@
       "ID": "CMS",
       "TEXT": "Content Mgmt Systems",
       "TYPE": "SYSTEM",
-      "Description": "Manage and publish digital content for websites, intranets, and portals",
+      "Description": "Manage and publish digital content for websites, intranets, and portals.",
       "Higher Education Domain": "IT & Digital Infrastructure",
       "Key Capabilities": "Web content creation; Content workflow; Version control; Publishing & archiving"
     },
@@ -233,7 +233,7 @@
       "ID": "ITSM",
       "TEXT": "IT Service Mgmt",
       "TYPE": "SYSTEM",
-      "Description": "Coordinate and track IT support, incidents, requests, and assets",
+      "Description": "Coordinate and track IT support, incidents, requests, and assets.",
       "Higher Education Domain": "IT & Digital Infrastructure",
       "Key Capabilities": "Incident management; Service request tracking; Configuration & asset management; Knowledge base"
     },
@@ -241,7 +241,7 @@
       "ID": "ESB",
       "TEXT": "Enterprise Service Bus",
       "TYPE": "SYSTEM",
-      "Description": "Facilitate system-to-system integration and message brokering between applications",
+      "Description": "Facilitate system-to-system integration and message brokering between applications.",
       "Higher Education Domain": "IT & Digital Infrastructure",
       "Key Capabilities": "Message routing; Data transformation; Enterprise integration patterns; Event-driven architecture"
     },
@@ -249,15 +249,47 @@
       "ID": "WELL",
       "TEXT": "Student Wellbeing & Disability",
       "TYPE": "SYSTEM",
-      "Description": "Manage student wellbeing, disability declarations, mental health support, and reasonable adjustments",
+      "Description": "Manage student wellbeing, disability declarations, mental health support, reasonable adjustments, and exceptional circumstances casework.",
       "Higher Education Domain": "Student Lifecycle & Experience",
-      "Key Capabilities": "Disability assessment & DSA; Reasonable adjustments management; Mental health case management; Early intervention alerts"
+      "Key Capabilities": "Disability assessment & DSA; Reasonable adjustments management; Exceptional circumstances case management; Mental health case management; Early intervention alerts"
+    },
+    {
+      "ID": "EXAMS",
+      "TEXT": "Exam Scheduling",
+      "TYPE": "SYSTEM",
+      "Description": "Plan and manage the operational logistics of formal examinations, including timetabling, room allocation, invigilation scheduling, seating plans, and candidate entry management. Exam Scheduling is responsible for the physical and logistical delivery of examinations. Academic governance — including moderation, classification, external examiner scrutiny, and formal ratification — sits with the Exam Board, supported by Student Records and any local assessment administration tooling.",
+      "Higher Education Domain": "Teaching & Learning",
+      "Key Capabilities": "Exam timetabling; Room and invigilation allocation; Seating plan generation; Candidate entry management; Accommodation logistics (separate rooms, rest break scheduling)"
+    },
+    {
+      "ID": "AI",
+      "TEXT": "Academic Integrity",
+      "TYPE": "SYSTEM",
+      "Description": "Manage academic misconduct allegations, investigation workflows, panel decisions, and penalties arising from plagiarism, collusion, cheating, or other breaches of academic integrity regulations.",
+      "Higher Education Domain": "Teaching & Learning",
+      "Key Capabilities": "Misconduct case management; Evidence handling; Investigation workflow; Panel decision recording; Penalty determination; Outcome notification"
+    },
+    {
+      "ID": "EXAMBOARD",
+      "TEXT": "Exam Board",
+      "TYPE": "ACTOR",
+      "Description": "Formal academic decision-making body responsible for reviewing, confirming, and ratifying student results in accordance with institutional regulations and sector expectations. Operates at two levels: the Module Assessment Board, which confirms and moderates individual module marks and ensures marking consistency; and the Award and Progression Board, which determines degree classifications, progression decisions, resit requirements, compensation and condonement outcomes, and final awards. The Exam Board reviews candidate profiles and board data generated from Student Records, considers exceptional circumstances under institutional regulations, and formally ratifies outcomes. External examiner confirmation forms part of the ratification process before results are locked. Ratified decisions are authoritative and cannot be amended without formal institutional process such as appeal or approved correction under regulation.",
+      "Higher Education Domain": "Teaching & Learning",
+      "Key Capabilities": "Module result confirmation and moderation oversight; Degree classification and award decisions; Progression and resit determinations; Exceptional circumstances consideration; Compensation and condonement application; Outcome sign-off and record lock authorisation"
+    },
+    {
+      "ID": "EXTEX",
+      "TEXT": "External Examiner",
+      "TYPE": "ACTOR",
+      "Description": "Independent academic appointed from another UK higher education institution to assure the comparability of academic standards and the fairness of marking across cohorts. Reviews a sample of assessed work and supporting data made available through institutional systems, scrutinises pre-board calculations and classification decisions, and attends the Exam Board to challenge or endorse outcomes. External examiner confirmation forms part of the ratification process before results are formally confirmed and published. Submits an annual report to the institution in line with sector expectations.",
+      "Higher Education Domain": "Teaching & Learning",
+      "Key Capabilities": "Sample marking and moderation review; Standards comparability assurance; Pre-board classification scrutiny; Exam Board attendance and challenge; Annual report submission; Ratification confirmation"
     },
     {
       "ID": "UCAS",
       "TEXT": "UCAS",
       "TYPE": "ACTOR",
-      "Description": "Universities and Colleges Admissions Service \u2014 the national admissions processing body for UK higher education",
+      "Description": "Universities and Colleges Admissions Service — the national admissions processing body for UK higher education.",
       "Higher Education Domain": "Student Lifecycle & Experience",
       "Key Capabilities": "Application processing; Offer and acceptance management; Clearing coordination; Qualification verification"
     },
@@ -265,7 +297,7 @@
       "ID": "HESA",
       "TEXT": "HESA",
       "TYPE": "ACTOR",
-      "Description": "Higher Education Statistics Agency \u2014 statutory body responsible for collecting and publishing data about UK higher education",
+      "Description": "Higher Education Statistics Agency — statutory body responsible for collecting and publishing data about UK higher education.",
       "Higher Education Domain": "Compliance & Regulatory Reporting",
       "Key Capabilities": "Statutory student data collection; HESA ID assignment; Data quality validation; Sector benchmarking"
     },
@@ -273,7 +305,7 @@
       "ID": "SLC",
       "TEXT": "Student Loans Company",
       "TYPE": "ACTOR",
-      "Description": "Government-owned company administering student loans and grants on behalf of the UK government",
+      "Description": "Government-owned company administering student loans and grants on behalf of the UK government.",
       "Higher Education Domain": "Compliance & Regulatory Reporting",
       "Key Capabilities": "Tuition fee loan processing; Maintenance loan administration; Enrolment confirmation; Overpayment recovery"
     },
@@ -281,9 +313,9 @@
       "ID": "UKVI",
       "TEXT": "UK Visas & Immigration",
       "TYPE": "ACTOR",
-      "Description": "Home Office agency responsible for student visa compliance; institutions hold a Tier 4 sponsor licence",
+      "Description": "Home Office agency responsible for student visa compliance; institutions hold a Student sponsor licence.",
       "Higher Education Domain": "Compliance & Regulatory Reporting",
-      "Key Capabilities": "CAS management; Tier 4 attendance monitoring; Visa status tracking; Sponsor compliance reporting"
+      "Key Capabilities": "CAS management; Attendance monitoring compliance; Visa status tracking; Sponsor compliance reporting"
     }
   ],
   "interactions": [
@@ -301,7 +333,7 @@
       "TOID": "CM",
       "TYPE": "->",
       "TEXT": "Enrolment, completion, and performance metrics",
-      "Description": "SIS delivers enrolment, completion, and performance metrics to Curriculum Management. These analytics inform data-driven updates to programmes, modules, and prerequisites, ensuring academic offerings remain rigorous and aligned with student outcomes."
+      "Description": "Student Records provides enrolment, completion, and performance metrics to Curriculum Management. These analytics inform data-driven updates to programmes, modules, and prerequisites."
     },
     {
       "ID": "F003",
@@ -317,7 +349,7 @@
       "TOID": "SIS",
       "TYPE": "->",
       "TEXT": "Finalised timetable and room allocation data",
-      "Description": "The Timetabling system sends finalised scheduling information and related updates back to Student Records, so students and administrative staff have consistent data."
+      "Description": "The Timetabling system sends finalised scheduling information and related updates back to Student Records so students and administrative staff have consistent data."
     },
     {
       "ID": "F005",
@@ -325,7 +357,7 @@
       "TOID": "SIS",
       "TYPE": "->",
       "TEXT": "Applicant, offer, and admissions decision data",
-      "Description": "The CRM system manages prospective student enquiries, applications, and admissions decisions before they become fully enrolled students. This data flows to Student Records so that the institution can officially register admitted individuals."
+      "Description": "The CRM system manages prospective student enquiries, applications, and admissions decisions before individuals become enrolled students. This data flows to Student Records so that the institution can officially register admitted individuals."
     },
     {
       "ID": "F006",
@@ -333,7 +365,7 @@
       "TOID": "CRM",
       "TYPE": "->",
       "TEXT": "Student enrolment status and progression updates",
-      "Description": "Once a prospect becomes an enrolled student, Student Records manages their academic progress. Relevant updates flow back to the CRM so the institution can maintain accurate engagement information and manage ongoing communications or alumni relations."
+      "Description": "Once a prospect becomes an enrolled student, Student Records manages their academic progress. Relevant updates flow back to the CRM so the institution can maintain accurate engagement information and communications."
     },
     {
       "ID": "F007",
@@ -341,7 +373,7 @@
       "TOID": "SIS",
       "TYPE": "->",
       "TEXT": "Library loans, fines, and overdue notifications",
-      "Description": "The Library system sends circulation updates and overdue notifications to the Student Records system, ensuring that a student's record accurately reflects any outstanding obligations or statuses."
+      "Description": "The Library system sends circulation updates and overdue notifications to Student Records so that the student record accurately reflects any outstanding obligations or statuses."
     },
     {
       "ID": "F008",
@@ -349,7 +381,7 @@
       "TOID": "LIB",
       "TYPE": "->",
       "TEXT": "Student enrolment status and access rights",
-      "Description": "Student Records provides the Library with up-to-date student status and registration data, so the Library system can grant or restrict library privileges accordingly."
+      "Description": "Student Records provides the Library with up-to-date student status and registration data so library privileges can be granted or restricted appropriately."
     },
     {
       "ID": "F009",
@@ -357,7 +389,7 @@
       "TOID": "FIN",
       "TYPE": "->",
       "TEXT": "Enrolment and tuition fee liability data",
-      "Description": "Student Records provides the Finance system with key enrolment and fee-related data so the institution can accurately bill students and set up payment plans."
+      "Description": "Student Records provides Finance with key enrolment and fee-related data so the institution can accurately bill students and set up payment plans."
     },
     {
       "ID": "F010",
@@ -365,7 +397,7 @@
       "TOID": "SIS",
       "TYPE": "->",
       "TEXT": "Payment confirmations and financial hold status",
-      "Description": "Once payments are made or financial statuses change, Finance sends updates back to Student Records to keep a single source of truth about each student's financial standing."
+      "Description": "Finance is the system of record for financial transactions, invoices, and payment processing. Once a financial event occurs, Finance transmits the outcome to Student Records, which becomes the system of record for the effect on the student's standing."
     },
     {
       "ID": "F011",
@@ -381,7 +413,7 @@
       "TOID": "EWP",
       "TYPE": "->",
       "TEXT": "Enrolment status, timetables, grades, and notifications",
-      "Description": "Student Records holds the authoritative information on each student's enrolment, schedule, and academic progress, which is then surfaced in the Enterprise Web Portal for easy access."
+      "Description": "Student Records holds the authoritative information on each student's enrolment, schedule, and academic progress, which is surfaced in the Enterprise Web Portal."
     },
     {
       "ID": "F013",
@@ -389,7 +421,7 @@
       "TOID": "SIS",
       "TYPE": "->",
       "TEXT": "Attendance records and absence alerts",
-      "Description": "Attendance Monitoring captures real-time or scheduled data about student presence in lectures, seminars, labs, or other learning activities. This data is forwarded to Student Records to keep a consolidated record of each student's engagement."
+      "Description": "Attendance Monitoring captures data about student presence in lectures, seminars, labs, or other learning activities. This data is forwarded to Student Records to keep a consolidated record of student engagement."
     },
     {
       "ID": "F014",
@@ -397,7 +429,7 @@
       "TOID": "AM",
       "TYPE": "->",
       "TEXT": "Student roster and academic calendar data",
-      "Description": "Student Records is the main repository of enrolment and course information. This data flows back to Attendance Monitoring so the attendance system knows which students are associated with each class or activity."
+      "Description": "Student Records is the main repository of enrolment and course information. This data flows to Attendance Monitoring so the system knows which students are associated with each class or activity."
     },
     {
       "ID": "F015",
@@ -413,7 +445,7 @@
       "TOID": "SIS",
       "TYPE": "->",
       "TEXT": "Assessment grades, completion status, and academic alerts",
-      "Description": "Once assessments are completed within the VLE, key results flow back into Student Records to maintain an official record of student performance."
+      "Description": "Once assessments are completed within the VLE, key results flow back into Student Records to support the official academic record and downstream assessment processing."
     },
     {
       "ID": "F017",
@@ -445,7 +477,7 @@
       "TOID": "SIS",
       "TYPE": "->",
       "TEXT": "Room allocation confirmations and availability updates",
-      "Description": "Estates captures building usage, room allocations, and event schedules in real time. This information is sent back to Student Records for accurate record-keeping and to inform academic scheduling."
+      "Description": "Estates captures building usage, room allocations, and event schedules. This information is sent back to Student Records for accurate record-keeping and to inform academic scheduling."
     },
     {
       "ID": "F021",
@@ -461,7 +493,7 @@
       "TOID": "SIS",
       "TYPE": "->",
       "TEXT": "Credential updates, account locks, and role assignments",
-      "Description": "IAM manages the authentication and authorisation layers for institutional applications. This data flows back to SIS to keep records consistent with login activity and any security flags."
+      "Description": "IAM manages the authentication and authorisation layers for institutional applications. This data flows back to Student Records to keep records consistent with login activity and security status."
     },
     {
       "ID": "F023",
@@ -477,7 +509,7 @@
       "TOID": "SIS",
       "TYPE": "->",
       "TEXT": "Archived record confirmations, document links, and access logs",
-      "Description": "After documents are archived or updated in the EDRMS, it sends relevant status information or version links back to Student Records so that administrative staff and students can view the most recent files."
+      "Description": "After documents are archived or updated in the EDRMS, it sends relevant status information or version links back to Student Records."
     },
     {
       "ID": "F025",
@@ -485,7 +517,7 @@
       "TOID": "OIV",
       "TYPE": "->",
       "TEXT": "Student identity data and verification request",
-      "Description": "The Student Records system initiates ID verification checks by sending essential student data and relevant documentation to the Online ID Verification service."
+      "Description": "Student Records initiates ID verification checks by sending essential student data and relevant documentation to the Online ID Verification service."
     },
     {
       "ID": "F026",
@@ -493,7 +525,7 @@
       "TOID": "SIS",
       "TYPE": "->",
       "TEXT": "Verification outcome, confidence scores, and fraud flags",
-      "Description": "Once the verification process is completed, the Online ID Verification service sends the outcome, along with supporting details, back to the Student Records system."
+      "Description": "Once the verification process is completed, the Online ID Verification service sends the outcome, along with supporting details, back to Student Records."
     },
     {
       "ID": "F027",
@@ -501,7 +533,7 @@
       "TOID": "BI",
       "TYPE": "->",
       "TEXT": "Student performance, enrolment, and progression data",
-      "Description": "Student Records provides the Business Intelligence platform with structured extracts of student performance, enrolment volumes, module outcomes, and retention data. This enables institution-wide reporting, benchmarking, and strategic planning."
+      "Description": "Student Records provides the Business Intelligence platform with structured extracts of student performance, enrolment volumes, module outcomes, and retention data."
     },
     {
       "ID": "F028",
@@ -509,7 +541,7 @@
       "TOID": "SIS",
       "TYPE": "->",
       "TEXT": "At-risk flags and predictive intervention alerts",
-      "Description": "The BI platform generates predictive analytics and at-risk flags based on cross-system analysis. These alerts are written back to Student Records to enable timely pastoral and academic interventions."
+      "Description": "Business Intelligence is the system of record for the analytical process. Once a flag is written to Student Records, SIS becomes the system of record for the intervention record."
     },
     {
       "ID": "F029",
@@ -517,7 +549,7 @@
       "TOID": "DW",
       "TYPE": "->",
       "TEXT": "Bulk student data extracts for longitudinal warehousing",
-      "Description": "Student Records provides the Data Warehouse with full and incremental extracts of student data, including enrolment history, academic outcomes, module registrations, and demographic records, supporting longitudinal analysis and statutory reporting."
+      "Description": "Student Records provides the Data Warehouse with full and incremental extracts of student data, including enrolment history, academic outcomes, module registrations, and demographic records."
     },
     {
       "ID": "F030",
@@ -533,7 +565,7 @@
       "TOID": "SETS",
       "TYPE": "->",
       "TEXT": "Module roster and student registration data for survey distribution",
-      "Description": "Student Records provides the Student Evaluation of Teaching system with the authoritative list of students registered on each module, enabling targeted and timely survey distribution at the appropriate point in the academic calendar."
+      "Description": "Student Records provides the Student Evaluation of Teaching system with the authoritative list of students registered on each module, enabling targeted and timely survey distribution."
     },
     {
       "ID": "F032",
@@ -541,7 +573,7 @@
       "TOID": "SIS",
       "TYPE": "->",
       "TEXT": "Survey completion rates and aggregated feedback scores",
-      "Description": "Once surveys close, the Student Evaluation system returns completion statistics and aggregated module-level feedback scores to Student Records, supporting quality assurance processes and academic committee reporting."
+      "Description": "Once surveys close, the Student Evaluation system returns completion statistics and aggregated module-level feedback scores to Student Records."
     },
     {
       "ID": "F033",
@@ -549,7 +581,7 @@
       "TOID": "HR",
       "TYPE": "->",
       "TEXT": "Graduate Teaching Assistant records and student-staff roles",
-      "Description": "Student Records provides HR with the details of students holding dual roles, such as Graduate Teaching Assistants, research assistants, or student ambassadors. This enables HR to manage employment contracts, right-to-work checks, and payroll setup for student-staff."
+      "Description": "Student Records provides HR with the details of students holding dual roles, such as Graduate Teaching Assistants, research assistants, or student ambassadors."
     },
     {
       "ID": "F034",
@@ -557,7 +589,7 @@
       "TOID": "SIS",
       "TYPE": "->",
       "TEXT": "Academic supervisor and personal tutor assignments",
-      "Description": "HR maintains the authoritative record of staff roles and departmental assignments. This information flows to Student Records to populate supervisor, personal tutor, and academic advisor relationships against each student record."
+      "Description": "HR is the system of record for the staff assignment process. Once an assignment is confirmed, the outcome flows to Student Records, which becomes the system of record for the academic relationship as it affects the student."
     },
     {
       "ID": "F035",
@@ -565,7 +597,7 @@
       "TOID": "PAY",
       "TYPE": "->",
       "TEXT": "Bursary-eligible student records and GTA payment authorisations",
-      "Description": "Student Records provides Payroll with authorised lists of students eligible for bursaries, hardship funds, or stipend payments, along with GTA hours approved for payment. Enrolment status is included to confirm ongoing eligibility."
+      "Description": "Student Records provides Payroll with authorised lists of students eligible for bursaries, hardship funds, or stipend payments, along with GTA hours approved for payment."
     },
     {
       "ID": "F036",
@@ -573,7 +605,7 @@
       "TOID": "SIS",
       "TYPE": "->",
       "TEXT": "Bursary and stipend payment confirmations",
-      "Description": "Payroll confirms to Student Records when bursary, stipend, or hardship payments have been processed, allowing the student record to be updated with payment history and supporting financial aid audit trails."
+      "Description": "Payroll confirms to Student Records when bursary, stipend, or hardship payments have been processed."
     },
     {
       "ID": "F037",
@@ -581,7 +613,7 @@
       "TOID": "CRIS",
       "TYPE": "->",
       "TEXT": "Research student enrolment and researcher profile data",
-      "Description": "Student Records provides the Current Research Information System with enrolment data for postgraduate research students, enabling CRIS to create and maintain researcher profiles, link students to departments and supervisors, and support REF and open access compliance."
+      "Description": "Student Records provides the Current Research Information System with enrolment data for postgraduate research students."
     },
     {
       "ID": "F038",
@@ -589,7 +621,7 @@
       "TOID": "SIS",
       "TYPE": "->",
       "TEXT": "Research degree milestones and publication records",
-      "Description": "CRIS returns research progression milestones \u2014 such as confirmation of registration, thesis submission, and viva outcomes \u2014 along with publication records to Student Records, ensuring that the student's academic record reflects research activity and outputs."
+      "Description": "CRIS returns research progression milestones — such as confirmation of registration, thesis submission, and viva outcomes — along with publication records to Student Records."
     },
     {
       "ID": "F039",
@@ -597,7 +629,7 @@
       "TOID": "RP",
       "TYPE": "->",
       "TEXT": "Student researcher eligibility and supervisor assignment data",
-      "Description": "Student Records provides Research Proposals with verified details of students named on grant applications, their enrolment status, programme of study, and assigned supervisors, supporting due diligence and funder eligibility checks."
+      "Description": "Student Records provides Research Proposals with verified details of students named on grant applications, their enrolment status, programme of study, and assigned supervisors."
     },
     {
       "ID": "F040",
@@ -605,7 +637,7 @@
       "TOID": "SIS",
       "TYPE": "->",
       "TEXT": "Funded research studentship award records",
-      "Description": "Research Proposals confirms to Student Records when a studentship has been awarded, including funder, award value, duration, and any conditions attached. This allows the SIS to associate funding records with the student and supports fee liability management."
+      "Description": "Research Proposals is the system of record for the funding process. Once a studentship is confirmed, the award outcome flows to Student Records, which becomes the system of record for what that funding means for the student academically and financially."
     },
     {
       "ID": "F041",
@@ -613,7 +645,7 @@
       "TOID": "CMS",
       "TYPE": "->",
       "TEXT": "Student cohort and programme data for content personalisation",
-      "Description": "Student Records provides the Content Management System with cohort, programme, and faculty data to enable targeted and personalised content delivery. This allows the CMS to surface programme-specific news, departmental announcements, and relevant regulatory updates to the right student audiences."
+      "Description": "Student Records provides the Content Management System with cohort, programme, and faculty data to enable targeted and personalised content delivery."
     },
     {
       "ID": "F042",
@@ -621,7 +653,7 @@
       "TOID": "SIS",
       "TYPE": "->",
       "TEXT": "Published regulatory and policy notifications",
-      "Description": "The CMS notifies Student Records when significant regulatory, policy, or procedural documents are published that require annotation against student records \u2014 for example, updated academic regulations, changes to fee policy, or statutory information notices."
+      "Description": "The CMS notifies Student Records when significant regulatory, policy, or procedural documents are published that require annotation against student records."
     },
     {
       "ID": "F043",
@@ -629,7 +661,7 @@
       "TOID": "ITSM",
       "TYPE": "->",
       "TEXT": "Student identity and account data for incident context",
-      "Description": "Student Records provides the IT Service Management platform with student identity, enrolment status, and system access details. This enables service desk staff to validate student identity, understand their service entitlements, and contextualise incidents or requests related to student accounts."
+      "Description": "Student Records provides the IT Service Management platform with student identity, enrolment status, and system access details."
     },
     {
       "ID": "F044",
@@ -637,7 +669,7 @@
       "TOID": "SIS",
       "TYPE": "->",
       "TEXT": "Service request outcomes affecting student account status",
-      "Description": "ITSM notifies Student Records of resolved service requests or incidents that result in changes to a student's account status, such as account unlocks following security incidents, system access restorations, or completion of data correction requests raised by students."
+      "Description": "ITSM notifies Student Records of resolved service requests or incidents that result in changes to a student's account status."
     },
     {
       "ID": "F045",
@@ -645,7 +677,7 @@
       "TOID": "SIS",
       "TYPE": "->",
       "TEXT": "Application data, offer decisions, and clearing records",
-      "Description": "UCAS transmits applicant data, including personal details, qualification records, programme preferences, and offer/acceptance decisions to Student Records. This flow is the primary source of pre-enrolment data for UK undergraduate admissions, including Clearing and Adjustment records."
+      "Description": "UCAS transmits applicant data, including personal details, qualification records, programme preferences, and offer/acceptance decisions to Student Records."
     },
     {
       "ID": "F046",
@@ -653,7 +685,7 @@
       "TOID": "UCAS",
       "TYPE": "->",
       "TEXT": "Enrolment confirmation and withdrawal notifications",
-      "Description": "Student Records confirms successful enrolment back to UCAS once an applicant has registered, and notifies UCAS of any withdrawals, deferrals, or no-shows. This data is used by UCAS to update applicant records and release conditional holds on other applications."
+      "Description": "Student Records confirms successful enrolment back to UCAS once an applicant has registered, and notifies UCAS of withdrawals, deferrals, or no-shows."
     },
     {
       "ID": "F047",
@@ -661,7 +693,7 @@
       "TOID": "HESA",
       "TYPE": "->",
       "TEXT": "Statutory student data return",
-      "Description": "Student Records submits the annual statutory HESA Student record return, covering all enrolled students, their programme details, module registrations, qualifications awarded, and demographic data. Accurate and timely submission is a legal requirement and underpins institutional funding allocation and sector benchmarking."
+      "Description": "Student Records submits the annual statutory HESA Student record return, covering enrolled students, programme details, module registrations, qualifications awarded, and demographic data."
     },
     {
       "ID": "F048",
@@ -669,7 +701,7 @@
       "TOID": "SIS",
       "TYPE": "->",
       "TEXT": "Validation reports and HESA student identifiers",
-      "Description": "HESA returns data quality validation reports, error notifications, and the authoritative HESA student identifiers assigned to each student. These identifiers must be written back to Student Records and used in all subsequent statutory submissions and inter-institutional data exchanges."
+      "Description": "HESA is the authority for assigning student identifiers and validating statutory submission data. Once identifiers are assigned and validation outcomes are returned, Student Records becomes the system of record for storing and propagating the HESA student identifier."
     },
     {
       "ID": "F049",
@@ -677,7 +709,7 @@
       "TOID": "SLC",
       "TYPE": "->",
       "TEXT": "Enrolment confirmation for tuition fee and maintenance loan release",
-      "Description": "Student Records confirms to the Student Loans Company that an eligible student is enrolled and attending, triggering the release of tuition fee loans to the institution and maintenance loan payments to the student. Accurate and timely submission is critical to institutional cash flow and student financial welfare."
+      "Description": "Student Records confirms to the Student Loans Company that an eligible student is enrolled and attending, triggering the release of tuition fee loans to the institution and maintenance loan payments to the student."
     },
     {
       "ID": "F050",
@@ -685,15 +717,15 @@
       "TOID": "SIS",
       "TYPE": "->",
       "TEXT": "Loan entitlement, payment status, and overpayment notifications",
-      "Description": "The Student Loans Company notifies Student Records of loan entitlement decisions, payment confirmations, changes to loan status (such as suspension or overpayment recovery), and any queries requiring institutional response. This data supports fee liability management and student financial guidance."
+      "Description": "The Student Loans Company is the system of record for the loan process. Once a loan decision or payment event occurs, Student Records becomes the system of record for the fee liability and financial standing implications for the student."
     },
     {
       "ID": "F051",
       "FROMID": "SIS",
       "TOID": "UKVI",
       "TYPE": "->",
-      "TEXT": "CAS creation requests and Tier 4 attendance data",
-      "Description": "Student Records provides UKVI with Confirmation of Acceptance for Studies (CAS) creation requests for international students requiring a Student visa, along with ongoing attendance monitoring data required under the institution's Tier 4 sponsor licence obligations. Failure to report accurately can result in licence suspension."
+      "TEXT": "CAS creation requests and attendance compliance data",
+      "Description": "Student Records provides UKVI with Confirmation of Acceptance for Studies creation requests for international students requiring a Student visa, along with ongoing attendance monitoring data required under the institution's sponsor licence obligations."
     },
     {
       "ID": "F052",
@@ -701,7 +733,7 @@
       "TOID": "SIS",
       "TYPE": "->",
       "TEXT": "Visa status updates and sponsor compliance alerts",
-      "Description": "UKVI notifies the institution of changes to a student's visa status, including grants, refusals, curtailments, and compliance alerts triggered by attendance or engagement failures. Student Records must be updated promptly to trigger appropriate follow-up action and maintain sponsor licence compliance."
+      "Description": "UKVI notifies the institution of changes to a student's visa status, including grants, refusals, curtailments, and compliance alerts."
     },
     {
       "ID": "F053",
@@ -709,15 +741,15 @@
       "TOID": "WELL",
       "TYPE": "->",
       "TEXT": "Student profiles, disability declarations, and academic records",
-      "Description": "Student Records provides the Student Wellbeing and Disability system with core student data, including declared disabilities, programme details, academic performance indicators, and any existing flags or holds. This enables the wellbeing team to contextualise support needs and ensure continuity of care across the student lifecycle."
+      "Description": "Student Records provides the Student Wellbeing and Disability system with core student data, including declared disabilities, programme details, academic performance indicators, and any existing flags or holds."
     },
     {
       "ID": "F054",
       "FROMID": "WELL",
       "TOID": "SIS",
       "TYPE": "->",
-      "TEXT": "Reasonable adjustment plans, DSA records, and support notes",
-      "Description": "The Student Wellbeing and Disability system returns approved reasonable adjustment plans, Disabled Students Allowance (DSA) entitlements, mental health support agreements, and case notes to Student Records. These records must be actioned across downstream systems \u2014 including the VLE, Attendance Monitoring, and Exams \u2014 to ensure legal compliance with the Equality Act 2010."
+      "TEXT": "Approved adjustment outcomes, DSA records, and support notes",
+      "Description": "The Student Wellbeing and Disability system is the system of record for the reasonable adjustment process — it owns the case, the evidence, and the approval decision. Once a determination is reached, the approved outcome is passed to Student Records, which becomes the system of record for the academic effect of that decision. SIS holds the approved adjustment, DSA entitlement, or support agreement against the student record and is responsible for propagating it to downstream operational systems."
     },
     {
       "ID": "F055",
@@ -725,7 +757,7 @@
       "TOID": "BI",
       "TYPE": "->",
       "TEXT": "Learning analytics and digital engagement data",
-      "Description": "The VLE provides the Business Intelligence platform with detailed learning analytics, including login frequency, content access patterns, assessment submission behaviours, and discussion forum engagement. This data enriches institutional analytics beyond attendance and grades, supporting early identification of disengaged students."
+      "Description": "The VLE provides the Business Intelligence platform with detailed learning analytics, including login frequency, content access patterns, assessment submission behaviours, and discussion forum engagement."
     },
     {
       "ID": "F056",
@@ -733,7 +765,7 @@
       "TOID": "BI",
       "TYPE": "->",
       "TEXT": "Attendance trends and engagement analytics",
-      "Description": "Attendance Monitoring provides the BI platform with aggregated and individual attendance trend data, absence patterns, and engagement scores. Combined with VLE and academic data, this enables multi-dimensional student retention analytics and supports institutional KPI reporting."
+      "Description": "Attendance Monitoring provides the BI platform with aggregated and individual attendance trend data, absence patterns, and engagement scores."
     },
     {
       "ID": "F057",
@@ -741,7 +773,7 @@
       "TOID": "BI",
       "TYPE": "->",
       "TEXT": "Consolidated multi-system data feeds for analytics",
-      "Description": "The Data Warehouse provides the BI platform with consolidated, cleansed, and historicised data drawn from multiple source systems including SIS, Finance, HR, and VLE. This is the primary data feed for strategic dashboards, management information reports, and regulatory benchmarking analysis."
+      "Description": "The Data Warehouse provides the BI platform with consolidated, cleansed, and historicised data drawn from multiple source systems including Student Records, Finance, HR, and the VLE."
     },
     {
       "ID": "F058",
@@ -749,23 +781,95 @@
       "TOID": "EWP",
       "TYPE": "->",
       "TEXT": "Personalised communications and targeted content",
-      "Description": "The CRM system pushes personalised communications, targeted notifications, and campaign content to the Enterprise Web Portal based on student segment, lifecycle stage, or engagement profile. This enables the portal to surface relevant messages \u2014 such as open day reminders for applicants or alumni engagement content for graduates \u2014 without requiring students to navigate away from their primary portal."
+      "Description": "The CRM system pushes personalised communications, targeted notifications, and campaign content to the Enterprise Web Portal based on student segment, lifecycle stage, or engagement profile."
     },
     {
       "ID": "F059",
-      "FROMID": "WELL",
+      "FROMID": "SIS",
       "TOID": "VLE",
       "TYPE": "->",
-      "TEXT": "Reasonable adjustments for course content and assessment delivery",
-      "Description": "The Student Wellbeing and Disability system pushes approved reasonable adjustments directly to the VLE, including extended submission deadlines, alternative assessment formats, accessible content requirements, and examination accommodations. Timely and accurate propagation of adjustments is a legal obligation under the Equality Act 2010."
+      "TEXT": "Approved adjustment outcomes for course content and assessment delivery",
+      "Description": "Student Records distributes approved reasonable adjustment outcomes to the VLE. The VLE must consume adjustment data from Student Records, not directly from the Wellbeing system, to ensure a single consistent and auditable record. Adjustments distributed include extended submission deadlines, alternative assessment formats, accessible content requirements, and assessment accommodations."
     },
     {
       "ID": "F060",
-      "FROMID": "WELL",
+      "FROMID": "SIS",
       "TOID": "AM",
       "TYPE": "->",
-      "TEXT": "Adjusted attendance thresholds and exemption records",
-      "Description": "The Student Wellbeing and Disability system notifies Attendance Monitoring of approved adjustments to attendance requirements, including reduced attendance thresholds for students with chronic health conditions, exemptions for mental health absences, and temporary suspensions of attendance alerts during periods of approved medical leave."
+      "TEXT": "Approved attendance adjustment outcomes",
+      "Description": "Student Records distributes approved attendance adjustment outcomes to Attendance Monitoring. Attendance Monitoring must consume adjustment data from Student Records, not directly from the Wellbeing system."
+    },
+    {
+      "ID": "F061",
+      "FROMID": "SIS",
+      "TOID": "EXAMS",
+      "TYPE": "->",
+      "TEXT": "Student exam entries, module registrations, and approved examination accommodations",
+      "Description": "Student Records provides the Exam Scheduling system with the data required for operational examination delivery: the authoritative list of students entered for each assessment, their programme and level details, and approved physical examination accommodations held in Student Records. Exceptional circumstances flags and academic governance data are surfaced to the Exam Board via Student Records board preparation, not via Exam Scheduling."
+    },
+    {
+      "ID": "F062",
+      "FROMID": "EXAMS",
+      "TOID": "SIS",
+      "TYPE": "->",
+      "TEXT": "Finalised exam timetables, seating plans, and candidate numbers",
+      "Description": "The Exam Scheduling system returns finalised examination timetables, candidate seating assignments, and candidate numbers to Student Records for publication via the student portal. Academic outcomes are returned to Student Records by the Exam Board following ratification, not by Exam Scheduling."
+    },
+    {
+      "ID": "F063",
+      "FROMID": "WELL",
+      "TOID": "SIS",
+      "TYPE": "->",
+      "TEXT": "Approved reasonable adjustment outcomes",
+      "Description": "The Student Wellbeing and Disability system is the system of record for the reasonable adjustment process — owning the case, the evidence, the assessment, and the approval decision. Reasonable adjustments cover ongoing accommodations for disability or long-term health conditions, including DSA entitlements, examination accommodations, and, where applicable, system-enforced operational rule treatments such as late penalty suppression or extended submission windows. Once a determination is reached, the approved outcome is transmitted to Student Records. Student Records becomes the system of record for the academic operational effect of that decision and is solely responsible for distributing adjustment outcomes to downstream systems. No downstream system should receive adjustment data directly from the Wellbeing system."
+    },
+    {
+      "ID": "F064",
+      "FROMID": "SIS",
+      "TOID": "EXAMBOARD",
+      "TYPE": "->",
+      "TEXT": "Board data, candidate result profiles, exceptional circumstances outcomes, approved adjustment indicators, misconduct outcomes, and calculated recommendations",
+      "Description": "Student Records prepares and presents the complete dataset required for formal Exam Board consideration. This includes module marks aggregated from all assessment sources, pre-board calculated profiles and degree classification recommendations generated under institutional rules, approved exceptional circumstances outcomes, approved reasonable adjustment indicators where relevant to board visibility, and academic misconduct outcomes. Student Records is the system of record for all of this data. The Exam Board reviews this material, applies academic judgement, and formally ratifies outcomes."
+    },
+    {
+      "ID": "F065",
+      "FROMID": "EXAMBOARD",
+      "TOID": "SIS",
+      "TYPE": "->",
+      "TEXT": "Ratified academic decisions and board outcomes",
+      "Description": "The Exam Board returns formally approved academic decisions to Student Records, which becomes the authoritative and locked record of all ratified outcomes. This includes confirmed module marks, progression decisions, degree classifications, resit requirements, compensation and condonement decisions, and the outcomes of exceptional circumstances considered under institutional regulations. External examiner confirmation forms part of the ratification process before outcomes are confirmed and recorded. Once ratified outcomes are written to Student Records and the record is locked, amendments can only be made through formal institutional process."
+    },
+    {
+      "ID": "F066",
+      "FROMID": "WELL",
+      "TOID": "SIS",
+      "TYPE": "->",
+      "TEXT": "Approved exceptional circumstances outcomes",
+      "Description": "The Student Wellbeing and Disability system is the system of record for the exceptional circumstances process — managing student submissions of personal, medical, or compassionate circumstances, reviewing evidence, and determining whether a claim is upheld. Exceptional circumstances are distinct from reasonable adjustments: they are ad hoc, time-bound requests for a specific event to be taken into account at the Exam Board rather than ongoing operational accommodations. Once a determination is reached, the approved outcome is transmitted to Student Records. Student Records becomes the system of record for the flag against the student and relevant module, and is responsible for surfacing it to the Exam Board as part of board preparation."
+    },
+    {
+      "ID": "F067",
+      "FROMID": "SIS",
+      "TOID": "EXTEX",
+      "TYPE": "->",
+      "TEXT": "Assessment sample access, candidate profiles, and pre-board calculations for external review",
+      "Description": "Student Records provides or coordinates access for the External Examiner to the data required to carry out their standards assurance role prior to and during the Exam Board. This includes sampled assessed work made available through institutional assessment systems, full candidate result profiles, pre-board classification calculations, and flagged borderline or exceptional cases. All data is sourced or coordinated through the same authoritative institutional record used for board consideration."
+    },
+    {
+      "ID": "F068",
+      "FROMID": "EXTEX",
+      "TOID": "EXAMBOARD",
+      "TYPE": "->",
+      "TEXT": "Standards assurance confirmation and ratification input",
+      "Description": "The External Examiner provides the Exam Board with independent standards assurance commentary, including scrutiny of marking standards, commentary on borderline or contentious cases, and confirmation that outcomes are fair and comparable with sector expectations. This confirmation forms part of the ratification process before outcomes are finally confirmed and recorded."
+    },
+    {
+      "ID": "F069",
+      "FROMID": "AI",
+      "TOID": "SIS",
+      "TYPE": "->",
+      "TEXT": "Academic misconduct outcomes and penalties",
+      "Description": "The Academic Integrity system is the system of record for academic misconduct investigations and decisions. Once a case is concluded, the confirmed outcome and any associated penalty are transmitted to Student Records. Student Records becomes the system of record for the student-facing academic consequence of the decision and surfaces relevant misconduct outcomes to the Exam Board where required under institutional regulations."
     }
   ]
 }
