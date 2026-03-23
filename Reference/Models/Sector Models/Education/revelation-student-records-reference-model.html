@@ -1150,8 +1150,7 @@
         <li>Retired structures</li>
         <li>Progression structures</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow enriches or updates the
-        authoritative student record and may drive downstream operational, analytical, or compliance processes.</p>
+      <p><strong>Flow type:</strong> SOR intake — CM is the system of record for programme and module design; SIS consumes this catalogue to govern what students can register for.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F002'>
@@ -1168,8 +1167,7 @@
         <li>Retention insights</li>
         <li>Curriculum review metrics</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> SIS distribution — Analytics derived from SIS are read-only inputs to curriculum review; CM should not modify or override this data independently.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F003'>
@@ -1185,8 +1183,7 @@
         <li>Enrolment volumes</li>
         <li>Timetabling constraints</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> SIS distribution — Timetabling must consume enrolment data from SIS; independently maintained student lists in the timetabling system create divergence risk and inaccurate room and resource allocation.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F004'>
@@ -1202,8 +1199,7 @@
         <li>Time slots</li>
         <li>Instructor availability</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow enriches or updates the
-        authoritative student record and may drive downstream operational, analytical, or compliance processes.</p>
+      <p><strong>Flow type:</strong> Outcome confirmation — Students access their timetable via the portal (F012); that publication depends on this flow completing successfully first.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F005'>
@@ -1220,8 +1216,7 @@
         <li>Offers</li>
         <li>Admissions decisions</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow enriches or updates the
-        authoritative student record and may drive downstream operational, analytical, or compliance processes.</p>
+      <p><strong>Flow type:</strong> SOR intake — This is the handover point from the admissions process to the student lifecycle record; CRM owns the prospect, SIS owns the enrolled student.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F006'>
@@ -1238,8 +1233,7 @@
         <li>Progression outcomes</li>
         <li>Qualification records</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> SIS distribution — CRM should not independently maintain academic status; updates here ensure engagement, retention, and alumni workflows operate from the authoritative record.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F007'>
@@ -1256,8 +1250,7 @@
         <li>Holds</li>
         <li>Return status</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow enriches or updates the
-        authoritative student record and may drive downstream operational, analytical, or compliance processes.</p>
+      <p><strong>Flow type:</strong> Outcome confirmation — Outstanding fines or unreturned items may trigger an academic hold in SIS, which can block progression or graduation until resolved.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F008'>
@@ -1274,8 +1267,7 @@
         <li>Access rights</li>
         <li>Holds</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> SIS distribution — Library access eligibility is derived entirely from SIS enrolment status; withdrawal or suspension events in SIS should drive immediate access restriction.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F009'>
@@ -1291,8 +1283,7 @@
         <li>Payment plans</li>
         <li>Scholarships and bursaries</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> SIS distribution — Fee liability is calculated from enrolment data; errors or delays in this flow directly affect billing accuracy and institutional income.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F010'>
@@ -1309,8 +1300,7 @@
         <li>Outstanding balances</li>
         <li>Financial holds</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow enriches or updates the
-        authoritative student record and may drive downstream operational, analytical, or compliance processes.</p>
+      <p><strong>Flow type:</strong> Outcome confirmation — Finance owns the transaction process; SIS holds the student-facing hold or clearance. An unresolved financial hold can block enrolment confirmation, module registration, or graduation.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F011'>
@@ -1327,8 +1317,7 @@
         <li>Module selections</li>
         <li>Self-service requests</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow enriches or updates the
-        authoritative student record and may drive downstream operational, analytical, or compliance processes.</p>
+      <p><strong>Flow type:</strong> SOR intake — Self-service changes must be validated and committed in SIS before they are treated as part of the authoritative record; the portal is a submission channel, not a system of record.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F012'>
@@ -1345,8 +1334,7 @@
         <li>Grades</li>
         <li>Notifications</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> SIS distribution — The portal is a read surface only; all data displayed must originate from SIS to ensure students see their authoritative record, including ratified grades and confirmed timetables.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F013'>
@@ -1362,8 +1350,7 @@
         <li>Engagement indicators</li>
         <li>Absence alerts</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow enriches or updates the
-        authoritative student record and may drive downstream operational, analytical, or compliance processes.</p>
+      <p><strong>Flow type:</strong> Outcome confirmation — Attendance data held in SIS feeds UKVI sponsor compliance reporting (F051); inaccuracies here carry direct sponsor licence risk for institutions with international students.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F014'>
@@ -1379,8 +1366,7 @@
         <li>Module details</li>
         <li>Academic calendar</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> SIS distribution — Attendance Monitoring must not maintain its own student lists; roster divergence between AM and SIS creates compliance risk, particularly for UKVI reporting obligations.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F015'>
@@ -1397,8 +1383,7 @@
         <li>Course enrolments</li>
         <li>Term dates</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> SIS distribution — VLE course membership must be driven by SIS enrolment; students not recorded as enrolled in SIS should not have active course access in the VLE.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F016'>
@@ -1415,8 +1400,7 @@
         <li>Completion status</li>
         <li>Academic alerts</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow enriches or updates the
-        authoritative student record and may drive downstream operational, analytical, or compliance processes.</p>
+      <p><strong>Flow type:</strong> Outcome confirmation — Marks received here are pre-ratification; they contribute to board preparation (F064) but are not the confirmed academic record until the Exam Board ratifies and F065 completes.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F017'>
@@ -1434,8 +1418,7 @@
         <li>Enrolment status</li>
         <li>Programme details</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> SIS distribution — Accommodation eligibility should be driven by SIS enrolment status; withdrawal or suspension in SIS should automatically flag any associated accommodation booking for review.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F018'>
@@ -1451,8 +1434,7 @@
         <li>Booking status</li>
         <li>Check-in and check-out records</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow enriches or updates the
-        authoritative student record and may drive downstream operational, analytical, or compliance processes.</p>
+      <p><strong>Flow type:</strong> Outcome confirmation — Accommodation records in SIS support pastoral care coordination and, where institution-managed housing is charged, feed fee liability calculations in Finance.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F019'>
@@ -1468,8 +1450,7 @@
         <li>Timetable demand</li>
         <li>Occupancy forecasts</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> SIS distribution — Estates planning accuracy depends on reliable enrolment forecasts; significant variance between planned and actual occupancy indicates a data quality issue in SIS.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F020'>
@@ -1485,8 +1466,7 @@
         <li>Availability updates</li>
         <li>Maintenance notices</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow enriches or updates the
-        authoritative student record and may drive downstream operational, analytical, or compliance processes.</p>
+      <p><strong>Flow type:</strong> Outcome confirmation — This is a logistics feedback loop; it does not affect the student academic record directly but maintains scheduling consistency between Estates and academic systems.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F021'>
@@ -1503,8 +1483,7 @@
         <li>Contact details</li>
         <li>Access eligibility</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> SIS distribution — IAM provisioning should be event-driven from SIS; enrolment, withdrawal, and graduation events should trigger immediate and automated access changes without manual intervention.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F022'>
@@ -1522,8 +1501,7 @@
         <li>Role assignments</li>
         <li>Security logs</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow enriches or updates the
-        authoritative student record and may drive downstream operational, analytical, or compliance processes.</p>
+      <p><strong>Flow type:</strong> Outcome confirmation — Security events that affect a student's institutional account should be reflected in SIS to ensure consistent visibility for registry and support staff across all systems.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F023'>
@@ -1539,8 +1517,7 @@
         <li>Graduation certificates</li>
         <li>Student document references</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> SIS distribution — Documents transmitted to EDRMS become the institutional archival copy; version control and retention policies in EDRMS govern the lifecycle of these records independently of SIS.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F024'>
@@ -1556,8 +1533,7 @@
         <li>Document links</li>
         <li>Access logs</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow enriches or updates the
-        authoritative student record and may drive downstream operational, analytical, or compliance processes.</p>
+      <p><strong>Flow type:</strong> Outcome confirmation — Document links returned here allow registry staff and students to access archived records from within SIS without duplicating the stored copy.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F025'>
@@ -1573,8 +1549,7 @@
         <li>Identity documents</li>
         <li>Verification metadata</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> SIS distribution — ID verification is typically required at enrolment; the outcome (F026) must be received and recorded in SIS before the student record can be fully activated.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F026'>
@@ -1591,8 +1566,7 @@
         <li>Document links</li>
         <li>Pending flags</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow enriches or updates the
-        authoritative student record and may drive downstream operational, analytical, or compliance processes.</p>
+      <p><strong>Flow type:</strong> Outcome confirmation — A failed or fraudulent verification result should trigger a hold in SIS; institutions must not activate a student record where identity cannot be confirmed.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F027'>
@@ -1609,8 +1583,7 @@
         <li>Module outcomes</li>
         <li>Retention indicators</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> SIS distribution — BI analytics are only as reliable as the underlying SIS data; quality issues in SIS propagate directly into institutional reporting and statutory benchmarking outputs.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F028'>
@@ -1625,8 +1598,7 @@
         <li>Predictive alerts</li>
         <li>Intervention indicators</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow enriches or updates the
-        authoritative student record and may drive downstream operational, analytical, or compliance processes.</p>
+      <p><strong>Flow type:</strong> Outcome confirmation — BI generates the at-risk flag analytically; SIS becomes the system of record for the intervention, tracking whether pastoral action has been taken and by whom.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F029'>
@@ -1642,8 +1614,7 @@
         <li>Module registrations</li>
         <li>Demographic data</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> SIS distribution — For HESA and statutory returns, completeness of historical SIS data in the warehouse is a compliance dependency; extract frequency should align with reporting cycles.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F030'>
@@ -1659,8 +1630,7 @@
         <li>Reconciliation exceptions</li>
         <li>Stewardship actions</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow enriches or updates the
-        authoritative student record and may drive downstream operational, analytical, or compliance processes.</p>
+      <p><strong>Flow type:</strong> Outcome confirmation — Quality alerts from the warehouse are diagnostic, not authoritative corrections; discrepancies should be investigated and resolved at source in SIS.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F031'>
@@ -1677,8 +1647,7 @@
         <li>Registration status</li>
         <li>Distribution windows</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> SIS distribution — Survey distribution must be based on current SIS registration data; students no longer registered on a module should not receive feedback requests.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F032'>
@@ -1694,8 +1663,7 @@
         <li>Aggregated feedback</li>
         <li>Action tracking indicators</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow enriches or updates the
-        authoritative student record and may drive downstream operational, analytical, or compliance processes.</p>
+      <p><strong>Flow type:</strong> Outcome confirmation — Individual responses are not attributed to student records and remain anonymised; aggregated scores returned to SIS support quality assurance reporting cycles.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F033'>
@@ -1710,8 +1678,7 @@
         <li>GTA details</li>
         <li>Student-staff relationships</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> SIS distribution — Students in dual roles require both a student record and an employment record; this flow initiates the HR process including right-to-work checks that must complete before payment can be processed.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F034'>
@@ -1727,8 +1694,7 @@
         <li>Personal tutor mappings</li>
         <li>Academic adviser relationships</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow enriches or updates the
-        authoritative student record and may drive downstream operational, analytical, or compliance processes.</p>
+      <p><strong>Flow type:</strong> Outcome confirmation — HR owns the staff assignment process; SIS holds the student-facing academic relationship. Gaps in supervisor or tutor assignment in SIS affect pastoral support tracking and research degree milestone management.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F035'>
@@ -1743,8 +1709,7 @@
         <li>Hardship payments</li>
         <li>Stipend/GTA payment authorisations</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> SIS distribution — Payroll must verify current enrolment status from this flow before processing bursary or GTA payments; payment to a student who has withdrawn creates an overpayment liability.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F036'>
@@ -1758,8 +1723,7 @@
         <li>Payment confirmations</li>
         <li>Bursary and stipend history</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow enriches or updates the
-        authoritative student record and may drive downstream operational, analytical, or compliance processes.</p>
+      <p><strong>Flow type:</strong> Outcome confirmation — Payment confirmations in SIS support financial aid audit trails and are required evidence for compliance with the conditions attached to bursary funding agreements.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F037'>
@@ -1774,8 +1738,7 @@
         <li>Researcher profile seed data</li>
         <li>Supervisor links</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> SIS distribution — CRIS researcher profiles must reflect confirmed SIS enrolment; students who have withdrawn should not appear as active researchers in REF compliance outputs.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F038'>
@@ -1790,8 +1753,7 @@
         <li>Thesis submission and viva outcomes</li>
         <li>Publication records</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow enriches or updates the
-        authoritative student record and may drive downstream operational, analytical, or compliance processes.</p>
+      <p><strong>Flow type:</strong> Outcome confirmation — Research milestones returned here are part of the academic record; thesis submission and viva outcomes feed progression monitoring and appear in HESA statutory data returns.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F039'>
@@ -1806,8 +1768,7 @@
         <li>Research student status</li>
         <li>Supervisor assignment data</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> SIS distribution — Funder eligibility checks require confirmed enrolment status; grant applications must not include students whose SIS status is unconfirmed, suspended, or lapsed.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F040'>
@@ -1824,8 +1785,7 @@
         <li>Award conditions</li>
         <li>Fee-liability implications</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow enriches or updates the
-        authoritative student record and may drive downstream operational, analytical, or compliance processes.</p>
+      <p><strong>Flow type:</strong> Outcome confirmation — Studentship funding records in SIS affect fee liability; a fully funded studentship should suppress or offset the fee charge in Finance and must be reflected before billing is processed.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F041'>
@@ -1841,8 +1801,7 @@
         <li>Programme and faculty segmentation</li>
         <li>Personalisation attributes</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> SIS distribution — Content personalisation depends on accurate cohort segmentation from SIS; stale or incorrect data here results in students receiving irrelevant or misdirected institutional communications.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F042'>
@@ -1857,8 +1816,7 @@
         <li>Regulatory change notifications</li>
         <li>Acknowledgement triggers</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow enriches or updates the
-        authoritative student record and may drive downstream operational, analytical, or compliance processes.</p>
+      <p><strong>Flow type:</strong> SOR intake — SIS acquires a compliance record that a policy or regulatory document has been published; this enables institutions to demonstrate students have been notified of changes relevant to their student contract obligations.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F043'>
@@ -1873,8 +1831,7 @@
         <li>Service entitlement context</li>
         <li>Account status indicators</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> SIS distribution — Service desk staff should access student context from SIS rather than maintaining local records, ensuring incident management is based on the authoritative record.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F044'>
@@ -1889,8 +1846,7 @@
         <li>Account status changes</li>
         <li>Data correction outcomes</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow enriches or updates the
-        authoritative student record and may drive downstream operational, analytical, or compliance processes.</p>
+      <p><strong>Flow type:</strong> Outcome confirmation — Account changes completed via ITSM must be reflected in SIS to ensure student-facing systems display the correct access and account state.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F045'>
@@ -1906,8 +1862,7 @@
         <li>Qualification records</li>
         <li>Offer and acceptance decisions</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow enriches or updates the
-        authoritative student record and may drive downstream operational, analytical, or compliance processes.</p>
+      <p><strong>Flow type:</strong> Statutory / SOR intake — UCAS is the statutory admissions body for UK undergraduate entry; data quality at this intake point determines the accuracy of the SIS record from the point of enrolment.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F046'>
@@ -1923,8 +1878,7 @@
         <li>Deferrals</li>
         <li>No-show notifications</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> Statutory — Failure to notify UCAS of withdrawals or no-shows in a timely manner may prevent other applicants from taking the place through Clearing, with operational and reputational consequences.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F047'>
@@ -1940,8 +1894,7 @@
         <li>Qualifications awarded</li>
         <li>Demographic fields</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> Statutory — Annual submission is a legal requirement; late or inaccurate data affects institutional funding allocation, sector benchmarking, and may trigger scrutiny from the Office for Students.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F048'>
@@ -1957,8 +1910,7 @@
         <li>HESA identifiers</li>
         <li>Error notifications</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow enriches or updates the
-        authoritative student record and may drive downstream operational, analytical, or compliance processes.</p>
+      <p><strong>Flow type:</strong> Statutory / SOR intake — The HESA student identifier must be written back to SIS and used in all subsequent statutory submissions and inter-institutional exchanges; a missing identifier creates compliance risk across multiple downstream processes.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F049'>
@@ -1975,8 +1927,7 @@
         <li>Attendance confirmation</li>
         <li>Fee details</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> Statutory — Failure to confirm enrolment will suspend tuition fee loan release to the institution and maintenance loan payments to the student; accuracy and timeliness are critical to institutional cash flow and student financial welfare.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F050'>
@@ -1994,8 +1945,7 @@
         <li>Overpayment notifications</li>
         <li>Status changes</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow enriches or updates the
-        authoritative student record and may drive downstream operational, analytical, or compliance processes.</p>
+      <p><strong>Flow type:</strong> Statutory / Outcome confirmation — Overpayment notifications require prompt action in both SIS and Finance; unrecovered overpayments become a liability and can affect the student's future loan entitlement.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F051'>
@@ -2012,8 +1962,7 @@
         <li>Attendance compliance data</li>
         <li>Change-of-circumstance triggers</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> Statutory — Inaccurate or untimely attendance reporting under the Student visa route can result in suspension of the institution's sponsor licence, affecting all sponsored international students.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F052'>
@@ -2028,8 +1977,7 @@
         <li>Compliance alerts</li>
         <li>Sponsor notifications</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow enriches or updates the
-        authoritative student record and may drive downstream operational, analytical, or compliance processes.</p>
+      <p><strong>Flow type:</strong> Statutory / SOR intake — Visa status changes must be acted upon promptly; failure to follow up on curtailment or compliance alerts is a sponsor licence breach with potential consequences for the entire international student cohort.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F053'>
@@ -2047,8 +1995,7 @@
         <li>Academic context</li>
         <li>Existing flags and holds</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> SIS distribution — Wellbeing must work from SIS data to ensure casework is grounded in the authoritative academic record; independently maintained student data in Wellbeing creates inconsistency risk and support gaps.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F055'>
@@ -2065,8 +2012,7 @@
         <li>Assessment behaviour</li>
         <li>Forum engagement</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this is a lateral integration that supports
-        analytics, experience, or assurance without bypassing Student Records as the core student system of record.</p>
+      <p><strong>Flow type:</strong> Lateral — Does not affect the student record; its value is in enriching retention and engagement analysis beyond what attendance and grades alone reveal.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F056'>
@@ -2081,8 +2027,7 @@
         <li>Absence patterns</li>
         <li>Engagement scores</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this is a lateral integration that supports
-        analytics, experience, or assurance without bypassing Student Records as the core student system of record.</p>
+      <p><strong>Flow type:</strong> Lateral — Combined with VLE engagement data (F055) and SIS academic outcomes (F027), this feed enables multi-dimensional early-warning analysis supporting student retention strategy.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F057'>
@@ -2098,8 +2043,7 @@
         <li>Finance and HR metrics</li>
         <li>Analytics-ready datasets</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this is a lateral integration that supports
-        analytics, experience, or assurance without bypassing Student Records as the core student system of record.</p>
+      <p><strong>Flow type:</strong> Lateral — The warehouse is the primary source for strategic and regulatory reporting; BI tools should draw from DW rather than directly from transactional systems to avoid load and consistency issues.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F058'>
@@ -2115,8 +2059,7 @@
         <li>Campaign content</li>
         <li>Audience segmentation</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this is a lateral integration that supports
-        analytics, experience, or assurance without bypassing Student Records as the core student system of record.</p>
+      <p><strong>Flow type:</strong> Lateral — Portal content driven by CRM must not contradict data sourced from SIS; content governance should ensure the two channels are coordinated, particularly for enrolment status and academic information.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F059'>
@@ -2135,8 +2078,7 @@
         <li>Accessibility requirements</li>
         <li>Assessment accommodations</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> SIS distribution — VLE must not receive adjustment data directly from Wellbeing; SIS is the sole distribution point to preserve a single consistent and auditable record across all downstream systems.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F060'>
@@ -2153,8 +2095,7 @@
         <li>Alert suspension dates</li>
         <li>Return-to-study markers</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> SIS distribution — Attendance Monitoring must not receive adjustment data directly from Wellbeing; threshold adjustments not sourced from SIS create inconsistency risk, particularly for UKVI attendance compliance monitoring.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F061'>
@@ -2174,8 +2115,7 @@
         <li>Accommodation requirements</li>
         <li>Candidate data</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow distributes authoritative student or
-        outcome data from Student Records to a consuming system or external body.</p>
+      <p><strong>Flow type:</strong> SIS distribution — Physical examination accommodations must be sourced from SIS, which holds the approved outcome from Wellbeing; Exam Scheduling does not determine accommodation eligibility and must not maintain its own adjustment records.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F062'>
@@ -2191,8 +2131,7 @@
         <li>Seating plans</li>
         <li>Candidate numbers</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this flow enriches or updates the
-        authoritative student record and may drive downstream operational, analytical, or compliance processes.</p>
+      <p><strong>Flow type:</strong> Outcome confirmation — Academic outcomes are returned by the Exam Board (F065), not by Exam Scheduling; this flow covers logistics only and does not affect the student academic record.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F063'>
@@ -2211,8 +2150,7 @@
         <li>Examination accommodations</li>
         <li>Rule-treatment indicators</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: Wellbeing owns the case process; Student
-        Records owns the academic-operational outcome record and downstream distribution.</p>
+      <p><strong>Flow type:</strong> Outcome confirmation — WELL owns the adjustment case process; SIS owns the academic-operational effect. No downstream system should receive adjustment data directly from Wellbeing.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F064'>
@@ -2232,9 +2170,7 @@
         <li>Classification recommendations</li>
         <li>Exceptional circumstances and misconduct indicators</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: Student Records is preparing authoritative
-        data for formal governance review; the receiving actor applies judgement or independent assurance rather than
-        becoming the system of record.</p>
+      <p><strong>Flow type:</strong> Governance prerequisite — All data presented to the Exam Board must originate from SIS; board decisions made on data not sourced from the authoritative record are procedurally vulnerable under institutional regulations.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F065'>
@@ -2250,8 +2186,7 @@
         <li>Award classifications</li>
         <li>Resit and condonement outcomes</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this is the point at which formal academic
-        decisions are returned to the authoritative student record and become institutionally actionable.</p>
+      <p><strong>Flow type:</strong> Governance prerequisite / SOR intake — Record is locked on receipt; no amendment is possible without a formal academic appeal. SIS then propagates confirmed outcomes to Finance, HESA, and SLC as required.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F066'>
@@ -2268,8 +2203,7 @@
         <li>Evidence outcomes</li>
         <li>Board-facing flags</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: Wellbeing owns the case process; Student
-        Records owns the academic-operational outcome record and downstream distribution.</p>
+      <p><strong>Flow type:</strong> Outcome confirmation — Exceptional circumstances outcomes must reach SIS before board papers are prepared (F064); a claim not recorded in SIS at board paper generation cannot be retrospectively considered without a formal process.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F067'>
@@ -2286,9 +2220,7 @@
         <li>Pre-board calculations</li>
         <li>Borderline case indicators</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: Student Records is preparing authoritative
-        data for formal governance review; the receiving actor applies judgement or independent assurance rather than
-        becoming the system of record.</p>
+      <p><strong>Flow type:</strong> Governance prerequisite — The External Examiner must receive data with sufficient lead time for meaningful scrutiny; this flow must complete before the board meets to satisfy external examining obligations.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F068'>
@@ -2304,7 +2236,7 @@
         <li>Sign-off status</li>
         <li>Ratification input</li>
       </ul>
-      <p><strong>Architectural significance:</strong> External Examiner confirmation is a prerequisite for formal ratification; this flow completes the academic assurance chain before the Exam Board can confirm outcomes and return ratified decisions to Student Records.</p>
+      <p><strong>Flow type:</strong> Governance prerequisite — External Examiner confirmation is a prerequisite for formal ratification; this flow must complete before the Exam Board can return ratified outcomes to Student Records via F065.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F069'>
@@ -2320,7 +2252,7 @@
         <li>Penalties</li>
         <li>Case closure references</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Academic Integrity owns the investigation and sanction process; Student Records owns the student-facing academic consequence.</p>
+      <p><strong>Flow type:</strong> Outcome confirmation — Misconduct outcomes must be recorded in SIS before board papers are prepared (F064); a penalty not yet in SIS cannot be surfaced to the Exam Board for classification consideration.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F070'>
@@ -2334,12 +2266,12 @@
         <li>Submission records and timestamps</li>
         <li>Enrolment status</li>
       </ul>
-      <p><strong>Architectural significance:</strong> This flow ensures that misconduct case management is grounded in the authoritative institutional record of enrolment and submission, maintaining consistency between the student record and the integrity investigation.</p>
+      <p><strong>Flow type:</strong> SIS distribution — Case management in Academic Integrity must be grounded in the authoritative SIS record of enrolment and submission; independently maintained student data in AI creates inconsistency and audit trail risk.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
   </div>
   <footer>
-    <p>© 2026 RevelationCore. All rights reserved. | <a href='https://revelationcore.com'>revelationcore.com</a></p>
+    <p>© 2026 RevelationCore. Licensed under <a href='https://creativecommons.org/licenses/by-nc/4.0/' target='_blank'>CC BY-NC 4.0</a> — free to use, share, and adapt for non-commercial purposes with attribution. Commercial use prohibited. | <a href='https://revelationcore.com'>revelationcore.com</a></p>
     <p>This reference is a generalised architecture model for UK higher education institutions and should be adapted to
       local systems, regulations, and governance practice before implementation use.</p>
   </footer>

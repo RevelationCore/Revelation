@@ -48,8 +48,12 @@
       "inputType": "textarea"
     },
     "Copyright": {
-      "value": "© RevelationCore 2026. All rights reserved.",
+      "value": "© RevelationCore 2026.",
       "inputType": "text"
+    },
+    "License": {
+      "value": "Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Free to use, share, and adapt for non-commercial purposes with attribution. Commercial use is prohibited. https://creativecommons.org/licenses/by-nc/4.0/",
+      "inputType": "textarea"
     }
   },
   "systems": [
