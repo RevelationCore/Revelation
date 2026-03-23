@@ -40,7 +40,7 @@
       "inputType": "textarea"
     },
     "Detailed Description": {
-      "value": "revelation-student-records-reference-model.html",
+      "value": "https://www.revelationcore.com/blogs/revelation-student-records-reference-model.html",
       "inputType": "url"
     },
     "Disclaimer": {
@@ -744,14 +744,6 @@
       "Description": "Student Records provides the Student Wellbeing and Disability system with core student data, including declared disabilities, programme details, academic performance indicators, and any existing flags or holds."
     },
     {
-      "ID": "F054",
-      "FROMID": "WELL",
-      "TOID": "SIS",
-      "TYPE": "->",
-      "TEXT": "Approved adjustment outcomes, DSA records, and support notes",
-      "Description": "The Student Wellbeing and Disability system is the system of record for the reasonable adjustment process — it owns the case, the evidence, and the approval decision. Once a determination is reached, the approved outcome is passed to Student Records, which becomes the system of record for the academic effect of that decision. SIS holds the approved adjustment, DSA entitlement, or support agreement against the student record and is responsible for propagating it to downstream operational systems."
-    },
-    {
       "ID": "F055",
       "FROMID": "VLE",
       "TOID": "BI",
@@ -870,6 +862,14 @@
       "TYPE": "->",
       "TEXT": "Academic misconduct outcomes and penalties",
       "Description": "The Academic Integrity system is the system of record for academic misconduct investigations and decisions. Once a case is concluded, the confirmed outcome and any associated penalty are transmitted to Student Records. Student Records becomes the system of record for the student-facing academic consequence of the decision and surfaces relevant misconduct outcomes to the Exam Board where required under institutional regulations."
+    },
+    {
+      "ID": "F070",
+      "FROMID": "SIS",
+      "TOID": "AI",
+      "TYPE": "->",
+      "TEXT": "Student identity, module registrations, and submission context for misconduct case management",
+      "Description": "Student Records provides the Academic Integrity system with the student identity data, module and assessment registrations, and submission records required to initiate and manage misconduct cases. Academic Integrity is the system of record for the investigation and decision process; Student Records is the system of record for the outcome. This flow ensures that case management in Academic Integrity is grounded in the authoritative institutional record of who submitted what and when."
     }
   ]
 }

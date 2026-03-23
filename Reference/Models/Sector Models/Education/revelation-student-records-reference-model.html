@@ -282,7 +282,7 @@
       education view spanning operational systems, statutory bodies, student support processes, examination operations,
       and academic governance.</p>
     <p>You can explore the interactive model here: <a
-        href='https://revelationcore.com/beta/index.html?model=/beta/reference/models/StudentRecordsAccelerator.json'><strong>View
+        href='https://www.revelationcore.com/beta/index.html?model=/beta/reference/models/revelation-student-records-reference-model.json'><strong>View
           the model in the Revelation EA tool</strong></a>.</p><img class='hero-image'
       src='https://revelationcore.com/assets/svg/he-enterprise-reference-model-for-student-records.svg'
       alt='Higher Education Student Records Enterprise Reference Model'>
@@ -310,9 +310,7 @@
       <li><strong>Academic governance made explicit:</strong> the model now distinguishes between systems that process
         and present data and actors that make formal academic decisions, supported by Exam Board and External Examiner
         flows.</li>
-      <li><strong>Better treatment of student context:</strong> reasonable adjustments and exceptional circumstances are
-        separated conceptually, with Student Records acting as the controlled point for recording outcomes and
-        distributing their academic-operational effect.</li>
+      <li><strong>Clearer student context treatment:</strong> reasonable adjustments and exceptional circumstances are modelled as distinct flows, with Student Records as the controlled distribution point for approved outcomes.</li>
     </ul>
     <h2>Model Overview</h2>
     <p>Student Records sits at the centre of the model as the institutional system of record for the student academic
@@ -337,6 +335,22 @@
     <p>For architects, the main value of the model is not simply the application inventory. It is the assignment of
       responsibility: which system originates data, which system owns the lasting institutional record, and which actors
       apply judgement or assurance before outcomes are confirmed.</p>
+    <h2>Model Principles</h2>
+    <p>This model has been developed around a set of governing principles that reflect common practice in UK higher education. Understanding these principles helps architects apply the model appropriately and identify where local deviation may be justified.</p>
+    <h3>Student Records as system of record</h3>
+    <p>The SIS is the institutional system of record for the student academic lifecycle. It holds the authoritative data about who is enrolled, what they are studying, how they are progressing, and what outcomes have been confirmed. All other systems that generate or affect student data are expected to pass the relevant outcome to Student Records.</p>
+    <h3>Process ownership versus outcome ownership</h3>
+    <p>Other systems manage their domain processes and pass the confirmed outcome to Student Records. Finance manages billing; the fee liability and hold status sit in the SIS. Wellbeing manages adjustment cases; the approved outcome sits in the SIS. The Exam Board ratifies results; the ratified decision is written to and locked in the SIS. This principle prevents data fragmentation and ensures a single, auditable record for each student.</p>
+    <h3>SIS as distribution hub</h3>
+    <p>Because the SIS holds the authoritative record, it is also responsible for distributing confirmed outcomes to downstream operational systems. Attendance Monitoring receives approved adjustment thresholds from SIS rather than directly from Wellbeing. The VLE receives adjustment delivery requirements from SIS. This pattern reduces integration complexity and prevents divergent states across systems.</p>
+    <h3>Governance actors are not systems of record</h3>
+    <p>The Exam Board and External Examiner are modelled as actors rather than systems. They receive data, apply judgement, and return decisions — but they do not own records. This distinction preserves the integrity of the student record and reflects the governance reality that formal academic decisions are made by people, not systems.</p>
+    <h3>UK regulatory compliance as a first-class concern</h3>
+    <p>Statutory and regulatory obligations are treated as core integration requirements. HESA data returns, Student Loans Company confirmations, UKVI sponsor compliance data, and UCAS admissions exchange are first-class flows in this model because in a UK HE context they carry legal and financial consequences and must be planned for from the outset of any SIS programme.</p>
+    <h3>Local variation</h3>
+    <p>This model represents a generalised UK higher education architecture. Individual institutions will vary from this pattern. Some operate more lateral data flows between systems, with less centralisation through the SIS. Some have fewer or more systems, or use product suites that consolidate multiple capabilities. Some have integration middleware that alters the physical routing of data. The model is a reference for mapping, gap analysis, and programme planning — not a normative prescription. Institutions should adapt it to reflect their specific systems, history, and governance practice.</p>
+    <h3>Nature of information flows</h3>
+    <p>Flows in this model are logical rather than technical. The physical implementation of any flow may be a real-time API integration, a scheduled batch extract, a portal-based self-service action, a manual process carried out by registry or administrative staff, or an electronic file transfer. The model does not prescribe integration technology; it establishes what data should flow between which systems and who owns each element of the student record.</p>
     <div class='toc'>
       <h2>Contents</h2>
       <div class='toc-section'>
@@ -373,17 +387,12 @@
             → SIS</a><a href='#F051'>F051 SIS → UKVI</a><a href='#F052'>F052 UKVI → SIS</a></div>
       </div>
       <div class='toc-section'>
-        <div class='toc-section-label'>Wellbeing, Adjustments &amp; Student Context (F053–F060)</div>
-        <div class='toc-grid'><a href='#F053'>F053 SIS → WELL</a><a href='#F054'>F054 WELL → SIS</a><a href='#F055'>F055
-            VLE → BI</a><a href='#F056'>F056 AM → BI</a><a href='#F057'>F057 DW → BI</a><a href='#F058'>F058 CRM →
-            EWP</a><a href='#F059'>F059 SIS → VLE</a><a href='#F060'>F060 SIS → AM</a></div>
+        <div class='toc-section-label'>Wellbeing, Adjustments &amp; Student Context (F053, F055–F060)</div>
+        <div class='toc-grid'><a href='#F053'>F053 SIS → WELL</a><a href='#F055'>F055 VLE → BI</a><a href='#F056'>F056 AM → BI</a><a href='#F057'>F057 DW → BI</a><a href='#F058'>F058 CRM → EWP</a><a href='#F059'>F059 SIS → VLE</a><a href='#F060'>F060 SIS → AM</a></div>
       </div>
       <div class='toc-section'>
-        <div class='toc-section-label'>Examinations, Governance &amp; Assurance (F061–F069)</div>
-        <div class='toc-grid'><a href='#F061'>F061 SIS → EXAMS</a><a href='#F062'>F062 EXAMS → SIS</a><a
-            href='#F063'>F063 WELL → SIS</a><a href='#F064'>F064 SIS → EXAMBOARD</a><a href='#F065'>F065 EXAMBOARD →
-            SIS</a><a href='#F066'>F066 WELL → SIS</a><a href='#F067'>F067 SIS → EXTEX</a><a href='#F068'>F068 EXTEX →
-            EXAMBOARD</a><a href='#F069'>F069 AI → SIS</a></div>
+        <div class='toc-section-label'>Examinations, Governance, Assurance &amp; Academic Integrity (F061–F070)</div>
+        <div class='toc-grid'><a href='#F061'>F061 SIS → EXAMS</a><a href='#F062'>F062 EXAMS → SIS</a><a href='#F063'>F063 WELL → SIS</a><a href='#F064'>F064 SIS → EXAMBOARD</a><a href='#F065'>F065 EXAMBOARD → SIS</a><a href='#F066'>F066 WELL → SIS</a><a href='#F067'>F067 SIS → EXTEX</a><a href='#F068'>F068 EXTEX → EXAMBOARD</a><a href='#F069'>F069 AI → SIS</a><a href='#F070'>F070 SIS → AI</a></div>
       </div>
     </div>
     <h2 id='systems'>Systems Portfolio</h2>
@@ -1021,12 +1030,6 @@
             <td><a href='#F053'>Student profiles, disability declarations, and academic records</a></td>
           </tr>
           <tr>
-            <td><a href='#F054'><strong>F054</strong></a></td>
-            <td>Student Wellbeing &amp; Disability</td>
-            <td>Student Records</td>
-            <td><a href='#F054'>Approved adjustment outcomes, DSA records, and support notes</a></td>
-          </tr>
-          <tr>
             <td><a href='#F055'><strong>F055</strong></a></td>
             <td>Virtual Learning Env</td>
             <td>Business Intelligence</td>
@@ -1118,6 +1121,12 @@
             <td>Academic Integrity</td>
             <td>Student Records</td>
             <td><a href='#F069'>Academic misconduct outcomes and penalties</a></td>
+          </tr>
+          <tr>
+            <td><a href='#F070'><strong>F070</strong></a></td>
+            <td>Student Records</td>
+            <td>Academic Integrity</td>
+            <td><a href='#F070'>Student identity, module registrations, and submission context for misconduct case management</a></td>
           </tr>
         </tbody>
       </table>
@@ -2042,26 +2051,6 @@
         outcome data from Student Records to a consuming system or external body.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
-    <div class='flow-section' id='F054'>
-      <h3>F054: Student Wellbeing &amp; Disability to Student Records</h3>
-      <div class='flow-meta'><strong>Flow name:</strong> Approved adjustment outcomes, DSA records, and support notes
-        &nbsp;|&nbsp; <strong>From:</strong> Student Wellbeing &amp; Disability &nbsp;|&nbsp; <strong>To:</strong>
-        Student Records</div>
-      <p><strong>Description:</strong> The Student Wellbeing and Disability system is the system of record for the
-        reasonable adjustment process — it owns the case, the evidence, and the approval decision. Once a determination
-        is reached, the approved outcome is passed to Student Records, which becomes the system of record for the
-        academic effect of that decision.</p>
-      <p><strong>Typical data exchanged:</strong></p>
-      <ul class='data-list'>
-        <li>Approved adjustments</li>
-        <li>DSA outcomes</li>
-        <li>Support notes</li>
-        <li>Downstream action indicators</li>
-      </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: Wellbeing owns the case process; Student
-        Records owns the academic-operational outcome record and downstream distribution.</p>
-      <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
-    </div>
     <div class='flow-section' id='F055'>
       <h3>F055: Virtual Learning Env to Business Intelligence</h3>
       <div class='flow-meta'><strong>Flow name:</strong> Learning analytics and digital engagement data &nbsp;|&nbsp;
@@ -2315,8 +2304,7 @@
         <li>Sign-off status</li>
         <li>Ratification input</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: this is a lateral integration that supports
-        analytics, experience, or assurance without bypassing Student Records as the core student system of record.</p>
+      <p><strong>Architectural significance:</strong> External Examiner confirmation is a prerequisite for formal ratification; this flow completes the academic assurance chain before the Exam Board can confirm outcomes and return ratified decisions to Student Records.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
     <div class='flow-section' id='F069'>
@@ -2332,8 +2320,21 @@
         <li>Penalties</li>
         <li>Case closure references</li>
       </ul>
-      <p><strong>Architectural significance:</strong> Architectural note: Academic Integrity owns the investigation and
-        sanction process; Student Records owns the student-facing academic consequence.</p>
+      <p><strong>Architectural significance:</strong> Academic Integrity owns the investigation and sanction process; Student Records owns the student-facing academic consequence.</p>
+      <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
+    </div>
+    <div class='flow-section' id='F070'>
+      <h3>F070: Student Records to Academic Integrity</h3>
+      <div class='flow-meta'><strong>Flow name:</strong> Student identity, module registrations, and submission context for misconduct case management &nbsp;|&nbsp; <strong>From:</strong> Student Records &nbsp;|&nbsp; <strong>To:</strong> Academic Integrity</div>
+      <p><strong>Description:</strong> Student Records provides the Academic Integrity system with the student identity data, module and assessment registrations, and submission records required to initiate and manage misconduct cases. Academic Integrity is the system of record for the investigation and decision process; Student Records is the system of record for the outcome.</p>
+      <p><strong>Typical data exchanged:</strong></p>
+      <ul class='data-list'>
+        <li>Student identity</li>
+        <li>Module and assessment registrations</li>
+        <li>Submission records and timestamps</li>
+        <li>Enrolment status</li>
+      </ul>
+      <p><strong>Architectural significance:</strong> This flow ensures that misconduct case management is grounded in the authoritative institutional record of enrolment and submission, maintaining consistency between the student record and the integrity investigation.</p>
       <p class='back-link'><a href='#flows'>↑ Back to flow register</a></p>
     </div>
   </div>
